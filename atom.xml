@@ -1,0 +1,539 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>mcc</title>
+  
+  <subtitle>有点想家了</subtitle>
+  <link href="/atom.xml" rel="self"/>
+  
+  <link href="http://unity321.github.io/"/>
+  <updated>2019-02-13T01:14:25.242Z</updated>
+  <id>http://unity321.github.io/</id>
+  
+  <author>
+    <name>mcc</name>
+    
+  </author>
+  
+  <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Ruby学习(二)</title>
+    <link href="http://unity321.github.io/2019/02/12/ruby-xue-xi-er/"/>
+    <id>http://unity321.github.io/2019/02/12/ruby-xue-xi-er/</id>
+    <published>2019-02-12T07:33:03.000Z</published>
+    <updated>2019-02-13T01:14:25.242Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;p&gt;&lt;img src=&quot;https://github.com/mcc321/mcc/blob/master/img/37.jpg?raw=true&quot; alt=&quot;mcc&quot;&gt;&lt;/p&gt;
+&lt;p&gt;[TOC]&lt;/p&gt;
+&lt;h1 id=&quot;Ruby从入门到放弃&quot;&gt;&lt;a
+        
+      
+    
+    </summary>
+    
+    
+      <category term="ruby" scheme="http://unity321.github.io/tags/ruby/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>python算法</title>
+    <link href="http://unity321.github.io/2019/01/29/python-suan-fa/"/>
+    <id>http://unity321.github.io/2019/01/29/python-suan-fa/</id>
+    <published>2019-01-29T04:10:51.000Z</published>
+    <updated>2019-01-29T04:15:41.254Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;p&gt;&lt;img src=&quot;https://github.com/mcc321/mcc/blob/master/img/35.jpg?raw=true&quot; alt=&quot;mcc&quot;&gt;&lt;/p&gt;
+&lt;h1 id=&quot;python算法&quot;&gt;&lt;a href=&quot;#python算法&quot;
+        
+      
+    
+    </summary>
+    
+    
+      <category term="python算法" scheme="http://unity321.github.io/tags/python%E7%AE%97%E6%B3%95/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Ruby学习(一)</title>
+    <link href="http://unity321.github.io/2019/01/26/ruby-xue-xi-yi/"/>
+    <id>http://unity321.github.io/2019/01/26/ruby-xue-xi-yi/</id>
+    <published>2019-01-26T01:11:14.000Z</published>
+    <updated>2019-01-26T14:09:00.743Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;hr&gt;
+&lt;p&gt;&lt;img src=&quot;https://github.com/mcc321/mcc/blob/master/img/32.jpg?raw=true&quot; alt=&quot;mcc&quot;&gt;&lt;/p&gt;
+&lt;p&gt;[TOC]&lt;/p&gt;
+&lt;h1 id=&quot;Ruby从入门到放弃&quot;&gt;&lt;a
+        
+      
+    
+    </summary>
+    
+    
+      <category term="ruby" scheme="http://unity321.github.io/tags/ruby/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>go语言学习(二)</title>
+    <link href="http://unity321.github.io/2019/01/24/go-yu-yan-xue-xi-er/"/>
+    <id>http://unity321.github.io/2019/01/24/go-yu-yan-xue-xi-er/</id>
+    <published>2019-01-24T11:02:50.000Z</published>
+    <updated>2019-01-25T11:22:01.080Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;p&gt;&lt;img src=&quot;https://github.com/mcc321/mcc/blob/master/img/29.jpg?raw=true&quot; alt=&quot;mcc&quot;&gt;&lt;/p&gt;
+&lt;p&gt;[TOC]&lt;/p&gt;
+&lt;h1 id=&quot;go语言练习题&quot;&gt;&lt;a href=&quot;#go语言练习题&quot;
+        
+      
+    
+    </summary>
+    
+    
+      <category term="go" scheme="http://unity321.github.io/tags/go/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>docker学习总结</title>
+    <link href="http://unity321.github.io/2019/01/23/docker-xue-xi-zong-jie/"/>
+    <id>http://unity321.github.io/2019/01/23/docker-xue-xi-zong-jie/</id>
+    <published>2019-01-23T11:31:31.000Z</published>
+    <updated>2019-01-26T14:09:03.170Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;p&gt;&lt;img src=&quot;https://github.com/mcc321/mcc/blob/master/img/30.jpg?raw=true&quot; alt=&quot;mcc&quot;&gt;&lt;/p&gt;
+&lt;h1 id=&quot;docker学习总结&quot;&gt;&lt;a href=&quot;#docker学习总结&quot;
+        
+      
+    
+    </summary>
+    
+    
+      <category term="docker" scheme="http://unity321.github.io/tags/docker/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>go语言学习(一)</title>
+    <link href="http://unity321.github.io/2019/01/22/go-yu-yan-xue-xi-yi/"/>
+    <id>http://unity321.github.io/2019/01/22/go-yu-yan-xue-xi-yi/</id>
+    <published>2019-01-22T10:29:15.000Z</published>
+    <updated>2019-01-22T11:15:39.726Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;p&gt;&lt;img src=&quot;https://github.com/mcc321/mcc/blob/master/img/27.jpg?raw=true&quot; alt=&quot;mcc&quot;&gt;&lt;/p&gt;
+&lt;h1 id=&quot;Go语言学习第一天&quot;&gt;&lt;a href=&quot;#Go语言学习第一天&quot;
+        
+      
+    
+    </summary>
+    
+    
+      <category term="go" scheme="http://unity321.github.io/tags/go/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>qt窗口介绍</title>
+    <link href="http://unity321.github.io/2019/01/15/qt-chuang-kou-jie-shao/"/>
+    <id>http://unity321.github.io/2019/01/15/qt-chuang-kou-jie-shao/</id>
+    <published>2019-01-15T10:30:56.000Z</published>
+    <updated>2019-01-15T10:36:19.701Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;p&gt;&lt;img src=&quot;https://github.com/mcc321/mcc/blob/master/img/25.jpg?raw=true&quot; alt=&quot;mcc&quot;&gt;&lt;/p&gt;
+&lt;h1 id=&quot;Qt窗口之QMainWindow、QDialog、QWidget&quot;&gt;&lt;a
+        
+      
+    
+    </summary>
+    
+    
+      <category term="Qt窗口之QMainWindow、QDialog、QWidget" scheme="http://unity321.github.io/tags/Qt%E7%AA%97%E5%8F%A3%E4%B9%8BQMainWindow%E3%80%81QDialog%E3%80%81QWidget/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>qt-c++学习记录(二)</title>
+    <link href="http://unity321.github.io/2019/01/15/qt-c-xue-xi-ji-lu-er/"/>
+    <id>http://unity321.github.io/2019/01/15/qt-c-xue-xi-ji-lu-er/</id>
+    <published>2019-01-15T09:42:48.000Z</published>
+    <updated>2019-01-15T13:37:33.927Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h1 id=&quot;图像文件操作&quot;&gt;&lt;a href=&quot;#图像文件操作&quot; class=&quot;headerlink&quot; title=&quot;图像文件操作&quot;&gt;&lt;/a&gt;图像文件操作&lt;/h1&gt;&lt;p&gt;&lt;img
+        
+      
+    
+    </summary>
+    
+    
+      <category term="qt" scheme="http://unity321.github.io/tags/qt/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>qt-c++学习记录(一)</title>
+    <link href="http://unity321.github.io/2019/01/14/qt-c-xue-xi-ji-lu-yi/"/>
+    <id>http://unity321.github.io/2019/01/14/qt-c-xue-xi-ji-lu-yi/</id>
+    <published>2019-01-14T13:50:54.000Z</published>
+    <updated>2019-01-15T13:52:14.013Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h1 id=&quot;信号槽&quot;&gt;&lt;a href=&quot;#信号槽&quot; class=&quot;headerlink&quot; title=&quot;信号槽&quot;&gt;&lt;/a&gt;信号槽&lt;/h1&gt;&lt;p&gt;&lt;img
+        
+      
+    
+    </summary>
+    
+    
+      <category term="qt" scheme="http://unity321.github.io/tags/qt/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>计算机网络回顾</title>
+    <link href="http://unity321.github.io/2019/01/09/ji-suan-ji-wang-luo-hui-gu/"/>
+    <id>http://unity321.github.io/2019/01/09/ji-suan-ji-wang-luo-hui-gu/</id>
+    <published>2019-01-08T17:20:21.000Z</published>
+    <updated>2019-01-08T17:48:49.862Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;p&gt;&lt;img src=&quot;https://github.com/mcc321/mcc/blob/master/img/5.jpg?raw=true&quot; alt=&quot;mcc&quot;&gt;&lt;/p&gt;
+&lt;h1 id=&quot;计算机网络基础回顾&quot;&gt;&lt;a href=&quot;#计算机网络基础回顾&quot;
+        
+      
+    
+    </summary>
+    
+    
+      <category term="计算机网络" scheme="http://unity321.github.io/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>dian滴</title>
+    <link href="http://unity321.github.io/2019/01/06/dian-di/"/>
+    <id>http://unity321.github.io/2019/01/06/dian-di/</id>
+    <published>2019-01-06T15:52:54.000Z</published>
+    <updated>2019-02-15T10:53:57.992Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;p&gt;&lt;img src=&quot;https://github.com/mcc321/mcc/blob/master/img/17.jpg?raw=true&quot; alt=&quot;mcc&quot;&gt;&lt;/p&gt;
+&lt;h1 id=&quot;感动与ok&quot;&gt;&lt;a href=&quot;#感动与ok&quot;
+        
+      
+    
+    </summary>
+    
+    
+      <category term="感悟" scheme="http://unity321.github.io/tags/%E6%84%9F%E6%82%9F/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>关于锐捷校园网认证客户端闪退的解决方案</title>
+    <link href="http://unity321.github.io/2019/01/05/guan-yu-rui-jie-xiao-yuan-wang-ren-zheng-ke-hu-duan-shan-tui-de-jie-jue-fang-an/"/>
+    <id>http://unity321.github.io/2019/01/05/guan-yu-rui-jie-xiao-yuan-wang-ren-zheng-ke-hu-duan-shan-tui-de-jie-jue-fang-an/</id>
+    <published>2019-01-04T16:07:43.000Z</published>
+    <updated>2019-01-06T10:08:22.573Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;p&gt;&lt;img src=&quot;https://github.com/mcc321/mcc/blob/master/img/15.jpg?raw=true&quot; alt=&quot;mcc&quot;&gt;&lt;/p&gt;
+&lt;h1 id=&quot;锐捷校园闪退问题解决&quot;&gt;&lt;a href=&quot;#锐捷校园闪退问题解决&quot;
+        
+      
+    
+    </summary>
+    
+    
+      <category term="校园网" scheme="http://unity321.github.io/tags/%E6%A0%A1%E5%9B%AD%E7%BD%91/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>gcloud初学</title>
+    <link href="http://unity321.github.io/2019/01/01/gcloud-chu-xue/"/>
+    <id>http://unity321.github.io/2019/01/01/gcloud-chu-xue/</id>
+    <published>2019-01-01T07:16:15.000Z</published>
+    <updated>2019-01-01T07:52:04.209Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;p&gt;&lt;img src=&quot;https://github.com/mcc321/mcc/blob/master/img/10.jpg?raw=true&quot; alt=&quot;mcc&quot;&gt;&lt;/p&gt;
+&lt;h2 id=&quot;gcloud部署&quot;&gt;&lt;a href=&quot;#gcloud部署&quot;
+        
+      
+    
+    </summary>
+    
+    
+      <category term="gcloud" scheme="http://unity321.github.io/tags/gcloud/"/>
+    
+      <category term="dev_appserver.py" scheme="http://unity321.github.io/tags/dev-appserver-py/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>python re-study</title>
+    <link href="http://unity321.github.io/2018/12/26/python-re-study/"/>
+    <id>http://unity321.github.io/2018/12/26/python-re-study/</id>
+    <published>2018-12-26T15:05:56.000Z</published>
+    <updated>2019-01-08T17:40:59.946Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;p&gt;&lt;img src=&quot;https://github.com/mcc321/mcc/blob/master/img/10.jpg?raw=true&quot; alt=&quot;mcc&quot;&gt;&lt;/p&gt;
+&lt;h1 id=&quot;python进阶&quot;&gt;&lt;a href=&quot;#python进阶&quot;
+        
+      
+    
+    </summary>
+    
+    
+      <category term="python进阶" scheme="http://unity321.github.io/tags/python%E8%BF%9B%E9%98%B6/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>api钩取</title>
+    <link href="http://unity321.github.io/2018/12/24/api-gou-qu/"/>
+    <id>http://unity321.github.io/2018/12/24/api-gou-qu/</id>
+    <published>2018-12-24T13:48:42.000Z</published>
+    <updated>2019-02-15T17:27:30.586Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;p&gt;&lt;img src=&quot;https://github.com/mcc321/mcc/blob/master/img/13.jpg?raw=true&quot; alt=&quot;mcc&quot;&gt;&lt;/p&gt;
+&lt;h1 id=&quot;入门pydbg&quot;&gt;&lt;a href=&quot;#入门pydbg&quot;
+        
+      
+    
+    </summary>
+    
+    
+      <category term="python" scheme="http://unity321.github.io/tags/python/"/>
+    
+      <category term="pydbg" scheme="http://unity321.github.io/tags/pydbg/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>flask学习总结</title>
+    <link href="http://unity321.github.io/2018/12/22/flask-xue-xi-yi/"/>
+    <id>http://unity321.github.io/2018/12/22/flask-xue-xi-yi/</id>
+    <published>2018-12-22T15:22:37.000Z</published>
+    <updated>2019-01-06T16:34:31.621Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;p&gt;&lt;img src=&quot;https://github.com/mcc321/mcc/blob/master/img/3.jpg?raw=true&quot; alt=&quot;mcc&quot;&gt;&lt;/p&gt;
+&lt;h1 id=&quot;blueprint框架介绍&quot;&gt;&lt;a href=&quot;#blueprint框架介绍&quot;
+        
+      
+    
+    </summary>
+    
+    
+      <category term="后台" scheme="http://unity321.github.io/tags/%E5%90%8E%E5%8F%B0/"/>
+    
+      <category term="flask" scheme="http://unity321.github.io/tags/flask/"/>
+    
+      <category term="蓝图框架(blueprint)" scheme="http://unity321.github.io/tags/%E8%93%9D%E5%9B%BE%E6%A1%86%E6%9E%B6-blueprint/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Markdown数学公式语法</title>
+    <link href="http://unity321.github.io/2018/12/22/markdown-shu-xue-gong-shi-yu-fa/"/>
+    <id>http://unity321.github.io/2018/12/22/markdown-shu-xue-gong-shi-yu-fa/</id>
+    <published>2018-12-22T15:05:48.000Z</published>
+    <updated>2019-01-07T15:32:16.924Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;p&gt;&lt;img src=&quot;https://github.com/mcc321/mcc/blob/master/img/8.jpg?raw=true&quot; alt=&quot;mcc&quot;&gt;&lt;/p&gt;
+&lt;h1 id=&quot;Markdown-latex-语法整理&quot;&gt;&lt;a
+        
+      
+    
+    </summary>
+    
+    
+      <category term="数学" scheme="http://unity321.github.io/tags/%E6%95%B0%E5%AD%A6/"/>
+    
+      <category term="LaTex" scheme="http://unity321.github.io/tags/LaTex/"/>
+    
+      <category term="Markdown" scheme="http://unity321.github.io/tags/Markdown/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>关于平面刚体自由度的计算</title>
+    <link href="http://unity321.github.io/2018/12/22/guan-yu-ping-mian-gang-ti-zi-you-du-de-ji-suan/"/>
+    <id>http://unity321.github.io/2018/12/22/guan-yu-ping-mian-gang-ti-zi-you-du-de-ji-suan/</id>
+    <published>2018-12-22T10:18:55.000Z</published>
+    <updated>2019-01-07T15:33:08.790Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;p&gt;&lt;img src=&quot;https://github.com/mcc321/mcc/blob/master/img/7.jpg?raw=true&quot; alt=&quot;zhang不大的先生&quot;&gt;&lt;/p&gt;
+&lt;h1 id=&quot;刚体自由度判断问题&quot;&gt;&lt;a href=&quot;#刚体自由度判断问题&quot;
+        
+      
+    
+    </summary>
+    
+    
+      <category term="理论力学" scheme="http://unity321.github.io/tags/%E7%90%86%E8%AE%BA%E5%8A%9B%E5%AD%A6/"/>
+    
+      <category term="自由度" scheme="http://unity321.github.io/tags/%E8%87%AA%E7%94%B1%E5%BA%A6/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>关于一些小事的想法</title>
+    <link href="http://unity321.github.io/2018/12/21/guan-yu-yi-xie-xiao-shi-de-xiang-fa/"/>
+    <id>http://unity321.github.io/2018/12/21/guan-yu-yi-xie-xiao-shi-de-xiang-fa/</id>
+    <published>2018-12-21T10:25:14.000Z</published>
+    <updated>2019-01-07T15:33:29.770Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;p&gt;&lt;img src=&quot;https://github.com/mcc321/mcc/blob/master/img/5.jpg?raw=true&quot; alt=&quot;mcc&quot;&gt;&lt;/p&gt;
+&lt;h1 id=&quot;奇奇怪怪的两天&quot;&gt;&lt;a href=&quot;#奇奇怪怪的两天&quot;
+        
+      
+    
+    </summary>
+    
+    
+      <category term="感悟" scheme="http://unity321.github.io/tags/%E6%84%9F%E6%82%9F/"/>
+    
+      <category term="生活" scheme="http://unity321.github.io/tags/%E7%94%9F%E6%B4%BB/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>zhang不大的先生</title>
+    <link href="http://unity321.github.io/2018/12/20/zhang-bu-da-de-xian-sheng/"/>
+    <id>http://unity321.github.io/2018/12/20/zhang-bu-da-de-xian-sheng/</id>
+    <published>2018-12-19T18:22:53.000Z</published>
+    <updated>2019-02-15T10:51:14.921Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;p&gt;&lt;img src=&quot;https://github.com/mcc321/mcc/blob/master/img/2.jpg?raw=true&quot; alt=&quot;zhang不大的先生&quot;&gt;&lt;/p&gt;
+&lt;h1 id=&quot;zhang不大的先生&quot;&gt;&lt;a href=&quot;#zhang不大的先生&quot;
+        
+      
+    
+    </summary>
+    
+      <category term="Markdown" scheme="http://unity321.github.io/categories/Markdown/"/>
+    
+    
+      <category term="原则没有例外" scheme="http://unity321.github.io/tags/%E5%8E%9F%E5%88%99%E6%B2%A1%E6%9C%89%E4%BE%8B%E5%A4%96/"/>
+    
+  </entry>
+  
+</feed>

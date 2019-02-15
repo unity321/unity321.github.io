@@ -1,0 +1,898 @@
+<!DOCTYPE HTML>
+<html lang="zh-CN">
+
+
+<head><meta name="generator" content="Hexo 3.8.0">
+    <meta charset="utf-8">
+    <meta name="keywords" content="flask学习总结, mcc">
+    <meta name="description" content="
+blueprint框架介绍前段时间一直在做后台开发，现在已经基本上完成了博客框架的搭建，现在想写下flask开发中的一些过程吧。
+首先想说一下为什么从蓝图框架开始介绍。其实刚开始也是将所有的路由放在了一个文件里，后来因为开发中对独立开发的">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="renderer" content="webkit|ie-stand|ie-comp">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <title>flask学习总结 | mcc</title>
+    <link rel="icon" type="image/png" href="/icon.png">
+
+    <link rel="stylesheet" type="text/css" href="/libs/awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/materialize/css/materialize.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/aos/aos.css">
+    <link rel="stylesheet" type="text/css" href="/libs/animate/animate.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/lightGallery/css/lightgallery.min.css">
+    <link rel="stylesheet" type="text/css" href="/css/matery.css">
+    <link rel="stylesheet" type="text/css" href="/css/my.css">
+
+    <script src="/libs/jquery/jquery-2.2.0.min.js"></script>
+<link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css"></head>
+
+
+<body>
+
+<header class="navbar-fixed">
+    <nav id="headNav" class="bg-color nav-transparent">
+        <div id="navContainer" class="container">
+            <div class="nav-wrapper">
+                <div class="brand-logo">
+                    <a href="/" class="waves-effect waves-light">
+                        
+                        <img src="/medias/mcc.png" class="logo-img hide-on-small-only">
+                        
+                        <span class="logo-span">mcc</span>
+                    </a>
+                </div>
+                
+
+<a href="#" data-activates="mobile-nav" class="button-collapse"><i class="fa fa-navicon"></i></a>
+<ul class="right">
+    
+    <li class="hide-on-med-and-down">
+        <a href="/" class="waves-effect waves-light">
+            
+            <i class="fa fa-home"></i>
+            
+            <span>首页</span>
+        </a>
+    </li>
+    
+    <li class="hide-on-med-and-down">
+        <a href="/tags" class="waves-effect waves-light">
+            
+            <i class="fa fa-tags"></i>
+            
+            <span>标签</span>
+        </a>
+    </li>
+    
+    <li class="hide-on-med-and-down">
+        <a href="/categories" class="waves-effect waves-light">
+            
+            <i class="fa fa-bookmark"></i>
+            
+            <span>分类</span>
+        </a>
+    </li>
+    
+    <li class="hide-on-med-and-down">
+        <a href="/archives" class="waves-effect waves-light">
+            
+            <i class="fa fa-archive"></i>
+            
+            <span>归档</span>
+        </a>
+    </li>
+    
+    <li class="hide-on-med-and-down">
+        <a href="/about" class="waves-effect waves-light">
+            
+            <i class="fa fa-user-circle-o"></i>
+            
+            <span>关于</span>
+        </a>
+    </li>
+    
+    <li class="hide-on-med-and-down">
+        <a href="/friends" class="waves-effect waves-light">
+            
+            <i class="fa fa-address-book"></i>
+            
+            <span>友情链接</span>
+        </a>
+    </li>
+    
+    <li>
+        <a id="toggleSearch" class="waves-effect waves-light">
+            <i id="searchIcon" class="mdi-action-search" title="搜索"></i>
+        </a>
+    </li>
+
+</ul>
+
+<div class="side-nav" id="mobile-nav">
+
+    <div class="mobile-head bg-color">
+        
+        <img src="/medias/mcc.png" class="logo-img circle responsive-img">
+        
+        <div class="logo-name">mcc</div>
+        <div class="logo-desc">
+            
+            zhang不大的先生
+            
+        </div>
+    </div>
+
+    
+
+    <ul class="menu-list mobile-menu-list">
+        
+        <li>
+            <a href="/" class="waves-effect waves-light">
+                
+                <i class="fa fa-fw fa-home"></i>
+                
+                首页
+            </a>
+        </li>
+        
+        <li>
+            <a href="/tags" class="waves-effect waves-light">
+                
+                <i class="fa fa-fw fa-tags"></i>
+                
+                标签
+            </a>
+        </li>
+        
+        <li>
+            <a href="/categories" class="waves-effect waves-light">
+                
+                <i class="fa fa-fw fa-bookmark"></i>
+                
+                分类
+            </a>
+        </li>
+        
+        <li>
+            <a href="/archives" class="waves-effect waves-light">
+                
+                <i class="fa fa-fw fa-archive"></i>
+                
+                归档
+            </a>
+        </li>
+        
+        <li>
+            <a href="/about" class="waves-effect waves-light">
+                
+                <i class="fa fa-fw fa-user-circle-o"></i>
+                
+                关于
+            </a>
+        </li>
+        
+        <li>
+            <a href="/friends" class="waves-effect waves-light">
+                
+                <i class="fa fa-fw fa-address-book"></i>
+                
+                友情链接
+            </a>
+        </li>
+        
+        
+    </ul>
+
+    <div class="social-link"><a href="https://github.com/mcc321" class="tooltipped" target="_blank" data-tooltip="访问我的GitHub" data-position="top" data-delay="50">
+    <i class="fa fa-github"></i>
+</a>
+<a href="mailto:2393811002@qq.com" class="tooltipped" target="_blank" data-tooltip="邮件联系我" data-position="top" data-delay="50">
+    <i class="fa fa-envelope-open"></i>
+</a>
+<a href="#!" class="tooltipped" data-tooltip="QQ联系我: 2393811002" data-position="top" data-delay="50">
+    <i class="fa fa-qq"></i>
+</a>
+<a href="#!" class="tooltipped" data-tooltip="微信联系我: zc2393811002" data-position="top" data-delay="50">
+    <i class="fa fa-wechat"></i>
+</a></div>
+</div>
+
+            </div>
+        </div>
+
+        
+    </nav>
+</header>
+
+
+<script src="/libs/cryptojs/crypto-js.min.js"></script>
+<script>
+    (function() {
+        let pwd = '';
+        if (pwd && pwd.length > 0) {
+            if (pwd !== CryptoJS.SHA256(prompt('请输入访问本文章的密码')).toString(CryptoJS.enc.Hex)) {
+                alert('密码错误，将返回主页！');
+                location.href = '/';
+            }
+        }
+    })();
+</script>
+
+
+
+
+<div class="bg-cover post-cover" style="background-image: url('https://github.com/mcc321/mcc/blob/master/img/9.jpg?raw=true')">
+    <div class="container">
+        <div class="row">
+            <div class="col s12 m12 l12">
+                <div class="brand">
+                    <div class="description center-align post-title">
+                        flask学习总结
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<main class="post-container content">
+
+    
+    <link rel="stylesheet" href="/libs/tocbot/tocbot.css">
+<style>
+    #articleContent h1,
+    #articleContent h2,
+    #articleContent h3,
+    #articleContent h4,
+    #articleContent h5,
+    #articleContent h6 {
+        padding-top: 76px;
+        margin-top: -76px;
+    }
+
+    #articleContent h1 {
+        line-height: 3.5rem;
+    }
+
+    #articleContent h2 {
+        line-height: 3.2rem;
+    }
+
+    #articleContent h3 {
+        line-height: 2.8rem;
+    }
+
+    #articleContent h4 {
+        line-height: 2.5rem;
+    }
+
+    #articleContent h5 {
+        line-height: 2.2rem;
+    }
+
+    #articleContent h6 {
+        line-height: 1.9rem;
+    }
+
+    #articleContent :focus {
+        outline: none;
+    }
+
+    .toc-fixed {
+        position: fixed;
+        top: 64px;
+    }
+
+    .toc-widget {
+        padding-left: 20px;
+    }
+
+    .toc-widget .toc-title {
+        margin: 35px 0 15px 0;
+        padding-left: 17px;
+        font-size: 1.5rem;
+        font-weight: bold;
+        line-height: 1.5rem;
+    }
+
+    .toc-widget ol {
+        padding: 0;
+        list-style: none;
+    }
+
+    #toc-content ol {
+        padding-left: 10px;
+    }
+
+    #toc-content ol li {
+        padding-left: 10px;
+    }
+
+    #toc-content .toc-link:hover {
+        color: #42b983;
+        font-weight: 700;
+        text-decoration: underline;
+    }
+
+    #toc-content .toc-link::before {
+        background-color: transparent;
+        max-height: 25px;
+    }
+
+    #toc-content .is-active-link {
+        color: #42b983;
+    }
+
+    #toc-content .is-active-link::before {
+        background-color: #42b983;
+    }
+</style>
+<div class="row">
+    <div class="col s12 m12 l9">
+        <!-- 文章内容详情 -->
+<div id="artDetail">
+    <div class="card">
+        <div class="card-content article-info">
+            <div class="row tag-cate">
+                <div class="col s7">
+                    
+                    <div class="article-tag">
+                        
+                            <a href="/tags/后台/" target="_blank">
+                                <span class="chip bg-color">后台</span>
+                            </a>
+                        
+                            <a href="/tags/flask/" target="_blank">
+                                <span class="chip bg-color">flask</span>
+                            </a>
+                        
+                            <a href="/tags/蓝图框架-blueprint/" target="_blank">
+                                <span class="chip bg-color">蓝图框架(blueprint)</span>
+                            </a>
+                        
+                    </div>
+                    
+                </div>
+                <div class="col s5 right-align">
+                    
+                </div>
+            </div>
+
+            <div class="post-info">
+                <div class="post-date info-break-policy">
+                    <i class="fa fa-calendar-minus-o fa-fw"></i>发布日期:&nbsp;&nbsp;
+                    2018-12-22
+                </div>
+
+                
+                    
+                    <div class="info-break-policy">
+                        <i class="fa fa-file-word-o fa-fw"></i>文章字数:&nbsp;&nbsp;
+                        1.8k
+                    </div>
+                    
+
+                    
+                    <div class="info-break-policy">
+                        <i class="fa fa-clock-o fa-fw"></i>阅读时长:&nbsp;&nbsp;
+                        7 分
+                    </div>
+                    
+                
+				
+				
+                    <div id="busuanzi_container_page_pv" class="info-break-policy">
+                        <i class="fa fa-eye fa-fw"></i>阅读次数:&nbsp;&nbsp;
+                        <span id="busuanzi_value_page_pv"></span>
+                    </div>
+				
+            </div>
+        </div>
+        <hr class="clearfix">
+        <div class="card-content article-card-content">
+            <div id="articleContent">
+                <p><img src="https://github.com/mcc321/mcc/blob/master/img/3.jpg?raw=true" alt="mcc"></p>
+<h1 id="blueprint框架介绍"><a href="#blueprint框架介绍" class="headerlink" title="blueprint框架介绍"></a>blueprint框架介绍</h1><p>前段时间一直在做后台开发，现在已经基本上完成了博客框架的搭建，现在想写下flask开发中的一些过程吧。</p>
+<p>首先想说一下为什么从蓝图框架开始介绍。其实刚开始也是将所有的路由放在了一个文件里，后来因为开发中对独立开发的要求还有模型变得复杂，便逐渐转向使用蓝图框架。蓝图框架迁移的过程我是深有体会的，就有一些问题自己花了几天的时间才解决，所以我觉得首先介绍一下蓝图框架。</p>
+<p><img src="https://github.com/mcc321/mcc/blob/master/img/tree.png?raw=true" alt="mcc"></p>
+<blockquote>
+<p>首先贴一下开发的目录结构</p>
+<ul>
+<li><p>__pycache__:是一个编译文件，不用太过在意</p>
+<blockquote>
+<ul>
+<li><p>app:这是说有路由的根目录</p>
+<blockquote>
+<blockquote>
+<ul>
+<li>doc:文档介绍相关，其实如果仅仅是个人开发不用doc<blockquote>
+<blockquote>
+<blockquote>
+<blockquote>
+<ul>
+<li>env:这是虚拟环境通过virtualenv命令生成，需要事先通过pip安装virtualenv</li>
+<li>manage.py是运行整个博客网站的接口文件</li>
+<li>requirements.txt:这是一个通过pip freeze &gt;requirements.txt命令生成的,我试过用echo<code>pip list</code> &gt;requirements.txt 生成，但通过pip install -r requirements.txt 安装拓展包时出错了，因此还是用pip freeze吧，这里还有一点建议，不要安装太冷门的包，不然他人安装起来容易出错，我就尝试安装过一个mysql-connector==2.1.6和mysql-connector-python==8.0.13这两个包，当初我也是查看各种博客才装上的，也导致小伙伴花费了一段时间装这个库，感觉还是有点抱歉。</li>
+<li>templates不用太在意</li>
+<li>test:集成测试模块，现在还没加入</li>
+<li>blog.md:上面的乱码是utf-8编码出了一点问题，关于编码encoding和字符集charset是有区别的，charset代表一个字符集合，如汉语字符集，而编码代表的是如何将每个符号用计算机的0,1表示出来，我记忆中字符集有Unicode，ASCII，GBK，ISO-8859-n，BIG5，GB2312，GB18030</li>
+</ul>
+</blockquote>
+</blockquote>
+</blockquote>
+</blockquote>
+</li>
+</ul>
+</blockquote>
+</blockquote>
+</li>
+</ul>
+</blockquote>
+</li>
+</ul>
+</blockquote>
+<p>而蓝图框架主要是在app里面</p>
+<blockquote>
+<p>这里还是我想从外层向里层介绍</p>
+</blockquote>
+<h2 id="manage-py解析"><a href="#manage-py解析" class="headerlink" title="manage.py解析"></a>manage.py解析</h2><pre class=" language-python"><code class="language-python"><span class="token keyword">import</span> os 
+<span class="token keyword">from</span> app <span class="token keyword">import</span> create_app <span class="token punctuation">,</span> db
+<span class="token keyword">from</span> app<span class="token punctuation">.</span>models <span class="token keyword">import</span> User <span class="token punctuation">,</span> Article <span class="token punctuation">,</span> Comment <span class="token punctuation">,</span> Role 
+<span class="token keyword">from</span> flask_script <span class="token keyword">import</span> Manager <span class="token punctuation">,</span> Shell
+<span class="token keyword">from</span> flask_migrate <span class="token keyword">import</span> Migrate <span class="token punctuation">,</span> MigrateCommand
+<span class="token keyword">from</span> flask <span class="token keyword">import</span> redirect<span class="token punctuation">,</span>url_for<span class="token punctuation">,</span>render_template
+
+
+app <span class="token operator">=</span> create_app<span class="token punctuation">(</span><span class="token punctuation">)</span>
+manager <span class="token operator">=</span> Manager<span class="token punctuation">(</span>app<span class="token punctuation">)</span>
+migrate <span class="token operator">=</span> Migrate<span class="token punctuation">(</span>app<span class="token punctuation">,</span>db<span class="token punctuation">)</span>
+
+
+
+<span class="token keyword">def</span> <span class="token function">make_shell_context</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token keyword">return</span> dict<span class="token punctuation">(</span>app <span class="token operator">=</span> app <span class="token punctuation">,</span> db <span class="token operator">=</span> db <span class="token punctuation">,</span> User <span class="token operator">=</span> User <span class="token punctuation">,</span> Role<span class="token operator">=</span>Role <span class="token punctuation">,</span>  Article <span class="token operator">=</span> Article <span class="token punctuation">,</span> Comment<span class="token operator">=</span>Comment<span class="token punctuation">)</span>
+manager<span class="token punctuation">.</span>add_command<span class="token punctuation">(</span><span class="token string">'shell'</span><span class="token punctuation">,</span> Shell<span class="token punctuation">(</span>make_context<span class="token operator">=</span>make_shell_context<span class="token punctuation">)</span><span class="token punctuation">)</span>
+manager<span class="token punctuation">.</span>add_command<span class="token punctuation">(</span><span class="token string">'db'</span><span class="token punctuation">,</span>MigrateCommand<span class="token punctuation">)</span>
+
+
+
+
+@app<span class="token punctuation">.</span>route<span class="token punctuation">(</span><span class="token string">'/'</span><span class="token punctuation">)</span>
+<span class="token keyword">def</span> <span class="token function">root_path</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token keyword">return</span> render_template<span class="token punctuation">(</span><span class="token string">'index.html'</span><span class="token punctuation">)</span>
+
+@app<span class="token punctuation">.</span>route<span class="token punctuation">(</span><span class="token string">'/&lt;path:path>'</span><span class="token punctuation">,</span>methods<span class="token operator">=</span><span class="token punctuation">[</span><span class="token string">'GET'</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
+<span class="token keyword">def</span> <span class="token function">any_root_path</span><span class="token punctuation">(</span>path<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token keyword">return</span> render_template<span class="token punctuation">(</span><span class="token string">'index.html'</span><span class="token punctuation">)</span>
+
+<span class="token keyword">if</span> __name__ <span class="token operator">==</span> <span class="token string">"__main__"</span><span class="token punctuation">:</span>
+    manager<span class="token punctuation">.</span>run<span class="token punctuation">(</span><span class="token punctuation">)</span>
+</code></pre>
+<blockquote>
+<p>这里首先需要注意的是python路径应用的问题，这里确实算一个比较大的坑，我也花费了几天时间才解决引用问题</p>
+<ul>
+<li><p>引用问题首先是路径问题:这里像说明一下包和模块的问题，上面的auth和main都是包，最明显的包是app包，一个包包含__init__文件，这个文件可以为空，可以当作包的一个标识文件，没有就不是包，包引用时即<code>import 包名</code>时import的是__init__文件，如需要使用<code>from 包名 import *</code>，者需要在__init__文件添加<code>__all__ = []</code>语句，这就是引用包，自己编写的包一般又相对路径引用，如<code>from ..auth.func import *</code>，这里我采用的就是相对路径引用</p>
+</li>
+<li><p>引用的第二个问题就是循环引用的问题，这个问题很多人都听说过，但如果没有接触过真正的复杂project其实很难碰到这种问题。所以我想仔细地讲一下</p>
+<blockquote>
+<p>首先python包的引用是逐句引用，举个例子:</p>
+</blockquote>
+<p>这里我有同意文件夹下有a.py，b.py，c.py三个文件</p>
+<pre class=" language-pyt"><code class="language-pyt">#a.py
+import os
+import re
+import flask
+from b import *
+...
+</code></pre>
+<pre class=" language-python"><code class="language-python"><span class="token comment" spellcheck="true">#b.py</span>
+<span class="token keyword">import</span> os
+<span class="token keyword">import</span> re
+<span class="token keyword">import</span> flask
+<span class="token keyword">from</span> c <span class="token keyword">import</span> <span class="token operator">*</span>
+<span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span>
+</code></pre>
+<pre class=" language-python"><code class="language-python"><span class="token comment" spellcheck="true">#c.py</span>
+<span class="token keyword">import</span> os
+<span class="token keyword">import</span> re
+<span class="token keyword">import</span> flask
+<span class="token keyword">from</span> a <span class="token keyword">import</span> <span class="token operator">*</span>
+<span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span>
+</code></pre>
+<ul>
+<li>上面的引用就是循环引用最直接的形式了，当a.py去引用b.py时时它其实时没有完全初始化的，并不能被引用，此时b引用c文件时b也没有初始化，c再引用a时就会出现无法import的情况。</li>
+</ul>
+</li>
+</ul>
+</blockquote>
+<h2 id="app包解析"><a href="#app包解析" class="headerlink" title="app包解析"></a>app包解析</h2><h4 id="1-env"><a href="#1-env" class="headerlink" title="1.env"></a>1.env</h4><blockquote>
+<p>这是一个虚拟环境，刚开始使用可能不太顺利，但当你真正用过两三次之后就会发现开发什么项目都会想都相机那里一个虚拟环境，这是我的体会，所以多虚拟环境还是比较重要的，不然你安装的许多库都会安装到服务器上，导致服务器的性能下降。</p>
+</blockquote>
+<h4 id="2-instance和config"><a href="#2-instance和config" class="headerlink" title="2.instance和config"></a>2.instance和config</h4><blockquote>
+<p>这两个文件是配置文件，instance文件主要是存放隐私配置，如密码之类的信息，而config则存放通用配置</p>
+</blockquote>
+<h4 id="3-models-py"><a href="#3-models-py" class="headerlink" title="3.models.py"></a>3.models.py</h4><blockquote>
+<p>这个模块主要是存放各种模型，比如说User，Article以及一些数据库表</p>
+</blockquote>
+<h4 id="4-utils-py"><a href="#4-utils-py" class="headerlink" title="4.utils.py"></a>4.utils.py</h4><blockquote>
+<p>主要定义一些修饰器</p>
+</blockquote>
+<h4 id="5-init-py"><a href="#5-init-py" class="headerlink" title="5__init__.py"></a>5__init__.py</h4><blockquote>
+<p>这是包的一个标置文件，可以为空</p>
+</blockquote>
+<h4 id="6-func-py"><a href="#6-func-py" class="headerlink" title="6.func.py"></a>6.func.py</h4><blockquote>
+<p>这是通用函数存放的地方，可以供模块间共享</p>
+</blockquote>
+<h4 id="7-main-py"><a href="#7-main-py" class="headerlink" title="7.main.py"></a>7.main.py</h4><blockquote>
+<p>这是主路由模块，是一个main的蓝图，大多数的路由在这里开发</p>
+</blockquote>
+<h4 id="8-auth-py"><a href="#8-auth-py" class="headerlink" title="8.auth.py"></a>8.auth.py</h4><blockquote>
+<p>这是认证模块，存放注册，登陆等路由</p>
+</blockquote>
+<p>整体的介绍就这么多，我觉得开发过程中尽管会报各种各样的错，但是还是又特别多的自由的，你可以编写自己的装饰器，函数，甚至重定义很多自带的装饰器，里面会有很多乐趣。蓝图框架初看起来特别复杂，但如果稍微对包有一点了解都会很容易的接受的，因为相较于其他项目而言，确实特别简单，学了这么多天的蓝图，感觉蓝图就是一种可插拔的框架，分离各个模块，要什么模块添加即可，想删改什么模块也不用考虑依赖问题，简洁，干净。</p>
+<h2 id="路由模块"><a href="#路由模块" class="headerlink" title="路由模块"></a>路由模块</h2><h2 id="部署-ubuntu16-04-uwsgi-nginx"><a href="#部署-ubuntu16-04-uwsgi-nginx" class="headerlink" title="部署(ubuntu16.04 uwsgi nginx)"></a>部署(ubuntu16.04 uwsgi nginx)</h2><p>部署中首先是安装环境</p>
+<pre class=" language-python"><code class="language-python">pip install virtualen
+pip install <span class="token operator">-</span>r requirement<span class="token punctuation">.</span>txt
+</code></pre>
+<p>这里顺便一段，可以通过<code>pip freeze &gt;requirement.txt</code> 生成requirement.txt</p>
+<blockquote>
+<p>再通过pip安装时，可能数据库安装会出现一些问题，如遇到报错：</p>
+<pre class=" language-python"><code class="language-python">Downloading<span class="token operator">/</span>unpacking MySQL<span class="token operator">-</span>python
+  Running setup<span class="token punctuation">.</span>py egg_info <span class="token keyword">for</span> package MySQL<span class="token operator">-</span>python
+    Traceback <span class="token punctuation">(</span>most recent call last<span class="token punctuation">)</span><span class="token punctuation">:</span>
+      File <span class="token string">"&lt;string>"</span><span class="token punctuation">,</span> line <span class="token number">16</span><span class="token punctuation">,</span> <span class="token keyword">in</span> <span class="token operator">&lt;</span>module<span class="token operator">></span>
+      File <span class="token string">"/var/folders/lf/myf7bjr57_jg7_5c4014bh640000gn/T/pip-build/MySQL-python/setup.py"</span><span class="token punctuation">,</span> line <span class="token number">14</span><span class="token punctuation">,</span> <span class="token keyword">in</span> <span class="token operator">&lt;</span>module<span class="token operator">></span>
+        <span class="token keyword">from</span> setup_posix <span class="token keyword">import</span> get_config
+      File <span class="token string">"./setup_posix.py"</span><span class="token punctuation">,</span> line <span class="token number">2</span><span class="token punctuation">,</span> <span class="token keyword">in</span> <span class="token operator">&lt;</span>module<span class="token operator">></span>
+        <span class="token keyword">from</span> ConfigParser <span class="token keyword">import</span> SafeConfigParser
+    ImportError<span class="token punctuation">:</span> No module named <span class="token string">'ConfigParser'</span>
+    Complete output <span class="token keyword">from</span> command python setup<span class="token punctuation">.</span>py egg_info<span class="token punctuation">:</span>
+    Traceback <span class="token punctuation">(</span>most recent call last<span class="token punctuation">)</span><span class="token punctuation">:</span>
+
+  File <span class="token string">"&lt;string>"</span><span class="token punctuation">,</span> line <span class="token number">16</span><span class="token punctuation">,</span> <span class="token keyword">in</span> <span class="token operator">&lt;</span>module<span class="token operator">></span>
+
+  File <span class="token string">"/var/folders/lf/myf7bjr57_jg7_5c4014bh640000gn/T/pip-build/MySQL-python/setup.py"</span><span class="token punctuation">,</span> line <span class="token number">14</span><span class="token punctuation">,</span> <span class="token keyword">in</span> <span class="token operator">&lt;</span>module<span class="token operator">></span>
+
+    <span class="token keyword">from</span> setup_posix <span class="token keyword">import</span> get_config
+
+  File <span class="token string">"./setup_posix.py"</span><span class="token punctuation">,</span> line <span class="token number">2</span><span class="token punctuation">,</span> <span class="token keyword">in</span> <span class="token operator">&lt;</span>module<span class="token operator">></span>
+
+    <span class="token keyword">from</span> ConfigParser <span class="token keyword">import</span> SafeConfigParser
+
+ImportError<span class="token punctuation">:</span> No module named <span class="token string">'ConfigParser'</span>
+</code></pre>
+<p>解决办法：</p>
+<pre class=" language-python"><code class="language-python">pip install configparser
+sudo cp <span class="token operator">/</span>usr<span class="token operator">/</span>lib<span class="token operator">/</span>python3<span class="token number">.6</span><span class="token operator">/</span>configparser<span class="token punctuation">.</span>py <span class="token operator">/</span>usr<span class="token operator">/</span>lib<span class="token operator">/</span>python3<span class="token number">.6</span><span class="token operator">/</span>ConfigParser<span class="token punctuation">.</span>py`
+</code></pre>
+</blockquote>
+<p>如果没有其他意外，其它包的安装应该不会出现问题</p>
+<p>接下来就是正式部署了可以参考一篇博文：<a href="https://stackoverflow.com/questions/14087598/python-3-importerror-no-module-named-configparser" target="_blank" rel="noopener">https://stackoverflow.com/questions/14087598/python-3-importerror-no-module-named-configparser</a></p>
+<p>博客的一版就算成功了。</p>
+
+            </div>
+            <hr>
+
+            
+
+            <link rel="stylesheet" type="text/css" href="/libs/share/css/share.min.css">
+
+<div id="article-share">
+    
+    <div class="social-share" data-disabled="qzone" data-wechat-qrcode-helper="<p>微信里点“发现”->“扫一扫”二维码便可查看分享。</p>"></div>
+    
+</div>
+
+<script src="/libs/share/js/social-share.min.js"></script>
+
+            <div class="reprint">
+                <p>
+                    <span class="reprint-tip">
+                        <i class="fa fa-exclamation-circle"></i>&nbsp;&nbsp;转载请注明:
+                    </span>
+                    <a href="http://unity321.github.io" class="b-link-green">mcc</a>
+                    <i class="fa fa-angle-right fa-lg fa-fw text-color"></i>
+                    <a href="/2018/12/22/flask-xue-xi-yi/" class="b-link-green">flask学习总结</a>
+                </p>
+            </div>
+        </div>
+    </div>
+
+    
+        <link rel="stylesheet" href="/libs/gitalk/gitalk.css">
+<link rel="stylesheet" href="/css/my-gitalk.css">
+
+<div class="card gitalk-card" data-aos="fade-up">
+    <div id="gitalk-container" class="card-content"></div>
+</div>
+
+<script src="/libs/gitalk/gitalk.min.js"></script>
+<script>
+    let gitalk = new Gitalk({
+        clientID: 'e74943c64b5b24f738bf',
+        clientSecret: 'abe76a8cecb518f81b1b90f3aaa4d0c0fffdd5ee',
+        repo: 'unity321.github.io',
+        owner: 'unity321',
+        admin: ["unity321"],
+        id: '2018-12-22T23-22-37',
+        distractionFreeMode: false  // Facebook-like distraction free mode
+    });
+
+    gitalk.render('gitalk-container');
+</script>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+<article id="prenext-posts" class="prev-next articles">
+    <div class="row article-row">
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge left-badge text-color">
+                <i class="fa fa-chevron-left"></i>&nbsp;上一篇</div>
+            <div class="card">
+                <a href="/2018/12/24/api-gou-qu/">
+                    <div class="card-image">
+                        
+                        <img src="https://github.com/mcc321/mcc/blob/master/img/12.jpg?raw=true" class="responsive-img" alt="api钩取">
+                        
+                        <span class="card-title">api钩取</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary">
+# 入门pydbg
+今天学算是学习pydbg的第二天了吧，这个库确实有太多值得自己学的，像想在接下来的一段时间里认真的学习一下
+
+首先是消息钩取的一个小的程序
+import sys
+from ctypes import *
+from ct</div>
+                    <div class="publish-info">
+                        <span class="publish-date">
+                            <i class="fa fa-clock-o fa-fw icon-date"></i>2018-12-24
+                        </span>
+                        <span class="publish-author">
+                            
+                            <i class="fa fa-user fa-fw"></i>
+                            mcc
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/python/" target="_blank">
+                        <span class="chip bg-color">python</span>
+                    </a>
+                    
+                    <a href="/tags/pydbg/" target="_blank">
+                        <span class="chip bg-color">pydbg</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge right-badge text-color">
+                下一篇&nbsp;<i class="fa fa-chevron-right"></i>
+            </div>
+            <div class="card">
+                <a href="/2018/12/22/markdown-shu-xue-gong-shi-yu-fa/">
+                    <div class="card-image">
+                        
+                        <img src="https://github.com/mcc321/mcc/blob/master/img/7.jpg?raw=true" class="responsive-img" alt="Markdown数学公式语法">
+                        
+                        <span class="card-title">Markdown数学公式语法</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary">
+Markdown latex 语法整理LaTex语法行内与独行
+行内公式：将公式插入到本行内，符号：$公式内容$，如：$xyz$
+独行公式：将公式插入到新的一行内，并且居中，符号：$$公式内容$$，如：$$xyz$$
+
+上标、下标与组合
+</div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="fa fa-clock-o fa-fw icon-date"></i>2018-12-22
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fa fa-user fa-fw"></i>
+                            mcc
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/数学/" target="_blank">
+                        <span class="chip bg-color">数学</span>
+                    </a>
+                    
+                    <a href="/tags/LaTex/" target="_blank">
+                        <span class="chip bg-color">LaTex</span>
+                    </a>
+                    
+                    <a href="/tags/Markdown/" target="_blank">
+                        <span class="chip bg-color">Markdown</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+    </div>
+</article>
+</div>
+
+
+    </div>
+    <div class="col l3 hide-on-med-and-down">
+        <div class="toc-widget">
+            <div class="toc-title"><i class="fa fa-list-alt"></i>&nbsp;&nbsp;目录</div>
+            <div id="toc-content"></div>
+        </div>
+    </div>
+</div>
+
+<script src="/libs/tocbot/tocbot.min.js"></script>
+<script>
+    $(function () {
+        tocbot.init({
+            tocSelector: '#toc-content',
+            contentSelector: '#articleContent',
+            headingSelector: 'h1, h2, h3, h4, h5'
+        });
+
+        // modify the toc link href to support Chinese.
+        let i = 0;
+        let tocHeading = 'toc-heading-';
+        $('#toc-content a').each(function () {
+            $(this).attr('href', '#' + tocHeading + (++i));
+        });
+
+        // modify the heading title id to support Chinese.
+        i = 0;
+        $('#articleContent').children('h1, h2, h3, h4, h5').each(function () {
+            $(this).attr('id', tocHeading + (++i));
+        });
+
+        // Set scroll toc fixed.
+        let tocHeight = parseInt($(window).height() * 0.4 - 64);
+        let $tocWidget = $('.toc-widget');
+        $(window).scroll(function () {
+            let scroll = $(window).scrollTop();
+            /* add post toc fixed. */
+            if (scroll > tocHeight) {
+                $tocWidget.addClass('toc-fixed');
+            } else {
+                $tocWidget.removeClass('toc-fixed');
+            }
+        });
+    });
+</script>
+    
+
+</main>
+
+
+<footer class="page-footer bg-color">
+    <div class="container row center-align">
+        <div class="col s12 m8 l8 copy-right">
+            本站由&copy;<a href="https://blinkfox.github.io/" target="_blank">Blinkfox</a>基于
+            <a href="https://hexo.io/" target="_blank">Hexo</a> 的
+            <a href="https://github.com/blinkfox/hexo-theme-matery" target="_blank">hexo-theme-matery</a>主题搭建.
+
+            
+                &nbsp;<i class="fa fa-area-chart"></i>&nbsp;站点总字数:&nbsp;
+                <span class="white-color">19.8k</span>
+            
+
+            
+			
+                <br>
+                
+                <span id="busuanzi_container_site_pv">
+                    <i class="fa fa-heart-o"></i>
+                    本站总访问量 <span id="busuanzi_value_site_pv" class="white-color"></span>
+                </span>
+                
+                
+                <span id="busuanzi_container_site_uv">
+                    <i class="fa fa-users"></i>
+                    次,&nbsp;访客数 <span id="busuanzi_value_site_uv" class="white-color"></span> 人.
+                </span>
+                
+            
+        </div>
+        <div class="col s12 m4 l4 social-link social-statis"><a href="https://github.com/mcc321" class="tooltipped" target="_blank" data-tooltip="访问我的GitHub" data-position="top" data-delay="50">
+    <i class="fa fa-github"></i>
+</a>
+<a href="mailto:2393811002@qq.com" class="tooltipped" target="_blank" data-tooltip="邮件联系我" data-position="top" data-delay="50">
+    <i class="fa fa-envelope-open"></i>
+</a>
+<a href="#!" class="tooltipped" data-tooltip="QQ联系我: 2393811002" data-position="top" data-delay="50">
+    <i class="fa fa-qq"></i>
+</a>
+<a href="#!" class="tooltipped" data-tooltip="微信联系我: zc2393811002" data-position="top" data-delay="50">
+    <i class="fa fa-wechat"></i>
+</a></div>
+    </div>
+</footer>
+
+<div class="progress-bar"></div>
+
+
+<!-- 搜索遮罩框 -->
+<div id="searchModal" class="modal">
+    <div class="modal-content">
+        <div class="search-header">
+            <span class="title"><i class="fa fa-search"></i>&nbsp;&nbsp;搜索</span>
+            <input type="search" id="searchInput" name="s" placeholder="请输入搜索的关键字" class="search-input" autofocus>
+        </div>
+        <div id="searchResult"></div>
+    </div>
+</div>
+
+<script src="/js/search.js"></script>
+<script type="text/javascript">
+    searchFunc("/" + "search.xml", 'searchInput', 'searchResult');
+</script>
+<!-- 回到顶部按钮 -->
+<div id="backTop" class="top-scroll">
+    <a class="btn-floating btn-large waves-effect waves-light" href="#!">
+        <i class="fa fa-angle-up"></i>
+    </a>
+</div>
+
+
+<script src="/libs/materialize/js/materialize.min.js"></script>
+<script src="/libs/masonry/masonry.pkgd.min.js"></script>
+<script src="/libs/aos/aos.js"></script>
+<script src="/libs/scrollprogress/scrollProgress.min.js"></script>
+<script src="/libs/lightGallery/js/lightgallery-all.min.js"></script>
+<script src="/js/matery.js"></script>
+
+<!-- Global site tag (gtag.js) - Google Analytics -->
+
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-131240581-2"></script>
+<script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() {
+        dataLayer.push(arguments);
+    }
+
+    gtag('js', new Date());
+    gtag('config', 'UA-131240581-2');
+</script>
+
+
+
+
+    <script async src="/libs/others/busuanzi.pure.mini.js"></script>
+
+
+</body>
+</html>

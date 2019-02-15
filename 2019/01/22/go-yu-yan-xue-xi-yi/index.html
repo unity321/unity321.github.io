@@ -1,0 +1,903 @@
+<!DOCTYPE HTML>
+<html lang="zh-CN">
+
+
+<head><meta name="generator" content="Hexo 3.8.0">
+    <meta charset="utf-8">
+    <meta name="keywords" content="go语言学习(一), mcc">
+    <meta name="description" content="
+Go语言学习第一天
+无意中接触到Go语言，觉得Go真的是一个挺特别的语言，感觉既有c++习惯又有python的风格，最最重要是Google这个father，听说适合做服务器运维，因此学一下。下面是我的工程目录结构
+
+
+package ma">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="renderer" content="webkit|ie-stand|ie-comp">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <title>go语言学习(一) | mcc</title>
+    <link rel="icon" type="image/png" href="/icon.png">
+
+    <link rel="stylesheet" type="text/css" href="/libs/awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/materialize/css/materialize.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/aos/aos.css">
+    <link rel="stylesheet" type="text/css" href="/libs/animate/animate.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/lightGallery/css/lightgallery.min.css">
+    <link rel="stylesheet" type="text/css" href="/css/matery.css">
+    <link rel="stylesheet" type="text/css" href="/css/my.css">
+
+    <script src="/libs/jquery/jquery-2.2.0.min.js"></script>
+<link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css"></head>
+
+
+<body>
+
+<header class="navbar-fixed">
+    <nav id="headNav" class="bg-color nav-transparent">
+        <div id="navContainer" class="container">
+            <div class="nav-wrapper">
+                <div class="brand-logo">
+                    <a href="/" class="waves-effect waves-light">
+                        
+                        <img src="/medias/mcc.png" class="logo-img hide-on-small-only">
+                        
+                        <span class="logo-span">mcc</span>
+                    </a>
+                </div>
+                
+
+<a href="#" data-activates="mobile-nav" class="button-collapse"><i class="fa fa-navicon"></i></a>
+<ul class="right">
+    
+    <li class="hide-on-med-and-down">
+        <a href="/" class="waves-effect waves-light">
+            
+            <i class="fa fa-home"></i>
+            
+            <span>首页</span>
+        </a>
+    </li>
+    
+    <li class="hide-on-med-and-down">
+        <a href="/tags" class="waves-effect waves-light">
+            
+            <i class="fa fa-tags"></i>
+            
+            <span>标签</span>
+        </a>
+    </li>
+    
+    <li class="hide-on-med-and-down">
+        <a href="/categories" class="waves-effect waves-light">
+            
+            <i class="fa fa-bookmark"></i>
+            
+            <span>分类</span>
+        </a>
+    </li>
+    
+    <li class="hide-on-med-and-down">
+        <a href="/archives" class="waves-effect waves-light">
+            
+            <i class="fa fa-archive"></i>
+            
+            <span>归档</span>
+        </a>
+    </li>
+    
+    <li class="hide-on-med-and-down">
+        <a href="/about" class="waves-effect waves-light">
+            
+            <i class="fa fa-user-circle-o"></i>
+            
+            <span>关于</span>
+        </a>
+    </li>
+    
+    <li class="hide-on-med-and-down">
+        <a href="/friends" class="waves-effect waves-light">
+            
+            <i class="fa fa-address-book"></i>
+            
+            <span>友情链接</span>
+        </a>
+    </li>
+    
+    <li>
+        <a id="toggleSearch" class="waves-effect waves-light">
+            <i id="searchIcon" class="mdi-action-search" title="搜索"></i>
+        </a>
+    </li>
+
+</ul>
+
+<div class="side-nav" id="mobile-nav">
+
+    <div class="mobile-head bg-color">
+        
+        <img src="/medias/mcc.png" class="logo-img circle responsive-img">
+        
+        <div class="logo-name">mcc</div>
+        <div class="logo-desc">
+            
+            zhang不大的先生
+            
+        </div>
+    </div>
+
+    
+
+    <ul class="menu-list mobile-menu-list">
+        
+        <li>
+            <a href="/" class="waves-effect waves-light">
+                
+                <i class="fa fa-fw fa-home"></i>
+                
+                首页
+            </a>
+        </li>
+        
+        <li>
+            <a href="/tags" class="waves-effect waves-light">
+                
+                <i class="fa fa-fw fa-tags"></i>
+                
+                标签
+            </a>
+        </li>
+        
+        <li>
+            <a href="/categories" class="waves-effect waves-light">
+                
+                <i class="fa fa-fw fa-bookmark"></i>
+                
+                分类
+            </a>
+        </li>
+        
+        <li>
+            <a href="/archives" class="waves-effect waves-light">
+                
+                <i class="fa fa-fw fa-archive"></i>
+                
+                归档
+            </a>
+        </li>
+        
+        <li>
+            <a href="/about" class="waves-effect waves-light">
+                
+                <i class="fa fa-fw fa-user-circle-o"></i>
+                
+                关于
+            </a>
+        </li>
+        
+        <li>
+            <a href="/friends" class="waves-effect waves-light">
+                
+                <i class="fa fa-fw fa-address-book"></i>
+                
+                友情链接
+            </a>
+        </li>
+        
+        
+    </ul>
+
+    <div class="social-link"><a href="https://github.com/mcc321" class="tooltipped" target="_blank" data-tooltip="访问我的GitHub" data-position="top" data-delay="50">
+    <i class="fa fa-github"></i>
+</a>
+<a href="mailto:2393811002@qq.com" class="tooltipped" target="_blank" data-tooltip="邮件联系我" data-position="top" data-delay="50">
+    <i class="fa fa-envelope-open"></i>
+</a>
+<a href="#!" class="tooltipped" data-tooltip="QQ联系我: 2393811002" data-position="top" data-delay="50">
+    <i class="fa fa-qq"></i>
+</a>
+<a href="#!" class="tooltipped" data-tooltip="微信联系我: zc2393811002" data-position="top" data-delay="50">
+    <i class="fa fa-wechat"></i>
+</a></div>
+</div>
+
+            </div>
+        </div>
+
+        
+    </nav>
+</header>
+
+
+<script src="/libs/cryptojs/crypto-js.min.js"></script>
+<script>
+    (function() {
+        let pwd = '';
+        if (pwd && pwd.length > 0) {
+            if (pwd !== CryptoJS.SHA256(prompt('请输入访问本文章的密码')).toString(CryptoJS.enc.Hex)) {
+                alert('密码错误，将返回主页！');
+                location.href = '/';
+            }
+        }
+    })();
+</script>
+
+
+
+
+<div class="bg-cover post-cover" style="background-image: url('https://github.com/mcc321/mcc/blob/master/img/26.jpg?raw=true')">
+    <div class="container">
+        <div class="row">
+            <div class="col s12 m12 l12">
+                <div class="brand">
+                    <div class="description center-align post-title">
+                        go语言学习(一)
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<main class="post-container content">
+
+    
+    <link rel="stylesheet" href="/libs/tocbot/tocbot.css">
+<style>
+    #articleContent h1,
+    #articleContent h2,
+    #articleContent h3,
+    #articleContent h4,
+    #articleContent h5,
+    #articleContent h6 {
+        padding-top: 76px;
+        margin-top: -76px;
+    }
+
+    #articleContent h1 {
+        line-height: 3.5rem;
+    }
+
+    #articleContent h2 {
+        line-height: 3.2rem;
+    }
+
+    #articleContent h3 {
+        line-height: 2.8rem;
+    }
+
+    #articleContent h4 {
+        line-height: 2.5rem;
+    }
+
+    #articleContent h5 {
+        line-height: 2.2rem;
+    }
+
+    #articleContent h6 {
+        line-height: 1.9rem;
+    }
+
+    #articleContent :focus {
+        outline: none;
+    }
+
+    .toc-fixed {
+        position: fixed;
+        top: 64px;
+    }
+
+    .toc-widget {
+        padding-left: 20px;
+    }
+
+    .toc-widget .toc-title {
+        margin: 35px 0 15px 0;
+        padding-left: 17px;
+        font-size: 1.5rem;
+        font-weight: bold;
+        line-height: 1.5rem;
+    }
+
+    .toc-widget ol {
+        padding: 0;
+        list-style: none;
+    }
+
+    #toc-content ol {
+        padding-left: 10px;
+    }
+
+    #toc-content ol li {
+        padding-left: 10px;
+    }
+
+    #toc-content .toc-link:hover {
+        color: #42b983;
+        font-weight: 700;
+        text-decoration: underline;
+    }
+
+    #toc-content .toc-link::before {
+        background-color: transparent;
+        max-height: 25px;
+    }
+
+    #toc-content .is-active-link {
+        color: #42b983;
+    }
+
+    #toc-content .is-active-link::before {
+        background-color: #42b983;
+    }
+</style>
+<div class="row">
+    <div class="col s12 m12 l9">
+        <!-- 文章内容详情 -->
+<div id="artDetail">
+    <div class="card">
+        <div class="card-content article-info">
+            <div class="row tag-cate">
+                <div class="col s7">
+                    
+                    <div class="article-tag">
+                        
+                            <a href="/tags/go/" target="_blank">
+                                <span class="chip bg-color">go</span>
+                            </a>
+                        
+                    </div>
+                    
+                </div>
+                <div class="col s5 right-align">
+                    
+                </div>
+            </div>
+
+            <div class="post-info">
+                <div class="post-date info-break-policy">
+                    <i class="fa fa-calendar-minus-o fa-fw"></i>发布日期:&nbsp;&nbsp;
+                    2019-01-22
+                </div>
+
+                
+                    
+                    <div class="info-break-policy">
+                        <i class="fa fa-file-word-o fa-fw"></i>文章字数:&nbsp;&nbsp;
+                        895
+                    </div>
+                    
+
+                    
+                    <div class="info-break-policy">
+                        <i class="fa fa-clock-o fa-fw"></i>阅读时长:&nbsp;&nbsp;
+                        4 分
+                    </div>
+                    
+                
+				
+				
+                    <div id="busuanzi_container_page_pv" class="info-break-policy">
+                        <i class="fa fa-eye fa-fw"></i>阅读次数:&nbsp;&nbsp;
+                        <span id="busuanzi_value_page_pv"></span>
+                    </div>
+				
+            </div>
+        </div>
+        <hr class="clearfix">
+        <div class="card-content article-card-content">
+            <div id="articleContent">
+                <p><img src="https://github.com/mcc321/mcc/blob/master/img/27.jpg?raw=true" alt="mcc"></p>
+<h1 id="Go语言学习第一天"><a href="#Go语言学习第一天" class="headerlink" title="Go语言学习第一天"></a>Go语言学习第一天</h1><blockquote>
+<p>无意中接触到Go语言，觉得Go真的是一个挺特别的语言，感觉既有c++习惯又有python的风格，最最重要是Google这个father，听说适合做服务器运维，因此学一下。下面是我的工程目录结构</p>
+</blockquote>
+<p><img src="https://github.com/mcc321/mcc/blob/master/img/go.png?raw=true" alt="mcc"></p>
+<pre class=" language-go"><code class="language-go"><span class="token keyword">package</span> main
+
+<span class="token keyword">import</span> <span class="token punctuation">(</span>
+    mcc <span class="token string">"./test"</span>                        <span class="token comment" spellcheck="true">//这里包的导入与python类似</span>
+    <span class="token string">"fmt"</span>
+    <span class="token string">"reflect"</span>
+    <span class="token string">"time"</span>
+    <span class="token string">"unsafe"</span>
+<span class="token punctuation">)</span>
+<span class="token keyword">const</span> imooc <span class="token builtin">string</span> <span class="token operator">=</span><span class="token string">"慕课网"</span>               <span class="token comment" spellcheck="true">//常量显示声明</span>
+<span class="token keyword">const</span> name<span class="token operator">=</span><span class="token string">"我是zhang不大的先生"</span>            <span class="token comment" spellcheck="true">//常量隐式声明</span>
+<span class="token keyword">const</span> <span class="token punctuation">(</span>
+    cat <span class="token builtin">string</span><span class="token operator">=</span><span class="token string">"猫"</span>                        <span class="token comment" spellcheck="true">//这是go的一种特殊声明常量，变量的形式</span>
+    dog<span class="token operator">=</span><span class="token string">"狗"</span>
+<span class="token punctuation">)</span>
+<span class="token keyword">var</span> r<span class="token punctuation">,</span>t<span class="token operator">=</span><span class="token number">1111</span><span class="token punctuation">,</span><span class="token number">2222</span>                        <span class="token comment" spellcheck="true">//隐式声明多个变量</span>
+<span class="token keyword">type</span> hcc <span class="token builtin">uint</span>                            <span class="token comment" spellcheck="true">//别名</span>
+<span class="token keyword">var</span><span class="token punctuation">(</span>
+    c <span class="token builtin">string</span> <span class="token operator">=</span><span class="token string">"mcc"</span>
+    d <span class="token builtin">int</span> <span class="token operator">=</span><span class="token number">12</span>
+<span class="token punctuation">)</span>
+<span class="token keyword">const</span> sr<span class="token operator">=</span><span class="token boolean">iota</span>                            
+<span class="token comment" spellcheck="true">/*这里需要说一下:iota是golang语言的常量计数器,只能在常量的表达式中使用。
+iota在const关键字出现时将被重置为0(const内部的第一行之前)，const中每新增一行常量声明将使iota计数一
+次(iota可理解为const语句块中的行索引)。
+*/</span>
+<span class="token keyword">const</span> ji<span class="token operator">=</span><span class="token boolean">iota</span>
+<span class="token keyword">const</span> <span class="token punctuation">(</span>
+    gi<span class="token operator">=</span><span class="token boolean">iota</span>
+    <span class="token boolean">_</span><span class="token operator">=</span><span class="token boolean">iota</span>
+    gp<span class="token operator">=</span><span class="token boolean">iota</span>
+<span class="token punctuation">)</span>
+<span class="token keyword">const</span> <span class="token punctuation">(</span>
+    si<span class="token operator">=</span><span class="token boolean">iota</span>
+    sp<span class="token operator">=</span><span class="token number">3.14</span>                                <span class="token comment" spellcheck="true">//iota插队</span>
+    sl<span class="token operator">=</span><span class="token boolean">iota</span><span class="token operator">*</span><span class="token number">2</span>
+<span class="token punctuation">)</span>
+<span class="token keyword">func</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    mcc<span class="token punctuation">.</span><span class="token function">Show</span><span class="token punctuation">(</span><span class="token punctuation">)</span>                            <span class="token comment" spellcheck="true">//使用别名</span>
+    <span class="token keyword">var</span> i <span class="token builtin">uint</span>
+    fmt<span class="token punctuation">.</span><span class="token function">Print</span><span class="token punctuation">(</span><span class="token string">"\n"</span><span class="token punctuation">)</span>
+    fmt<span class="token punctuation">.</span><span class="token function">Print</span><span class="token punctuation">(</span><span class="token string">"uint:"</span><span class="token punctuation">)</span>
+    fmt<span class="token punctuation">.</span><span class="token function">Print</span><span class="token punctuation">(</span>i<span class="token punctuation">)</span>
+    fmt<span class="token punctuation">.</span><span class="token function">Print</span><span class="token punctuation">(</span><span class="token string">"\n"</span><span class="token punctuation">)</span>
+
+    fmt<span class="token punctuation">.</span><span class="token function">Print</span><span class="token punctuation">(</span>unsafe<span class="token punctuation">.</span><span class="token function">Sizeof</span><span class="token punctuation">(</span>i<span class="token punctuation">)</span><span class="token punctuation">)</span>
+    <span class="token keyword">var</span> f <span class="token builtin">float32</span>
+    fmt<span class="token punctuation">.</span><span class="token function">Print</span><span class="token punctuation">(</span><span class="token string">"\nfloat32:"</span><span class="token punctuation">)</span>
+    fmt<span class="token punctuation">.</span><span class="token function">Print</span><span class="token punctuation">(</span>f<span class="token punctuation">)</span>
+    fmt<span class="token punctuation">.</span><span class="token function">Print</span><span class="token punctuation">(</span><span class="token string">"\n"</span><span class="token punctuation">)</span>
+    fmt<span class="token punctuation">.</span><span class="token function">Print</span><span class="token punctuation">(</span>unsafe<span class="token punctuation">.</span><span class="token function">Sizeof</span><span class="token punctuation">(</span>f<span class="token punctuation">)</span><span class="token punctuation">)</span>
+
+    <span class="token keyword">var</span> b <span class="token builtin">bool</span>
+    fmt<span class="token punctuation">.</span><span class="token function">Print</span><span class="token punctuation">(</span><span class="token string">"\n"</span><span class="token punctuation">)</span>
+    fmt<span class="token punctuation">.</span><span class="token function">Print</span><span class="token punctuation">(</span><span class="token string">"bool:"</span><span class="token punctuation">)</span>
+    fmt<span class="token punctuation">.</span><span class="token function">Print</span><span class="token punctuation">(</span>b<span class="token punctuation">)</span>
+    fmt<span class="token punctuation">.</span><span class="token function">Print</span><span class="token punctuation">(</span>unsafe<span class="token punctuation">.</span><span class="token function">Sizeof</span><span class="token punctuation">(</span>b<span class="token punctuation">)</span><span class="token punctuation">)</span>
+    fmt<span class="token punctuation">.</span><span class="token function">Print</span><span class="token punctuation">(</span><span class="token string">"\n"</span><span class="token punctuation">)</span>
+    <span class="token keyword">var</span> src hcc <span class="token operator">=</span> <span class="token number">1</span>
+
+    <span class="token keyword">var</span> src2 hcc
+    fmt<span class="token punctuation">.</span><span class="token function">Print</span><span class="token punctuation">(</span>src2 <span class="token operator">+</span> src<span class="token punctuation">)</span>
+
+    <span class="token keyword">var</span> rt<span class="token punctuation">,</span> c <span class="token operator">=</span> <span class="token number">11213213.1</span><span class="token punctuation">,</span> <span class="token number">2123212</span>
+    fmt<span class="token punctuation">.</span><span class="token function">Print</span><span class="token punctuation">(</span>rt<span class="token punctuation">,</span> <span class="token string">"\n"</span><span class="token punctuation">,</span> c<span class="token punctuation">,</span> <span class="token string">"\n"</span><span class="token punctuation">)</span>
+    fmt<span class="token punctuation">.</span><span class="token function">Print</span><span class="token punctuation">(</span>r<span class="token punctuation">,</span> <span class="token string">"\n"</span><span class="token punctuation">,</span> t<span class="token punctuation">)</span>
+    fmt<span class="token punctuation">.</span><span class="token function">Print</span><span class="token punctuation">(</span><span class="token string">"\n"</span><span class="token punctuation">,</span> reflect<span class="token punctuation">.</span><span class="token function">TypeOf</span><span class="token punctuation">(</span>rt<span class="token punctuation">)</span><span class="token punctuation">)</span>
+    <span class="token keyword">var</span> ru <span class="token builtin">int</span> <span class="token operator">=</span> <span class="token function">int</span><span class="token punctuation">(</span>i<span class="token punctuation">)</span>
+    fmt<span class="token punctuation">.</span><span class="token function">Print</span><span class="token punctuation">(</span><span class="token string">"\n"</span><span class="token punctuation">,</span> ru<span class="token punctuation">,</span> <span class="token string">"\n"</span><span class="token punctuation">)</span>
+
+    su<span class="token punctuation">,</span> ss <span class="token operator">:=</span> <span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">2</span>
+    fmt<span class="token punctuation">.</span><span class="token function">Print</span><span class="token punctuation">(</span>su<span class="token punctuation">,</span> <span class="token string">"\n"</span><span class="token punctuation">,</span> ss<span class="token punctuation">)</span>
+    <span class="token keyword">var</span> ds<span class="token punctuation">,</span> dd<span class="token punctuation">,</span> <span class="token boolean">_</span> <span class="token operator">=</span> <span class="token number">12</span><span class="token punctuation">,</span> <span class="token number">22</span><span class="token punctuation">,</span> <span class="token number">32</span>
+
+    <span class="token keyword">var</span> df<span class="token operator">=</span><span class="token function">int64</span><span class="token punctuation">(</span>ds<span class="token punctuation">)</span>
+    fmt<span class="token punctuation">.</span><span class="token function">Print</span><span class="token punctuation">(</span><span class="token string">"\n"</span><span class="token punctuation">,</span>ds<span class="token punctuation">,</span><span class="token string">"\n"</span><span class="token punctuation">,</span>dd<span class="token punctuation">,</span><span class="token string">"\n"</span><span class="token punctuation">,</span>df<span class="token punctuation">,</span><span class="token string">"\n"</span><span class="token punctuation">)</span>
+    fmt<span class="token punctuation">.</span><span class="token function">Print</span><span class="token punctuation">(</span>reflect<span class="token punctuation">.</span><span class="token function">TypeOf</span><span class="token punctuation">(</span>df<span class="token punctuation">)</span><span class="token punctuation">)</span>
+    fmt<span class="token punctuation">.</span><span class="token function">Print</span><span class="token punctuation">(</span><span class="token string">"\n"</span><span class="token punctuation">,</span>mcc<span class="token punctuation">.</span>B<span class="token punctuation">)</span>
+
+
+    <span class="token keyword">const</span> apple<span class="token punctuation">,</span>banana <span class="token builtin">string</span><span class="token operator">=</span><span class="token string">"苹果"</span><span class="token punctuation">,</span><span class="token string">"香蕉"</span>
+    fmt<span class="token punctuation">.</span><span class="token function">Print</span><span class="token punctuation">(</span><span class="token string">"\n"</span><span class="token punctuation">,</span>apple<span class="token punctuation">,</span><span class="token string">"\n"</span><span class="token punctuation">,</span>banana<span class="token punctuation">,</span><span class="token string">"\n"</span><span class="token punctuation">)</span>
+    fmt<span class="token punctuation">.</span><span class="token function">Print</span><span class="token punctuation">(</span><span class="token string">"\n"</span><span class="token punctuation">,</span>dog<span class="token punctuation">,</span><span class="token string">"\n"</span><span class="token punctuation">,</span>cat<span class="token punctuation">,</span><span class="token string">"\n"</span><span class="token punctuation">)</span>
+
+    <span class="token keyword">const</span> alen<span class="token operator">=</span><span class="token function">len</span><span class="token punctuation">(</span>apple<span class="token punctuation">)</span>
+    fmt<span class="token punctuation">.</span><span class="token function">Print</span><span class="token punctuation">(</span>alen<span class="token punctuation">)</span>
+    <span class="token keyword">var</span> um<span class="token operator">=</span><span class="token function">ic</span><span class="token punctuation">(</span>apple<span class="token punctuation">)</span>
+    fmt<span class="token punctuation">.</span><span class="token function">Print</span><span class="token punctuation">(</span><span class="token string">"\n"</span><span class="token punctuation">,</span>um<span class="token punctuation">)</span>
+    fmt<span class="token punctuation">.</span><span class="token function">Print</span><span class="token punctuation">(</span><span class="token string">"gp的值为："</span><span class="token punctuation">,</span>gp<span class="token punctuation">)</span>
+    fmt<span class="token punctuation">.</span><span class="token function">Print</span><span class="token punctuation">(</span><span class="token string">"\n"</span><span class="token punctuation">,</span>si<span class="token punctuation">,</span><span class="token string">"\n"</span><span class="token punctuation">,</span>sp<span class="token punctuation">,</span><span class="token string">"\n"</span><span class="token punctuation">,</span>sl<span class="token punctuation">,</span><span class="token string">"\n"</span><span class="token punctuation">)</span>
+    <span class="token keyword">var</span> a<span class="token operator">=</span><span class="token number">1</span>
+    <span class="token keyword">if</span> a<span class="token operator">></span><span class="token number">0</span><span class="token punctuation">{</span>
+        fmt<span class="token punctuation">.</span><span class="token function">Print</span><span class="token punctuation">(</span><span class="token string">"a>0\n"</span><span class="token punctuation">)</span>
+        <span class="token keyword">if</span> a<span class="token operator">&lt;</span><span class="token number">4</span><span class="token punctuation">{</span>
+            fmt<span class="token punctuation">.</span><span class="token function">Print</span><span class="token punctuation">(</span><span class="token string">"a&lt;4\n"</span><span class="token punctuation">)</span>
+
+        <span class="token punctuation">}</span><span class="token keyword">else</span><span class="token punctuation">{</span>
+            fmt<span class="token punctuation">.</span><span class="token function">Print</span><span class="token punctuation">(</span><span class="token string">"a>=4\n"</span><span class="token punctuation">)</span>
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token punctuation">{</span>
+        fmt<span class="token punctuation">.</span><span class="token function">Print</span><span class="token punctuation">(</span><span class="token string">"a&lt;=0\n"</span><span class="token punctuation">)</span>
+    <span class="token punctuation">}</span>
+    <span class="token keyword">var</span> gui <span class="token keyword">interface</span><span class="token punctuation">{</span><span class="token punctuation">}</span>
+    gui<span class="token operator">=</span><span class="token string">"afd"</span>
+    <span class="token keyword">switch</span> gui<span class="token punctuation">.</span><span class="token punctuation">(</span><span class="token keyword">type</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+    <span class="token keyword">case</span> <span class="token builtin">int</span><span class="token punctuation">:</span>
+        fmt<span class="token punctuation">.</span><span class="token function">Print</span><span class="token punctuation">(</span><span class="token string">"\n值为int"</span><span class="token punctuation">)</span>
+    <span class="token keyword">case</span> <span class="token builtin">string</span><span class="token punctuation">:</span>
+        fmt<span class="token punctuation">.</span><span class="token function">Print</span><span class="token punctuation">(</span><span class="token string">"\n值为string"</span><span class="token punctuation">)</span>
+    <span class="token keyword">default</span><span class="token punctuation">:</span>
+        fmt<span class="token punctuation">.</span><span class="token function">Print</span><span class="token punctuation">(</span><span class="token string">"\n值为default\n"</span><span class="token punctuation">)</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token keyword">for</span> i<span class="token operator">:=</span><span class="token number">1</span><span class="token punctuation">;</span>i<span class="token operator">&lt;</span><span class="token number">2</span><span class="token punctuation">;</span>i<span class="token operator">++</span><span class="token punctuation">{</span>
+        fmt<span class="token punctuation">.</span><span class="token function">Print</span><span class="token punctuation">(</span><span class="token string">"mcc"</span><span class="token punctuation">,</span>i<span class="token punctuation">,</span><span class="token string">"\n"</span><span class="token punctuation">)</span>
+        time<span class="token punctuation">.</span><span class="token function">Sleep</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token operator">*</span>time<span class="token punctuation">.</span>Second<span class="token punctuation">)</span>
+
+    <span class="token punctuation">}</span>
+    <span class="token keyword">var</span> sss<span class="token operator">=</span><span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token builtin">string</span><span class="token punctuation">{</span><span class="token string">"香蕉"</span><span class="token punctuation">,</span><span class="token string">"苹果"</span><span class="token punctuation">,</span><span class="token string">"梨子"</span><span class="token punctuation">}</span>
+
+    <span class="token keyword">for</span> key<span class="token punctuation">,</span>value<span class="token operator">:=</span><span class="token keyword">range</span> sss<span class="token punctuation">{</span>
+        fmt<span class="token punctuation">.</span><span class="token function">Print</span><span class="token punctuation">(</span><span class="token string">"key的值为："</span><span class="token punctuation">)</span>
+        fmt<span class="token punctuation">.</span><span class="token function">Print</span><span class="token punctuation">(</span>key<span class="token punctuation">)</span>
+        fmt<span class="token punctuation">.</span><span class="token function">Print</span><span class="token punctuation">(</span><span class="token string">"\n"</span><span class="token punctuation">)</span>
+
+        fmt<span class="token punctuation">.</span><span class="token function">Print</span><span class="token punctuation">(</span><span class="token string">"value的值为："</span><span class="token punctuation">)</span>
+        fmt<span class="token punctuation">.</span><span class="token function">Print</span><span class="token punctuation">(</span>value<span class="token punctuation">)</span>
+        fmt<span class="token punctuation">.</span><span class="token function">Print</span><span class="token punctuation">(</span><span class="token string">"\n"</span><span class="token punctuation">)</span>
+
+    <span class="token punctuation">}</span>
+    <span class="token keyword">for</span> <span class="token boolean">_</span><span class="token punctuation">,</span>value<span class="token operator">:=</span><span class="token keyword">range</span> sss<span class="token punctuation">{</span>
+        fmt<span class="token punctuation">.</span><span class="token function">Print</span><span class="token punctuation">(</span><span class="token string">"value的值为："</span><span class="token punctuation">)</span>
+        fmt<span class="token punctuation">.</span><span class="token function">Print</span><span class="token punctuation">(</span>value<span class="token punctuation">)</span>
+        fmt<span class="token punctuation">.</span><span class="token function">Print</span><span class="token punctuation">(</span><span class="token string">"\n"</span><span class="token punctuation">)</span>
+
+    <span class="token punctuation">}</span>
+
+
+    fmt<span class="token punctuation">.</span><span class="token function">Print</span><span class="token punctuation">(</span><span class="token string">"中间代码块\n"</span><span class="token punctuation">)</span>
+    One<span class="token punctuation">:</span>
+        fmt<span class="token punctuation">.</span><span class="token function">Print</span><span class="token punctuation">(</span><span class="token string">"这里是代码块一\n"</span><span class="token punctuation">)</span>
+        time<span class="token punctuation">.</span><span class="token function">Sleep</span><span class="token punctuation">(</span><span class="token number">2</span><span class="token operator">*</span>time<span class="token punctuation">.</span>Second<span class="token punctuation">)</span>
+        a<span class="token operator">++</span>
+        <span class="token keyword">if</span> a<span class="token operator">></span><span class="token number">3</span><span class="token punctuation">{</span>
+            <span class="token keyword">goto</span> two
+    <span class="token punctuation">}</span>
+
+
+    <span class="token keyword">goto</span> One
+    two<span class="token punctuation">:</span>
+        fmt<span class="token punctuation">.</span><span class="token function">Print</span><span class="token punctuation">(</span><span class="token string">"this is two"</span><span class="token punctuation">)</span>
+<span class="token punctuation">}</span>
+<span class="token keyword">func</span> <span class="token function">ic</span><span class="token punctuation">(</span>b <span class="token builtin">string</span><span class="token punctuation">)</span> <span class="token builtin">string</span><span class="token punctuation">{</span>
+    <span class="token keyword">return</span> <span class="token string">"asd"</span>
+<span class="token punctuation">}</span>
+
+</code></pre>
+<blockquote>
+<p>总结：</p>
+<p>不知道大家注意到没go的许多语法习惯都与c++是反着的，然后需要说明的是go的语法要求很严格。下面所几个需要注意的点</p>
+<ul>
+<li>大家是后就会发现即使是<code>{}</code>中<code>{</code>换行也会有报错。还有需要注意的一点是bool类型只有true和false，非零不是true</li>
+<li>再有就是<code>if else</code>语句</li>
+</ul>
+<pre class=" language-go"><code class="language-go"><span class="token keyword">if</span> 条件<span class="token punctuation">{</span>
+
+<span class="token punctuation">}</span><span class="token keyword">else</span><span class="token punctuation">{</span>
+
+<span class="token punctuation">}</span>
+</code></pre>
+<p>这里需要注意else不能换行</p>
+<ul>
+<li>再有就是<code>switch</code>语句</li>
+</ul>
+<pre class=" language-go"><code class="language-go"><span class="token keyword">switch</span> gui<span class="token punctuation">.</span><span class="token punctuation">(</span><span class="token keyword">type</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+    <span class="token keyword">case</span> <span class="token builtin">int</span><span class="token punctuation">:</span>
+        fmt<span class="token punctuation">.</span><span class="token function">Print</span><span class="token punctuation">(</span><span class="token string">"\n值为int"</span><span class="token punctuation">)</span>
+    <span class="token keyword">case</span> <span class="token builtin">string</span><span class="token punctuation">:</span>
+        fmt<span class="token punctuation">.</span><span class="token function">Print</span><span class="token punctuation">(</span><span class="token string">"\n值为string"</span><span class="token punctuation">)</span>
+    <span class="token keyword">default</span><span class="token punctuation">:</span>
+        fmt<span class="token punctuation">.</span><span class="token function">Print</span><span class="token punctuation">(</span><span class="token string">"\n值为default\n"</span><span class="token punctuation">)</span>
+    <span class="token punctuation">}</span>
+</code></pre>
+<p>这里可以看出go中不同于c++，不用在每个条件之后添加break</p>
+<ul>
+<li>最后是数组</li>
+</ul>
+<pre class=" language-go"><code class="language-go"><span class="token keyword">var</span> sss<span class="token operator">=</span><span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token builtin">string</span><span class="token punctuation">{</span><span class="token string">"香蕉"</span><span class="token punctuation">,</span><span class="token string">"苹果"</span><span class="token punctuation">,</span><span class="token string">"梨子"</span><span class="token punctuation">}</span>
+</code></pre>
+<p>这里可以特别明显的看出与c++和大多数编程语言是相反的</p>
+<ul>
+<li>Go中包中的函数或变量必须首字母大写才能被其他文件引用</li>
+</ul>
+</blockquote>
+
+            </div>
+            <hr>
+
+            
+
+            <link rel="stylesheet" type="text/css" href="/libs/share/css/share.min.css">
+
+<div id="article-share">
+    
+    <div class="social-share" data-disabled="qzone" data-wechat-qrcode-helper="<p>微信里点“发现”->“扫一扫”二维码便可查看分享。</p>"></div>
+    
+</div>
+
+<script src="/libs/share/js/social-share.min.js"></script>
+
+            <div class="reprint">
+                <p>
+                    <span class="reprint-tip">
+                        <i class="fa fa-exclamation-circle"></i>&nbsp;&nbsp;转载请注明:
+                    </span>
+                    <a href="http://unity321.github.io" class="b-link-green">mcc</a>
+                    <i class="fa fa-angle-right fa-lg fa-fw text-color"></i>
+                    <a href="/2019/01/22/go-yu-yan-xue-xi-yi/" class="b-link-green">go语言学习(一)</a>
+                </p>
+            </div>
+        </div>
+    </div>
+
+    
+        <link rel="stylesheet" href="/libs/gitalk/gitalk.css">
+<link rel="stylesheet" href="/css/my-gitalk.css">
+
+<div class="card gitalk-card" data-aos="fade-up">
+    <div id="gitalk-container" class="card-content"></div>
+</div>
+
+<script src="/libs/gitalk/gitalk.min.js"></script>
+<script>
+    let gitalk = new Gitalk({
+        clientID: 'e74943c64b5b24f738bf',
+        clientSecret: 'abe76a8cecb518f81b1b90f3aaa4d0c0fffdd5ee',
+        repo: 'unity321.github.io',
+        owner: 'unity321',
+        admin: ["unity321"],
+        id: '2019-01-22T18-29-15',
+        distractionFreeMode: false  // Facebook-like distraction free mode
+    });
+
+    gitalk.render('gitalk-container');
+</script>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+<article id="prenext-posts" class="prev-next articles">
+    <div class="row article-row">
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge left-badge text-color">
+                <i class="fa fa-chevron-left"></i>&nbsp;上一篇</div>
+            <div class="card">
+                <a href="/2019/01/23/docker-xue-xi-zong-jie/">
+                    <div class="card-image">
+                        
+                        <img src="https://github.com/mcc321/mcc/blob/master/img/31.jpg?raw=true" class="responsive-img" alt="docker学习总结">
+                        
+                        <span class="card-title">docker学习总结</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary">
+docker学习总结
+最近学了一下docker容器，感觉还是挺实用的，分享一下
+
+
+重要的一条命令先打印一下
+
+docker run -it --rm --name (contain_name) -p host_port:containe</div>
+                    <div class="publish-info">
+                        <span class="publish-date">
+                            <i class="fa fa-clock-o fa-fw icon-date"></i>2019-01-23
+                        </span>
+                        <span class="publish-author">
+                            
+                            <i class="fa fa-user fa-fw"></i>
+                            mcc
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/docker/" target="_blank">
+                        <span class="chip bg-color">docker</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge right-badge text-color">
+                下一篇&nbsp;<i class="fa fa-chevron-right"></i>
+            </div>
+            <div class="card">
+                <a href="/2019/01/15/qt-chuang-kou-jie-shao/">
+                    <div class="card-image">
+                        
+                        <img src="https://github.com/mcc321/mcc/blob/master/img/24.jpg?raw=true" class="responsive-img" alt="qt窗口介绍">
+                        
+                        <span class="card-title">qt窗口介绍</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary">
+Qt窗口之QMainWindow、QDialog、QWidget
+在 Qt 中，我们将窗口和控件统称为部件（Widget）。
+
+
+窗口是指程序的整体界面，可以包含标题栏、菜单栏、工具栏、关闭按钮、最小化按钮、最大化按钮等。
+
+控件是指按钮</div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="fa fa-clock-o fa-fw icon-date"></i>2019-01-15
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fa fa-user fa-fw"></i>
+                            mcc
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/Qt窗口之QMainWindow、QDialog、QWidget/" target="_blank">
+                        <span class="chip bg-color">Qt窗口之QMainWindow、QDialog、QWidget</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+    </div>
+</article>
+</div>
+
+
+    </div>
+    <div class="col l3 hide-on-med-and-down">
+        <div class="toc-widget">
+            <div class="toc-title"><i class="fa fa-list-alt"></i>&nbsp;&nbsp;目录</div>
+            <div id="toc-content"></div>
+        </div>
+    </div>
+</div>
+
+<script src="/libs/tocbot/tocbot.min.js"></script>
+<script>
+    $(function () {
+        tocbot.init({
+            tocSelector: '#toc-content',
+            contentSelector: '#articleContent',
+            headingSelector: 'h1, h2, h3, h4, h5'
+        });
+
+        // modify the toc link href to support Chinese.
+        let i = 0;
+        let tocHeading = 'toc-heading-';
+        $('#toc-content a').each(function () {
+            $(this).attr('href', '#' + tocHeading + (++i));
+        });
+
+        // modify the heading title id to support Chinese.
+        i = 0;
+        $('#articleContent').children('h1, h2, h3, h4, h5').each(function () {
+            $(this).attr('id', tocHeading + (++i));
+        });
+
+        // Set scroll toc fixed.
+        let tocHeight = parseInt($(window).height() * 0.4 - 64);
+        let $tocWidget = $('.toc-widget');
+        $(window).scroll(function () {
+            let scroll = $(window).scrollTop();
+            /* add post toc fixed. */
+            if (scroll > tocHeight) {
+                $tocWidget.addClass('toc-fixed');
+            } else {
+                $tocWidget.removeClass('toc-fixed');
+            }
+        });
+    });
+</script>
+    
+
+</main>
+
+
+<footer class="page-footer bg-color">
+    <div class="container row center-align">
+        <div class="col s12 m8 l8 copy-right">
+            本站由&copy;<a href="https://blinkfox.github.io/" target="_blank">Blinkfox</a>基于
+            <a href="https://hexo.io/" target="_blank">Hexo</a> 的
+            <a href="https://github.com/blinkfox/hexo-theme-matery" target="_blank">hexo-theme-matery</a>主题搭建.
+
+            
+                &nbsp;<i class="fa fa-area-chart"></i>&nbsp;站点总字数:&nbsp;
+                <span class="white-color">19.8k</span>
+            
+
+            
+			
+                <br>
+                
+                <span id="busuanzi_container_site_pv">
+                    <i class="fa fa-heart-o"></i>
+                    本站总访问量 <span id="busuanzi_value_site_pv" class="white-color"></span>
+                </span>
+                
+                
+                <span id="busuanzi_container_site_uv">
+                    <i class="fa fa-users"></i>
+                    次,&nbsp;访客数 <span id="busuanzi_value_site_uv" class="white-color"></span> 人.
+                </span>
+                
+            
+        </div>
+        <div class="col s12 m4 l4 social-link social-statis"><a href="https://github.com/mcc321" class="tooltipped" target="_blank" data-tooltip="访问我的GitHub" data-position="top" data-delay="50">
+    <i class="fa fa-github"></i>
+</a>
+<a href="mailto:2393811002@qq.com" class="tooltipped" target="_blank" data-tooltip="邮件联系我" data-position="top" data-delay="50">
+    <i class="fa fa-envelope-open"></i>
+</a>
+<a href="#!" class="tooltipped" data-tooltip="QQ联系我: 2393811002" data-position="top" data-delay="50">
+    <i class="fa fa-qq"></i>
+</a>
+<a href="#!" class="tooltipped" data-tooltip="微信联系我: zc2393811002" data-position="top" data-delay="50">
+    <i class="fa fa-wechat"></i>
+</a></div>
+    </div>
+</footer>
+
+<div class="progress-bar"></div>
+
+
+<!-- 搜索遮罩框 -->
+<div id="searchModal" class="modal">
+    <div class="modal-content">
+        <div class="search-header">
+            <span class="title"><i class="fa fa-search"></i>&nbsp;&nbsp;搜索</span>
+            <input type="search" id="searchInput" name="s" placeholder="请输入搜索的关键字" class="search-input" autofocus>
+        </div>
+        <div id="searchResult"></div>
+    </div>
+</div>
+
+<script src="/js/search.js"></script>
+<script type="text/javascript">
+    searchFunc("/" + "search.xml", 'searchInput', 'searchResult');
+</script>
+<!-- 回到顶部按钮 -->
+<div id="backTop" class="top-scroll">
+    <a class="btn-floating btn-large waves-effect waves-light" href="#!">
+        <i class="fa fa-angle-up"></i>
+    </a>
+</div>
+
+
+<script src="/libs/materialize/js/materialize.min.js"></script>
+<script src="/libs/masonry/masonry.pkgd.min.js"></script>
+<script src="/libs/aos/aos.js"></script>
+<script src="/libs/scrollprogress/scrollProgress.min.js"></script>
+<script src="/libs/lightGallery/js/lightgallery-all.min.js"></script>
+<script src="/js/matery.js"></script>
+
+<!-- Global site tag (gtag.js) - Google Analytics -->
+
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-131240581-2"></script>
+<script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() {
+        dataLayer.push(arguments);
+    }
+
+    gtag('js', new Date());
+    gtag('config', 'UA-131240581-2');
+</script>
+
+
+
+
+    <script async src="/libs/others/busuanzi.pure.mini.js"></script>
+
+
+</body>
+</html>

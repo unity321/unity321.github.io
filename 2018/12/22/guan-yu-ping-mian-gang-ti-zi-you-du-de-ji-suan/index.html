@@ -1,0 +1,792 @@
+<!DOCTYPE HTML>
+<html lang="zh-CN">
+
+
+<head><meta name="generator" content="Hexo 3.8.0">
+    <meta charset="utf-8">
+    <meta name="keywords" content="关于平面刚体自由度的计算, mcc">
+    <meta name="description" content="
+刚体自由度判断问题理论力学复习过程中遇到一个刚体自由度的判断问题，查了一下资料，这里分享一下自由度的计算问题
+机构自由度的计算公式是
+$$F=3n-2p_l-p_k$$
+公式本身简单，只需要数出活动构件的数目n，低副的数目pl，高副的数目">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="renderer" content="webkit|ie-stand|ie-comp">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <title>关于平面刚体自由度的计算 | mcc</title>
+    <link rel="icon" type="image/png" href="/icon.png">
+
+    <link rel="stylesheet" type="text/css" href="/libs/awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/materialize/css/materialize.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/aos/aos.css">
+    <link rel="stylesheet" type="text/css" href="/libs/animate/animate.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/lightGallery/css/lightgallery.min.css">
+    <link rel="stylesheet" type="text/css" href="/css/matery.css">
+    <link rel="stylesheet" type="text/css" href="/css/my.css">
+
+    <script src="/libs/jquery/jquery-2.2.0.min.js"></script>
+<link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css"></head>
+
+
+<body>
+
+<header class="navbar-fixed">
+    <nav id="headNav" class="bg-color nav-transparent">
+        <div id="navContainer" class="container">
+            <div class="nav-wrapper">
+                <div class="brand-logo">
+                    <a href="/" class="waves-effect waves-light">
+                        
+                        <img src="/medias/mcc.png" class="logo-img hide-on-small-only">
+                        
+                        <span class="logo-span">mcc</span>
+                    </a>
+                </div>
+                
+
+<a href="#" data-activates="mobile-nav" class="button-collapse"><i class="fa fa-navicon"></i></a>
+<ul class="right">
+    
+    <li class="hide-on-med-and-down">
+        <a href="/" class="waves-effect waves-light">
+            
+            <i class="fa fa-home"></i>
+            
+            <span>首页</span>
+        </a>
+    </li>
+    
+    <li class="hide-on-med-and-down">
+        <a href="/tags" class="waves-effect waves-light">
+            
+            <i class="fa fa-tags"></i>
+            
+            <span>标签</span>
+        </a>
+    </li>
+    
+    <li class="hide-on-med-and-down">
+        <a href="/categories" class="waves-effect waves-light">
+            
+            <i class="fa fa-bookmark"></i>
+            
+            <span>分类</span>
+        </a>
+    </li>
+    
+    <li class="hide-on-med-and-down">
+        <a href="/archives" class="waves-effect waves-light">
+            
+            <i class="fa fa-archive"></i>
+            
+            <span>归档</span>
+        </a>
+    </li>
+    
+    <li class="hide-on-med-and-down">
+        <a href="/about" class="waves-effect waves-light">
+            
+            <i class="fa fa-user-circle-o"></i>
+            
+            <span>关于</span>
+        </a>
+    </li>
+    
+    <li class="hide-on-med-and-down">
+        <a href="/friends" class="waves-effect waves-light">
+            
+            <i class="fa fa-address-book"></i>
+            
+            <span>友情链接</span>
+        </a>
+    </li>
+    
+    <li>
+        <a id="toggleSearch" class="waves-effect waves-light">
+            <i id="searchIcon" class="mdi-action-search" title="搜索"></i>
+        </a>
+    </li>
+
+</ul>
+
+<div class="side-nav" id="mobile-nav">
+
+    <div class="mobile-head bg-color">
+        
+        <img src="/medias/mcc.png" class="logo-img circle responsive-img">
+        
+        <div class="logo-name">mcc</div>
+        <div class="logo-desc">
+            
+            zhang不大的先生
+            
+        </div>
+    </div>
+
+    
+
+    <ul class="menu-list mobile-menu-list">
+        
+        <li>
+            <a href="/" class="waves-effect waves-light">
+                
+                <i class="fa fa-fw fa-home"></i>
+                
+                首页
+            </a>
+        </li>
+        
+        <li>
+            <a href="/tags" class="waves-effect waves-light">
+                
+                <i class="fa fa-fw fa-tags"></i>
+                
+                标签
+            </a>
+        </li>
+        
+        <li>
+            <a href="/categories" class="waves-effect waves-light">
+                
+                <i class="fa fa-fw fa-bookmark"></i>
+                
+                分类
+            </a>
+        </li>
+        
+        <li>
+            <a href="/archives" class="waves-effect waves-light">
+                
+                <i class="fa fa-fw fa-archive"></i>
+                
+                归档
+            </a>
+        </li>
+        
+        <li>
+            <a href="/about" class="waves-effect waves-light">
+                
+                <i class="fa fa-fw fa-user-circle-o"></i>
+                
+                关于
+            </a>
+        </li>
+        
+        <li>
+            <a href="/friends" class="waves-effect waves-light">
+                
+                <i class="fa fa-fw fa-address-book"></i>
+                
+                友情链接
+            </a>
+        </li>
+        
+        
+    </ul>
+
+    <div class="social-link"><a href="https://github.com/mcc321" class="tooltipped" target="_blank" data-tooltip="访问我的GitHub" data-position="top" data-delay="50">
+    <i class="fa fa-github"></i>
+</a>
+<a href="mailto:2393811002@qq.com" class="tooltipped" target="_blank" data-tooltip="邮件联系我" data-position="top" data-delay="50">
+    <i class="fa fa-envelope-open"></i>
+</a>
+<a href="#!" class="tooltipped" data-tooltip="QQ联系我: 2393811002" data-position="top" data-delay="50">
+    <i class="fa fa-qq"></i>
+</a>
+<a href="#!" class="tooltipped" data-tooltip="微信联系我: zc2393811002" data-position="top" data-delay="50">
+    <i class="fa fa-wechat"></i>
+</a></div>
+</div>
+
+            </div>
+        </div>
+
+        
+    </nav>
+</header>
+
+
+<script src="/libs/cryptojs/crypto-js.min.js"></script>
+<script>
+    (function() {
+        let pwd = '';
+        if (pwd && pwd.length > 0) {
+            if (pwd !== CryptoJS.SHA256(prompt('请输入访问本文章的密码')).toString(CryptoJS.enc.Hex)) {
+                alert('密码错误，将返回主页！');
+                location.href = '/';
+            }
+        }
+    })();
+</script>
+
+
+
+
+<div class="bg-cover post-cover" style="background-image: url('http://fech.in/static/images/PandasToSparkDataFrame/PandasToSparkDataFrame_mini.jpg')">
+    <div class="container">
+        <div class="row">
+            <div class="col s12 m12 l12">
+                <div class="brand">
+                    <div class="description center-align post-title">
+                        关于平面刚体自由度的计算
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<main class="post-container content">
+
+    
+    <link rel="stylesheet" href="/libs/tocbot/tocbot.css">
+<style>
+    #articleContent h1,
+    #articleContent h2,
+    #articleContent h3,
+    #articleContent h4,
+    #articleContent h5,
+    #articleContent h6 {
+        padding-top: 76px;
+        margin-top: -76px;
+    }
+
+    #articleContent h1 {
+        line-height: 3.5rem;
+    }
+
+    #articleContent h2 {
+        line-height: 3.2rem;
+    }
+
+    #articleContent h3 {
+        line-height: 2.8rem;
+    }
+
+    #articleContent h4 {
+        line-height: 2.5rem;
+    }
+
+    #articleContent h5 {
+        line-height: 2.2rem;
+    }
+
+    #articleContent h6 {
+        line-height: 1.9rem;
+    }
+
+    #articleContent :focus {
+        outline: none;
+    }
+
+    .toc-fixed {
+        position: fixed;
+        top: 64px;
+    }
+
+    .toc-widget {
+        padding-left: 20px;
+    }
+
+    .toc-widget .toc-title {
+        margin: 35px 0 15px 0;
+        padding-left: 17px;
+        font-size: 1.5rem;
+        font-weight: bold;
+        line-height: 1.5rem;
+    }
+
+    .toc-widget ol {
+        padding: 0;
+        list-style: none;
+    }
+
+    #toc-content ol {
+        padding-left: 10px;
+    }
+
+    #toc-content ol li {
+        padding-left: 10px;
+    }
+
+    #toc-content .toc-link:hover {
+        color: #42b983;
+        font-weight: 700;
+        text-decoration: underline;
+    }
+
+    #toc-content .toc-link::before {
+        background-color: transparent;
+        max-height: 25px;
+    }
+
+    #toc-content .is-active-link {
+        color: #42b983;
+    }
+
+    #toc-content .is-active-link::before {
+        background-color: #42b983;
+    }
+</style>
+<div class="row">
+    <div class="col s12 m12 l9">
+        <!-- 文章内容详情 -->
+<div id="artDetail">
+    <div class="card">
+        <div class="card-content article-info">
+            <div class="row tag-cate">
+                <div class="col s7">
+                    
+                    <div class="article-tag">
+                        
+                            <a href="/tags/理论力学/" target="_blank">
+                                <span class="chip bg-color">理论力学</span>
+                            </a>
+                        
+                            <a href="/tags/自由度/" target="_blank">
+                                <span class="chip bg-color">自由度</span>
+                            </a>
+                        
+                    </div>
+                    
+                </div>
+                <div class="col s5 right-align">
+                    
+                </div>
+            </div>
+
+            <div class="post-info">
+                <div class="post-date info-break-policy">
+                    <i class="fa fa-calendar-minus-o fa-fw"></i>发布日期:&nbsp;&nbsp;
+                    2018-12-22
+                </div>
+
+                
+                    
+                    <div class="info-break-policy">
+                        <i class="fa fa-file-word-o fa-fw"></i>文章字数:&nbsp;&nbsp;
+                        1.5k
+                    </div>
+                    
+
+                    
+                    <div class="info-break-policy">
+                        <i class="fa fa-clock-o fa-fw"></i>阅读时长:&nbsp;&nbsp;
+                        5 分
+                    </div>
+                    
+                
+				
+				
+                    <div id="busuanzi_container_page_pv" class="info-break-policy">
+                        <i class="fa fa-eye fa-fw"></i>阅读次数:&nbsp;&nbsp;
+                        <span id="busuanzi_value_page_pv"></span>
+                    </div>
+				
+            </div>
+        </div>
+        <hr class="clearfix">
+        <div class="card-content article-card-content">
+            <div id="articleContent">
+                <p><img src="https://github.com/mcc321/mcc/blob/master/img/7.jpg?raw=true" alt="zhang不大的先生"></p>
+<h1 id="刚体自由度判断问题"><a href="#刚体自由度判断问题" class="headerlink" title="刚体自由度判断问题"></a>刚体自由度判断问题</h1><p>理论力学复习过程中遇到一个刚体自由度的判断问题，查了一下资料，这里分享一下自由度的计算问题</p>
+<p>机构自由度的计算公式是</p>
+<p>$$F=3n-2p_l-p_k$$</p>
+<p>公式本身简单，只需要数出活动构件的数目n，低副的数目pl，高副的数目ph,则自由度就很容易计算了。</p>
+<p>使用该公式有一个前提，就是要先判断出一些特殊情况：复合铰链，局部自由度和虚约束，在把这些情况都弄清楚后，再用上述公式计算，才可以得到正确的结果。</p>
+<ol>
+<li><p>下面举一个例子，说明机构自由度的计算方法。计算图示机构的自由度，并判断该机构是否具有确定运动。如有复合铰链、局部自由度、虚约束，请直接在题图中标出。</p>
+<p><img src="http://s9.sinaimg.cn/middle/9e19c10b4c27e7b2bb238&amp;690" alt="mcc"></p>
+</li>
+</ol>
+<ul>
+<li>拿到该机构以后，第一步就是找到凸轮M，发现推杆DB尖端有一个滚子，此滚子就是局部自由度。局部自由度几乎永远出现在滚子推杆的凸轮机构中。对于该局部自由度，处理方法是把该滚子B与BD杆焊接在一起，成为一个整体。</li>
+<li>接着考察虚约束。虚约束中最常见的就是某一个构件和机架之间有导路重合或者平行的移动副。这里FH构件就在F,G,H三个地方有三个移动副与机架相联，而这三个移动副导路重合。此时只有一个起作用，其它的就是虚约束。对于虚约束，只保留其中一个，其它的全部拿掉。</li>
+<li>最后考虑复合铰链。复合铰链出现在转动副的地方，如果在转动副处有2个以上的构件相联，则该铰链就是复合铰链。从上图可以看出，J点有三个构件IJ,KJ,JL相连，所以J是复合铰链。对于复合铰链，在计算转动副的数目时，在此处留心即可，注意这里的转动副数目等于相连的构件数目减1.</li>
+</ul>
+<p>综上所述，把局部自由度，虚约束，复合铰链表示出来的结果见下图</p>
+<p> <img src="http://s15.sinaimg.cn/middle/9e19c10b4c27e7c4911fe&amp;690" alt="mcc"></p>
+<p>这样，把滚子B和BD焊接在一起，从而去掉局部自由度；而去掉G，H这两个虚约束；J点有两个转动副。下面进入公式的计算。</p>
+<ul>
+<li><p>活动构件：齿轮A，齿轮M，连杆IJ,连杆KJ，连杆JL，滑块L，连杆BD(焊接了滚子B)，连杆DE，连杆FH。共计9个。</p>
+</li>
+<li><p>低副：A, M, I, K, J(2)，L(2), C, D, E, F. 共计12个.{注意，这里L处一个转动副，1个移动副，不能算成复合铰链，所谓铰链是指转动副，复合意味着着多个转动副}</p>
+</li>
+<li><p>高副：齿轮A和齿轮B之间1个，B和凸轮之间1个，共计2个。</p>
+<p>则由于该机构有一个原动件，原动件的数目 = 自由度的数目，所以该机构有确定的运动。</p>
+</li>
+</ul>
+<ol>
+<li>下面再看一个例子。</li>
+</ol>
+<p><img src="http://s7.sinaimg.cn/middle/9e19c10b4c27e88feb8a6&amp;690" alt="mcc"></p>
+<ul>
+<li><p>同样，先判断局部自由度。它总是出现自凸轮机构处，如果从动件有滚子，那么滚子就是局部自由度。所以这里B处是局部自由度。</p>
+</li>
+<li><p>接着判断虚约束。同样先看导路重合的移动副。这里H, I 处时杆件HJ与机架之间的两个移动副，其中一个是虚约束。</p>
+</li>
+<li><p>除此以外，关注在凸轮边上的一个式子，这个式子给出了与铰链K连接的几条线段的几何关系。机构运动简图本来只应该有图形的，如果出现了一些异常的等式，一定要高度警惕，这几乎就意味着一种特殊虚约束的出现。从这个等式可以发现，即便没有LK，滑块M的运动不会改变。所以，连杆LK以及转动副L和K都是虚约束，要拿掉。</p>
+</li>
+<li><p>最后关注复合铰链。它总是出现在杆件云集的转动副处。从图中可以看出，铰链E点连接3根杆件，所以它是复合铰链。</p>
+</li>
+<li><p>综上所述，标识局部自由度，复合铰链，虚约束后的机构运动简图如下。</p>
+<p><img src="http://s11.sinaimg.cn/middle/9e19c10b4c27e8ce1c77a&amp;690" alt="mcc"></p>
+</li>
+</ul>
+<p>这样，把滚子B和BD焊接在一起，从而处理了局部自由度；去掉移动副H，去掉LK及铰链L和铰链K，从而消除虚约束；至于E点，注意计算的时候是2个转动副。</p>
+<p>下面开始使用公式计算自由度。</p>
+<p>活动构件：凸轮A，连杆BD（焊接了滚子B）,连杆EC, 连杆EF，连杆EG，连杆HJ，连杆JM，滑块M。共计8个。</p>
+<p>低副：A,C,D,E(2),F,G,I,J,M(2).共计算11个。</p>
+<p>高副：滚子B与凸轮A之间1个。</p>
+<p>则</p>
+<p>$$n=8$$</p>
+<p>$$p_l=11$$</p>
+<p>$$p_h=1$$</p>
+<p>$$F=3n-2p_l-p_h=3\times8-2\times11-1=1$$ </p>
+<ol>
+<li>再看最后一个例子。</li>
+</ol>
+<p><img src="http://s5.sinaimg.cn/middle/9e19c10b4c27e926d0974&amp;690" alt="mcc"></p>
+<p>显然，B处—局部自由度；G,H中有一个是虚约束，而D处是复合铰链。标志如下图。把滚子B和BC杆焊接在一起，则此处BD和BC是一个铰链连接，有一个转动副；去掉H处的移动副以消除虚约束；D点有2个转动副。</p>
+<ul>
+<li>活动构件：凸轮A  连杆CB  连杆BD   连杆DE  连杆 DF  连杆GH  。共计6个。</li>
+<li>低副： A  C  B  D(2)  E  F  G  共计8个。</li>
+<li><p>高副： 凸轮A和滚子B之间1个。</p>
+<p> 则</p>
+</li>
+</ul>
+<p>$$n=6$$</p>
+<p>$$p_l=8$$</p>
+<p>$$p_h=1$$</p>
+<p>$$F=3n-2p_l-p_h=3\times6-2\times8-1=1$$ </p>
+<h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><p>感觉理论力学还有很多要补的，希望接下来自己能多注意一下吧。</p>
+
+            </div>
+            <hr>
+
+            
+
+            <link rel="stylesheet" type="text/css" href="/libs/share/css/share.min.css">
+
+<div id="article-share">
+    
+    <div class="social-share" data-disabled="qzone" data-wechat-qrcode-helper="<p>微信里点“发现”->“扫一扫”二维码便可查看分享。</p>"></div>
+    
+</div>
+
+<script src="/libs/share/js/social-share.min.js"></script>
+
+            <div class="reprint">
+                <p>
+                    <span class="reprint-tip">
+                        <i class="fa fa-exclamation-circle"></i>&nbsp;&nbsp;转载请注明:
+                    </span>
+                    <a href="http://unity321.github.io" class="b-link-green">mcc</a>
+                    <i class="fa fa-angle-right fa-lg fa-fw text-color"></i>
+                    <a href="/2018/12/22/guan-yu-ping-mian-gang-ti-zi-you-du-de-ji-suan/" class="b-link-green">关于平面刚体自由度的计算</a>
+                </p>
+            </div>
+        </div>
+    </div>
+
+    
+        <link rel="stylesheet" href="/libs/gitalk/gitalk.css">
+<link rel="stylesheet" href="/css/my-gitalk.css">
+
+<div class="card gitalk-card" data-aos="fade-up">
+    <div id="gitalk-container" class="card-content"></div>
+</div>
+
+<script src="/libs/gitalk/gitalk.min.js"></script>
+<script>
+    let gitalk = new Gitalk({
+        clientID: 'e74943c64b5b24f738bf',
+        clientSecret: 'abe76a8cecb518f81b1b90f3aaa4d0c0fffdd5ee',
+        repo: 'unity321.github.io',
+        owner: 'unity321',
+        admin: ["unity321"],
+        id: '2018-12-22T18-18-55',
+        distractionFreeMode: false  // Facebook-like distraction free mode
+    });
+
+    gitalk.render('gitalk-container');
+</script>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+<article id="prenext-posts" class="prev-next articles">
+    <div class="row article-row">
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge left-badge text-color">
+                <i class="fa fa-chevron-left"></i>&nbsp;上一篇</div>
+            <div class="card">
+                <a href="/2018/12/22/markdown-shu-xue-gong-shi-yu-fa/">
+                    <div class="card-image">
+                        
+                        <img src="https://github.com/mcc321/mcc/blob/master/img/7.jpg?raw=true" class="responsive-img" alt="Markdown数学公式语法">
+                        
+                        <span class="card-title">Markdown数学公式语法</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary">
+Markdown latex 语法整理LaTex语法行内与独行
+行内公式：将公式插入到本行内，符号：$公式内容$，如：$xyz$
+独行公式：将公式插入到新的一行内，并且居中，符号：$$公式内容$$，如：$$xyz$$
+
+上标、下标与组合
+</div>
+                    <div class="publish-info">
+                        <span class="publish-date">
+                            <i class="fa fa-clock-o fa-fw icon-date"></i>2018-12-22
+                        </span>
+                        <span class="publish-author">
+                            
+                            <i class="fa fa-user fa-fw"></i>
+                            mcc
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/数学/" target="_blank">
+                        <span class="chip bg-color">数学</span>
+                    </a>
+                    
+                    <a href="/tags/LaTex/" target="_blank">
+                        <span class="chip bg-color">LaTex</span>
+                    </a>
+                    
+                    <a href="/tags/Markdown/" target="_blank">
+                        <span class="chip bg-color">Markdown</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge right-badge text-color">
+                下一篇&nbsp;<i class="fa fa-chevron-right"></i>
+            </div>
+            <div class="card">
+                <a href="/2018/12/21/guan-yu-yi-xie-xiao-shi-de-xiang-fa/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/20.jpg" class="responsive-img" alt="关于一些小事的想法">
+                        
+                        <span class="card-title">关于一些小事的想法</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary">
+奇奇怪怪的两天这两天确实很忙，先是帮忙做一个背景视频，虽然最后还是没有帮上忙，但自己在折腾过程中还是学到了很多，再就是各种”奔波“，物理实验，分数复查，实验室任务，种子班的各种调查再加上自己的各种专业课，基本上停下了自己所有的业余爱好了，</div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="fa fa-clock-o fa-fw icon-date"></i>2018-12-21
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fa fa-user fa-fw"></i>
+                            mcc
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/感悟/" target="_blank">
+                        <span class="chip bg-color">感悟</span>
+                    </a>
+                    
+                    <a href="/tags/生活/" target="_blank">
+                        <span class="chip bg-color">生活</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+    </div>
+</article>
+</div>
+
+
+    </div>
+    <div class="col l3 hide-on-med-and-down">
+        <div class="toc-widget">
+            <div class="toc-title"><i class="fa fa-list-alt"></i>&nbsp;&nbsp;目录</div>
+            <div id="toc-content"></div>
+        </div>
+    </div>
+</div>
+
+<script src="/libs/tocbot/tocbot.min.js"></script>
+<script>
+    $(function () {
+        tocbot.init({
+            tocSelector: '#toc-content',
+            contentSelector: '#articleContent',
+            headingSelector: 'h1, h2, h3, h4, h5'
+        });
+
+        // modify the toc link href to support Chinese.
+        let i = 0;
+        let tocHeading = 'toc-heading-';
+        $('#toc-content a').each(function () {
+            $(this).attr('href', '#' + tocHeading + (++i));
+        });
+
+        // modify the heading title id to support Chinese.
+        i = 0;
+        $('#articleContent').children('h1, h2, h3, h4, h5').each(function () {
+            $(this).attr('id', tocHeading + (++i));
+        });
+
+        // Set scroll toc fixed.
+        let tocHeight = parseInt($(window).height() * 0.4 - 64);
+        let $tocWidget = $('.toc-widget');
+        $(window).scroll(function () {
+            let scroll = $(window).scrollTop();
+            /* add post toc fixed. */
+            if (scroll > tocHeight) {
+                $tocWidget.addClass('toc-fixed');
+            } else {
+                $tocWidget.removeClass('toc-fixed');
+            }
+        });
+    });
+</script>
+    
+
+</main>
+
+
+<script src="https://cdn.bootcss.com/mathjax/2.7.5/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+<script>
+    MathJax.Hub.Config({
+        tex2jax: {inlineMath: [['$', '$'], ['\(', '\)']]}
+    });
+</script>
+
+<footer class="page-footer bg-color">
+    <div class="container row center-align">
+        <div class="col s12 m8 l8 copy-right">
+            本站由&copy;<a href="https://blinkfox.github.io/" target="_blank">Blinkfox</a>基于
+            <a href="https://hexo.io/" target="_blank">Hexo</a> 的
+            <a href="https://github.com/blinkfox/hexo-theme-matery" target="_blank">hexo-theme-matery</a>主题搭建.
+
+            
+                &nbsp;<i class="fa fa-area-chart"></i>&nbsp;站点总字数:&nbsp;
+                <span class="white-color">19.8k</span>
+            
+
+            
+			
+                <br>
+                
+                <span id="busuanzi_container_site_pv">
+                    <i class="fa fa-heart-o"></i>
+                    本站总访问量 <span id="busuanzi_value_site_pv" class="white-color"></span>
+                </span>
+                
+                
+                <span id="busuanzi_container_site_uv">
+                    <i class="fa fa-users"></i>
+                    次,&nbsp;访客数 <span id="busuanzi_value_site_uv" class="white-color"></span> 人.
+                </span>
+                
+            
+        </div>
+        <div class="col s12 m4 l4 social-link social-statis"><a href="https://github.com/mcc321" class="tooltipped" target="_blank" data-tooltip="访问我的GitHub" data-position="top" data-delay="50">
+    <i class="fa fa-github"></i>
+</a>
+<a href="mailto:2393811002@qq.com" class="tooltipped" target="_blank" data-tooltip="邮件联系我" data-position="top" data-delay="50">
+    <i class="fa fa-envelope-open"></i>
+</a>
+<a href="#!" class="tooltipped" data-tooltip="QQ联系我: 2393811002" data-position="top" data-delay="50">
+    <i class="fa fa-qq"></i>
+</a>
+<a href="#!" class="tooltipped" data-tooltip="微信联系我: zc2393811002" data-position="top" data-delay="50">
+    <i class="fa fa-wechat"></i>
+</a></div>
+    </div>
+</footer>
+
+<div class="progress-bar"></div>
+
+
+<!-- 搜索遮罩框 -->
+<div id="searchModal" class="modal">
+    <div class="modal-content">
+        <div class="search-header">
+            <span class="title"><i class="fa fa-search"></i>&nbsp;&nbsp;搜索</span>
+            <input type="search" id="searchInput" name="s" placeholder="请输入搜索的关键字" class="search-input" autofocus>
+        </div>
+        <div id="searchResult"></div>
+    </div>
+</div>
+
+<script src="/js/search.js"></script>
+<script type="text/javascript">
+    searchFunc("/" + "search.xml", 'searchInput', 'searchResult');
+</script>
+<!-- 回到顶部按钮 -->
+<div id="backTop" class="top-scroll">
+    <a class="btn-floating btn-large waves-effect waves-light" href="#!">
+        <i class="fa fa-angle-up"></i>
+    </a>
+</div>
+
+
+<script src="/libs/materialize/js/materialize.min.js"></script>
+<script src="/libs/masonry/masonry.pkgd.min.js"></script>
+<script src="/libs/aos/aos.js"></script>
+<script src="/libs/scrollprogress/scrollProgress.min.js"></script>
+<script src="/libs/lightGallery/js/lightgallery-all.min.js"></script>
+<script src="/js/matery.js"></script>
+
+<!-- Global site tag (gtag.js) - Google Analytics -->
+
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-131240581-2"></script>
+<script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() {
+        dataLayer.push(arguments);
+    }
+
+    gtag('js', new Date());
+    gtag('config', 'UA-131240581-2');
+</script>
+
+
+
+
+    <script async src="/libs/others/busuanzi.pure.mini.js"></script>
+
+
+</body>
+</html>

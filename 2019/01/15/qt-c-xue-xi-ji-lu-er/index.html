@@ -1,0 +1,877 @@
+<!DOCTYPE HTML>
+<html lang="zh-CN">
+
+
+<head><meta name="generator" content="Hexo 3.8.0">
+    <meta charset="utf-8">
+    <meta name="keywords" content="qt-c++学习记录(二), mcc">
+    <meta name="description" content="图像文件操作
+//mainwindow.h
+#pragma once
+
+#ifndef mainwindow_h
+#define mainwindow_h
+
+#include 
+#include 
+#include 
+#include 
+#">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="renderer" content="webkit|ie-stand|ie-comp">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <title>qt-c++学习记录(二) | mcc</title>
+    <link rel="icon" type="image/png" href="/icon.png">
+
+    <link rel="stylesheet" type="text/css" href="/libs/awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/materialize/css/materialize.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/aos/aos.css">
+    <link rel="stylesheet" type="text/css" href="/libs/animate/animate.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/lightGallery/css/lightgallery.min.css">
+    <link rel="stylesheet" type="text/css" href="/css/matery.css">
+    <link rel="stylesheet" type="text/css" href="/css/my.css">
+
+    <script src="/libs/jquery/jquery-2.2.0.min.js"></script>
+<link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css"></head>
+
+
+<body>
+
+<header class="navbar-fixed">
+    <nav id="headNav" class="bg-color nav-transparent">
+        <div id="navContainer" class="container">
+            <div class="nav-wrapper">
+                <div class="brand-logo">
+                    <a href="/" class="waves-effect waves-light">
+                        
+                        <img src="/medias/mcc.png" class="logo-img hide-on-small-only">
+                        
+                        <span class="logo-span">mcc</span>
+                    </a>
+                </div>
+                
+
+<a href="#" data-activates="mobile-nav" class="button-collapse"><i class="fa fa-navicon"></i></a>
+<ul class="right">
+    
+    <li class="hide-on-med-and-down">
+        <a href="/" class="waves-effect waves-light">
+            
+            <i class="fa fa-home"></i>
+            
+            <span>首页</span>
+        </a>
+    </li>
+    
+    <li class="hide-on-med-and-down">
+        <a href="/tags" class="waves-effect waves-light">
+            
+            <i class="fa fa-tags"></i>
+            
+            <span>标签</span>
+        </a>
+    </li>
+    
+    <li class="hide-on-med-and-down">
+        <a href="/categories" class="waves-effect waves-light">
+            
+            <i class="fa fa-bookmark"></i>
+            
+            <span>分类</span>
+        </a>
+    </li>
+    
+    <li class="hide-on-med-and-down">
+        <a href="/archives" class="waves-effect waves-light">
+            
+            <i class="fa fa-archive"></i>
+            
+            <span>归档</span>
+        </a>
+    </li>
+    
+    <li class="hide-on-med-and-down">
+        <a href="/about" class="waves-effect waves-light">
+            
+            <i class="fa fa-user-circle-o"></i>
+            
+            <span>关于</span>
+        </a>
+    </li>
+    
+    <li class="hide-on-med-and-down">
+        <a href="/friends" class="waves-effect waves-light">
+            
+            <i class="fa fa-address-book"></i>
+            
+            <span>友情链接</span>
+        </a>
+    </li>
+    
+    <li>
+        <a id="toggleSearch" class="waves-effect waves-light">
+            <i id="searchIcon" class="mdi-action-search" title="搜索"></i>
+        </a>
+    </li>
+
+</ul>
+
+<div class="side-nav" id="mobile-nav">
+
+    <div class="mobile-head bg-color">
+        
+        <img src="/medias/mcc.png" class="logo-img circle responsive-img">
+        
+        <div class="logo-name">mcc</div>
+        <div class="logo-desc">
+            
+            zhang不大的先生
+            
+        </div>
+    </div>
+
+    
+
+    <ul class="menu-list mobile-menu-list">
+        
+        <li>
+            <a href="/" class="waves-effect waves-light">
+                
+                <i class="fa fa-fw fa-home"></i>
+                
+                首页
+            </a>
+        </li>
+        
+        <li>
+            <a href="/tags" class="waves-effect waves-light">
+                
+                <i class="fa fa-fw fa-tags"></i>
+                
+                标签
+            </a>
+        </li>
+        
+        <li>
+            <a href="/categories" class="waves-effect waves-light">
+                
+                <i class="fa fa-fw fa-bookmark"></i>
+                
+                分类
+            </a>
+        </li>
+        
+        <li>
+            <a href="/archives" class="waves-effect waves-light">
+                
+                <i class="fa fa-fw fa-archive"></i>
+                
+                归档
+            </a>
+        </li>
+        
+        <li>
+            <a href="/about" class="waves-effect waves-light">
+                
+                <i class="fa fa-fw fa-user-circle-o"></i>
+                
+                关于
+            </a>
+        </li>
+        
+        <li>
+            <a href="/friends" class="waves-effect waves-light">
+                
+                <i class="fa fa-fw fa-address-book"></i>
+                
+                友情链接
+            </a>
+        </li>
+        
+        
+    </ul>
+
+    <div class="social-link"><a href="https://github.com/mcc321" class="tooltipped" target="_blank" data-tooltip="访问我的GitHub" data-position="top" data-delay="50">
+    <i class="fa fa-github"></i>
+</a>
+<a href="mailto:2393811002@qq.com" class="tooltipped" target="_blank" data-tooltip="邮件联系我" data-position="top" data-delay="50">
+    <i class="fa fa-envelope-open"></i>
+</a>
+<a href="#!" class="tooltipped" data-tooltip="QQ联系我: 2393811002" data-position="top" data-delay="50">
+    <i class="fa fa-qq"></i>
+</a>
+<a href="#!" class="tooltipped" data-tooltip="微信联系我: zc2393811002" data-position="top" data-delay="50">
+    <i class="fa fa-wechat"></i>
+</a></div>
+</div>
+
+            </div>
+        </div>
+
+        
+    </nav>
+</header>
+
+
+<script src="/libs/cryptojs/crypto-js.min.js"></script>
+<script>
+    (function() {
+        let pwd = '';
+        if (pwd && pwd.length > 0) {
+            if (pwd !== CryptoJS.SHA256(prompt('请输入访问本文章的密码')).toString(CryptoJS.enc.Hex)) {
+                alert('密码错误，将返回主页！');
+                location.href = '/';
+            }
+        }
+    })();
+</script>
+
+
+
+
+<div class="bg-cover post-cover" style="background-image: url('https://github.com/mcc321/mcc/blob/master/img/27.jpg?raw=true')">
+    <div class="container">
+        <div class="row">
+            <div class="col s12 m12 l12">
+                <div class="brand">
+                    <div class="description center-align post-title">
+                        qt-c++学习记录(二)
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<main class="post-container content">
+
+    
+    <link rel="stylesheet" href="/libs/tocbot/tocbot.css">
+<style>
+    #articleContent h1,
+    #articleContent h2,
+    #articleContent h3,
+    #articleContent h4,
+    #articleContent h5,
+    #articleContent h6 {
+        padding-top: 76px;
+        margin-top: -76px;
+    }
+
+    #articleContent h1 {
+        line-height: 3.5rem;
+    }
+
+    #articleContent h2 {
+        line-height: 3.2rem;
+    }
+
+    #articleContent h3 {
+        line-height: 2.8rem;
+    }
+
+    #articleContent h4 {
+        line-height: 2.5rem;
+    }
+
+    #articleContent h5 {
+        line-height: 2.2rem;
+    }
+
+    #articleContent h6 {
+        line-height: 1.9rem;
+    }
+
+    #articleContent :focus {
+        outline: none;
+    }
+
+    .toc-fixed {
+        position: fixed;
+        top: 64px;
+    }
+
+    .toc-widget {
+        padding-left: 20px;
+    }
+
+    .toc-widget .toc-title {
+        margin: 35px 0 15px 0;
+        padding-left: 17px;
+        font-size: 1.5rem;
+        font-weight: bold;
+        line-height: 1.5rem;
+    }
+
+    .toc-widget ol {
+        padding: 0;
+        list-style: none;
+    }
+
+    #toc-content ol {
+        padding-left: 10px;
+    }
+
+    #toc-content ol li {
+        padding-left: 10px;
+    }
+
+    #toc-content .toc-link:hover {
+        color: #42b983;
+        font-weight: 700;
+        text-decoration: underline;
+    }
+
+    #toc-content .toc-link::before {
+        background-color: transparent;
+        max-height: 25px;
+    }
+
+    #toc-content .is-active-link {
+        color: #42b983;
+    }
+
+    #toc-content .is-active-link::before {
+        background-color: #42b983;
+    }
+</style>
+<div class="row">
+    <div class="col s12 m12 l9">
+        <!-- 文章内容详情 -->
+<div id="artDetail">
+    <div class="card">
+        <div class="card-content article-info">
+            <div class="row tag-cate">
+                <div class="col s7">
+                    
+                    <div class="article-tag">
+                        
+                            <a href="/tags/qt/" target="_blank">
+                                <span class="chip bg-color">qt</span>
+                            </a>
+                        
+                    </div>
+                    
+                </div>
+                <div class="col s5 right-align">
+                    
+                </div>
+            </div>
+
+            <div class="post-info">
+                <div class="post-date info-break-policy">
+                    <i class="fa fa-calendar-minus-o fa-fw"></i>发布日期:&nbsp;&nbsp;
+                    2019-01-15
+                </div>
+
+                
+                    
+                    <div class="info-break-policy">
+                        <i class="fa fa-file-word-o fa-fw"></i>文章字数:&nbsp;&nbsp;
+                        572
+                    </div>
+                    
+
+                    
+                    <div class="info-break-policy">
+                        <i class="fa fa-clock-o fa-fw"></i>阅读时长:&nbsp;&nbsp;
+                        3 分
+                    </div>
+                    
+                
+				
+				
+                    <div id="busuanzi_container_page_pv" class="info-break-policy">
+                        <i class="fa fa-eye fa-fw"></i>阅读次数:&nbsp;&nbsp;
+                        <span id="busuanzi_value_page_pv"></span>
+                    </div>
+				
+            </div>
+        </div>
+        <hr class="clearfix">
+        <div class="card-content article-card-content">
+            <div id="articleContent">
+                <h1 id="图像文件操作"><a href="#图像文件操作" class="headerlink" title="图像文件操作"></a>图像文件操作</h1><p><img src="https://github.com/mcc321/mcc/blob/master/img/23.jpg?raw=true" alt="mcc"></p>
+<pre class=" language-c++"><code class="language-c++">//mainwindow.h
+#pragma once
+
+#ifndef mainwindow_h
+#define mainwindow_h
+
+#include <qobject>
+#include <qtwidgets>
+#include <qtgui>
+#include <qmainwindow>
+#include <qmainwindow>
+#include "ui_book.h"
+class mainwindow : public QMainWindow
+{
+    Q_OBJECT
+
+public:
+    mainwindow(QWidget *parent=Q_NULLPTR);
+    ~mainwindow();
+private:
+    Ui::bookClass ui;//这里的bookClass来自于ui_book.h,这个文件是通过qt-designer生成的。
+    QDockWidget *dockimage;
+    QString currentPath;
+    QLabel* imglabel;
+    void InitImage();
+    void Menu_File();
+private slots:
+    void file_new();
+    void file_open();
+    void file_save();
+    void file_saveas();
+
+};
+#endif
+</qmainwindow></qmainwindow></qtgui></qtwidgets></qobject></code></pre>
+<pre class=" language-c++"><code class="language-c++">//mainwindow.cpp
+#include "stdafx.h"
+#include "mainwindow.h"
+#include <qtwidgets>
+#include <qmainwindow>
+#pragma execution_character_set("utf-8")    
+mainwindow::mainwindow(QWidget *parent)
+    :QMainWindow(parent)
+{
+    ui.setupUi(this);
+    Menu_File();
+    InitImage();
+
+}
+
+mainwindow::~mainwindow()
+{
+}
+void mainwindow::Menu_File()
+{
+    QMenu *file = menuBar()->addMenu(tr("文件"));
+    QAction *act_file_new = new QAction(QIcon("C:\\Users\\MCC\\Pictures\\assert\\life_is_strange_icon.png"),tr("新建"),this);//这里的地址应该换成本地地址
+    act_file_new->setShortcuts(QKeySequence::New);
+    connect(act_file_new, SIGNAL(triggered()), this, SLOT(file_new()));
+
+    QAction *act_file_open = new QAction(QIcon("C:\\Users\\MCC\\Pictures\\assert\\life_is_strange_icon.png"), tr("打开"), this);
+    act_file_open->setShortcuts(QKeySequence::Open);// 快捷键 Ctrl+O
+    connect(act_file_open, SIGNAL(triggered()), this, SLOT(file_open()));
+
+    QAction *act_file_save = new QAction(QIcon("C:\\Users\\MCC\\Pictures\\assert\\life_is_strange_icon.png"), tr("保存"), this);
+    act_file_save->setShortcuts(QKeySequence::Save);// 快捷键 Ctrl+S
+    connect(act_file_save, SIGNAL(triggered()), this, SLOT(file_save()));
+
+    QAction *act_file_saveas = new QAction(QIcon("C:\\Users\\MCC\\Pictures\\assert\\life_is_strange_icon.png"), tr("另存为"), this);
+    act_file_saveas->setShortcuts(QKeySequence::SaveAs);
+    connect(act_file_saveas, SIGNAL(triggered()), this, SLOT(file_saveas()));
+
+    QAction *act_file_close = new QAction(QIcon("C:\\Users\\MCC\\Pictures\\assert\\life_is_strange_icon.png"), tr("关闭"), this);
+    act_file_close->setShortcut(QKeySequence::Close);
+    connect(act_file_close, SIGNAL(triggered()), this, SLOT(close()));
+
+    file->addAction(act_file_new);
+    file->addAction(act_file_open);
+    file->addAction(act_file_save);
+    file->addAction(act_file_saveas);
+    file->addSeparator();
+    file->addAction(act_file_close);
+
+    act_file_new->setStatusTip(tr("新建图像"));
+    act_file_open->setStatusTip(tr("打开图像"));
+    act_file_save->setStatusTip(tr("保存图像"));
+    act_file_saveas->setStatusTip(tr("图像另存为"));
+    act_file_close->setStatusTip(tr("关闭软件"));
+
+
+}
+void mainwindow::InitImage()
+{
+    dockimage = new QDockWidget(tr("图像"), this);
+    setCentralWidget(dockimage);
+    imglabel = new QLabel(dockimage);
+    imglabel->setScaledContents(true);
+    QImage image = QImage(500, 500, QImage::Format_RGB32);
+    image.fill(qRgb(255, 255, 255));
+    imglabel->setPixmap(QPixmap::fromImage(image));
+    imglabel->resize(image.width(), image.height());
+    QScrollArea* scrollArea = new QScrollArea(this);
+    scrollArea->setBackgroundRole(QPalette::Dark);
+    scrollArea->setAlignment(Qt::AlignCenter);
+    scrollArea->setWidget(imglabel);
+    dockimage->setWidget(scrollArea);
+
+
+}
+
+void mainwindow::file_new()
+{
+    QImage image = QImage(500, 500, QImage::Format_RGB32);
+    image.fill(qRgb(255, 255, 255));
+    imglabel->setPixmap(QPixmap::fromImage(image));
+    imglabel->resize(image.width(), image.height());
+    currentPath = "";
+}
+void mainwindow::file_open()
+{
+    QString path = QFileDialog::getOpenFileName(this, tr("选择图像"));
+    if (!(path.isEmpty()))
+    { 
+        QImage *img = new QImage();
+        if (!(img->load(path)))
+        {
+            QMessageBox::information(this, tr("错误"), tr("打开图像失败"));
+            delete img;
+            return;
+        }
+        imglabel->setPixmap(QPixmap::fromImage(*img));
+        imglabel->resize(img->width(), img->height());
+        currentPath = path;
+
+    }
+
+}
+void mainwindow::file_save() 
+{
+    if (currentPath.isEmpty())
+    {
+        QString path = QFileDialog::getSaveFileName(this, tr("保存图像"), ".", tr("Images(*.jpg *.png *.bmp)"));
+        if (!path.isEmpty())
+        {
+            currentPath = path;
+        }
+    }
+    QImage img = imglabel->pixmap()->toImage();
+    img.save(currentPath);
+}
+void mainwindow::file_saveas()
+{
+    QString path = QFileDialog::getSaveFileName(this, tr("图像另存为"), ".", tr("Images(*.jpg *.png *.bmp)"));
+    if (!path.isEmpty())
+    {
+        QImage img = imglabel->pixmap()->toImage();
+        img.save(path);
+        currentPath = path;
+    }
+}
+</qmainwindow></qtwidgets></code></pre>
+<blockquote>
+<p>总结：</p>
+<ul>
+<li><p>qt中每一个窗口就是一个类。</p>
+</li>
+<li><p>关于窗口，<a href="https://blog.csdn.net/rl529014/article/details/51419126" target="_blank" rel="noopener">Qt窗口之QMainWindow、QDialog、QWidget</a>，这篇博文上将的是比较好的。</p>
+</li>
+</ul>
+</blockquote>
+
+            </div>
+            <hr>
+
+            
+
+            <link rel="stylesheet" type="text/css" href="/libs/share/css/share.min.css">
+
+<div id="article-share">
+    
+    <div class="social-share" data-disabled="qzone" data-wechat-qrcode-helper="<p>微信里点“发现”->“扫一扫”二维码便可查看分享。</p>"></div>
+    
+</div>
+
+<script src="/libs/share/js/social-share.min.js"></script>
+
+            <div class="reprint">
+                <p>
+                    <span class="reprint-tip">
+                        <i class="fa fa-exclamation-circle"></i>&nbsp;&nbsp;转载请注明:
+                    </span>
+                    <a href="http://unity321.github.io" class="b-link-green">mcc</a>
+                    <i class="fa fa-angle-right fa-lg fa-fw text-color"></i>
+                    <a href="/2019/01/15/qt-c-xue-xi-ji-lu-er/" class="b-link-green">qt-c++学习记录(二)</a>
+                </p>
+            </div>
+        </div>
+    </div>
+
+    
+        <link rel="stylesheet" href="/libs/gitalk/gitalk.css">
+<link rel="stylesheet" href="/css/my-gitalk.css">
+
+<div class="card gitalk-card" data-aos="fade-up">
+    <div id="gitalk-container" class="card-content"></div>
+</div>
+
+<script src="/libs/gitalk/gitalk.min.js"></script>
+<script>
+    let gitalk = new Gitalk({
+        clientID: 'e74943c64b5b24f738bf',
+        clientSecret: 'abe76a8cecb518f81b1b90f3aaa4d0c0fffdd5ee',
+        repo: 'unity321.github.io',
+        owner: 'unity321',
+        admin: ["unity321"],
+        id: '2019-01-15T17-42-48',
+        distractionFreeMode: false  // Facebook-like distraction free mode
+    });
+
+    gitalk.render('gitalk-container');
+</script>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+<article id="prenext-posts" class="prev-next articles">
+    <div class="row article-row">
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge left-badge text-color">
+                <i class="fa fa-chevron-left"></i>&nbsp;上一篇</div>
+            <div class="card">
+                <a href="/2019/01/15/qt-chuang-kou-jie-shao/">
+                    <div class="card-image">
+                        
+                        <img src="https://github.com/mcc321/mcc/blob/master/img/24.jpg?raw=true" class="responsive-img" alt="qt窗口介绍">
+                        
+                        <span class="card-title">qt窗口介绍</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary">
+Qt窗口之QMainWindow、QDialog、QWidget
+在 Qt 中，我们将窗口和控件统称为部件（Widget）。
+
+
+窗口是指程序的整体界面，可以包含标题栏、菜单栏、工具栏、关闭按钮、最小化按钮、最大化按钮等。
+
+控件是指按钮</div>
+                    <div class="publish-info">
+                        <span class="publish-date">
+                            <i class="fa fa-clock-o fa-fw icon-date"></i>2019-01-15
+                        </span>
+                        <span class="publish-author">
+                            
+                            <i class="fa fa-user fa-fw"></i>
+                            mcc
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/Qt窗口之QMainWindow、QDialog、QWidget/" target="_blank">
+                        <span class="chip bg-color">Qt窗口之QMainWindow、QDialog、QWidget</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge right-badge text-color">
+                下一篇&nbsp;<i class="fa fa-chevron-right"></i>
+            </div>
+            <div class="card">
+                <a href="/2019/01/14/qt-c-xue-xi-ji-lu-yi/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/17.jpg" class="responsive-img" alt="qt-c++学习记录(一)">
+                        
+                        <span class="card-title">qt-c++学习记录(一)</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary">信号槽
+信号与槽
+最近参加了一个模仿机器人大赛，要求用qt结合视觉方面实现魔方模式识别，对于自己来说算是比较有挑战性的一次比赛了，除了要重新学习一年级学的c++还要新学qt，再就是补习opencv了，也好久没写视觉代码了，感觉生了许多，博客</div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="fa fa-clock-o fa-fw icon-date"></i>2019-01-14
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fa fa-user fa-fw"></i>
+                            mcc
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/qt/" target="_blank">
+                        <span class="chip bg-color">qt</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+    </div>
+</article>
+</div>
+
+
+    </div>
+    <div class="col l3 hide-on-med-and-down">
+        <div class="toc-widget">
+            <div class="toc-title"><i class="fa fa-list-alt"></i>&nbsp;&nbsp;目录</div>
+            <div id="toc-content"></div>
+        </div>
+    </div>
+</div>
+
+<script src="/libs/tocbot/tocbot.min.js"></script>
+<script>
+    $(function () {
+        tocbot.init({
+            tocSelector: '#toc-content',
+            contentSelector: '#articleContent',
+            headingSelector: 'h1, h2, h3, h4, h5'
+        });
+
+        // modify the toc link href to support Chinese.
+        let i = 0;
+        let tocHeading = 'toc-heading-';
+        $('#toc-content a').each(function () {
+            $(this).attr('href', '#' + tocHeading + (++i));
+        });
+
+        // modify the heading title id to support Chinese.
+        i = 0;
+        $('#articleContent').children('h1, h2, h3, h4, h5').each(function () {
+            $(this).attr('id', tocHeading + (++i));
+        });
+
+        // Set scroll toc fixed.
+        let tocHeight = parseInt($(window).height() * 0.4 - 64);
+        let $tocWidget = $('.toc-widget');
+        $(window).scroll(function () {
+            let scroll = $(window).scrollTop();
+            /* add post toc fixed. */
+            if (scroll > tocHeight) {
+                $tocWidget.addClass('toc-fixed');
+            } else {
+                $tocWidget.removeClass('toc-fixed');
+            }
+        });
+    });
+</script>
+    
+
+</main>
+
+
+<footer class="page-footer bg-color">
+    <div class="container row center-align">
+        <div class="col s12 m8 l8 copy-right">
+            本站由&copy;<a href="https://blinkfox.github.io/" target="_blank">Blinkfox</a>基于
+            <a href="https://hexo.io/" target="_blank">Hexo</a> 的
+            <a href="https://github.com/blinkfox/hexo-theme-matery" target="_blank">hexo-theme-matery</a>主题搭建.
+
+            
+                &nbsp;<i class="fa fa-area-chart"></i>&nbsp;站点总字数:&nbsp;
+                <span class="white-color">19.8k</span>
+            
+
+            
+			
+                <br>
+                
+                <span id="busuanzi_container_site_pv">
+                    <i class="fa fa-heart-o"></i>
+                    本站总访问量 <span id="busuanzi_value_site_pv" class="white-color"></span>
+                </span>
+                
+                
+                <span id="busuanzi_container_site_uv">
+                    <i class="fa fa-users"></i>
+                    次,&nbsp;访客数 <span id="busuanzi_value_site_uv" class="white-color"></span> 人.
+                </span>
+                
+            
+        </div>
+        <div class="col s12 m4 l4 social-link social-statis"><a href="https://github.com/mcc321" class="tooltipped" target="_blank" data-tooltip="访问我的GitHub" data-position="top" data-delay="50">
+    <i class="fa fa-github"></i>
+</a>
+<a href="mailto:2393811002@qq.com" class="tooltipped" target="_blank" data-tooltip="邮件联系我" data-position="top" data-delay="50">
+    <i class="fa fa-envelope-open"></i>
+</a>
+<a href="#!" class="tooltipped" data-tooltip="QQ联系我: 2393811002" data-position="top" data-delay="50">
+    <i class="fa fa-qq"></i>
+</a>
+<a href="#!" class="tooltipped" data-tooltip="微信联系我: zc2393811002" data-position="top" data-delay="50">
+    <i class="fa fa-wechat"></i>
+</a></div>
+    </div>
+</footer>
+
+<div class="progress-bar"></div>
+
+
+<!-- 搜索遮罩框 -->
+<div id="searchModal" class="modal">
+    <div class="modal-content">
+        <div class="search-header">
+            <span class="title"><i class="fa fa-search"></i>&nbsp;&nbsp;搜索</span>
+            <input type="search" id="searchInput" name="s" placeholder="请输入搜索的关键字" class="search-input" autofocus>
+        </div>
+        <div id="searchResult"></div>
+    </div>
+</div>
+
+<script src="/js/search.js"></script>
+<script type="text/javascript">
+    searchFunc("/" + "search.xml", 'searchInput', 'searchResult');
+</script>
+<!-- 回到顶部按钮 -->
+<div id="backTop" class="top-scroll">
+    <a class="btn-floating btn-large waves-effect waves-light" href="#!">
+        <i class="fa fa-angle-up"></i>
+    </a>
+</div>
+
+
+<script src="/libs/materialize/js/materialize.min.js"></script>
+<script src="/libs/masonry/masonry.pkgd.min.js"></script>
+<script src="/libs/aos/aos.js"></script>
+<script src="/libs/scrollprogress/scrollProgress.min.js"></script>
+<script src="/libs/lightGallery/js/lightgallery-all.min.js"></script>
+<script src="/js/matery.js"></script>
+
+<!-- Global site tag (gtag.js) - Google Analytics -->
+
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-131240581-2"></script>
+<script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() {
+        dataLayer.push(arguments);
+    }
+
+    gtag('js', new Date());
+    gtag('config', 'UA-131240581-2');
+</script>
+
+
+
+
+    <script async src="/libs/others/busuanzi.pure.mini.js"></script>
+
+
+</body>
+</html>

@@ -1,0 +1,1645 @@
+<!DOCTYPE HTML>
+<html lang="zh-CN">
+
+
+<head><meta name="generator" content="Hexo 3.8.0">
+    <meta charset="utf-8">
+    <meta name="keywords" content="Ruby学习(一), mcc">
+    <meta name="description" content="
+
+[TOC]
+Ruby从入门到放弃ruby语法,关键字 # @Author: mcc 
+ # @Date: 2019-01-26 08:30:00 
+ # @Last Modified by: mcc 
+ # @Last Modified">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="renderer" content="webkit|ie-stand|ie-comp">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <title>Ruby学习(一) | mcc</title>
+    <link rel="icon" type="image/png" href="/icon.png">
+
+    <link rel="stylesheet" type="text/css" href="/libs/awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/materialize/css/materialize.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/aos/aos.css">
+    <link rel="stylesheet" type="text/css" href="/libs/animate/animate.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/lightGallery/css/lightgallery.min.css">
+    <link rel="stylesheet" type="text/css" href="/css/matery.css">
+    <link rel="stylesheet" type="text/css" href="/css/my.css">
+
+    <script src="/libs/jquery/jquery-2.2.0.min.js"></script>
+<link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css"></head>
+
+
+<body>
+
+<header class="navbar-fixed">
+    <nav id="headNav" class="bg-color nav-transparent">
+        <div id="navContainer" class="container">
+            <div class="nav-wrapper">
+                <div class="brand-logo">
+                    <a href="/" class="waves-effect waves-light">
+                        
+                        <img src="/medias/mcc.png" class="logo-img hide-on-small-only">
+                        
+                        <span class="logo-span">mcc</span>
+                    </a>
+                </div>
+                
+
+<a href="#" data-activates="mobile-nav" class="button-collapse"><i class="fa fa-navicon"></i></a>
+<ul class="right">
+    
+    <li class="hide-on-med-and-down">
+        <a href="/" class="waves-effect waves-light">
+            
+            <i class="fa fa-home"></i>
+            
+            <span>首页</span>
+        </a>
+    </li>
+    
+    <li class="hide-on-med-and-down">
+        <a href="/tags" class="waves-effect waves-light">
+            
+            <i class="fa fa-tags"></i>
+            
+            <span>标签</span>
+        </a>
+    </li>
+    
+    <li class="hide-on-med-and-down">
+        <a href="/categories" class="waves-effect waves-light">
+            
+            <i class="fa fa-bookmark"></i>
+            
+            <span>分类</span>
+        </a>
+    </li>
+    
+    <li class="hide-on-med-and-down">
+        <a href="/archives" class="waves-effect waves-light">
+            
+            <i class="fa fa-archive"></i>
+            
+            <span>归档</span>
+        </a>
+    </li>
+    
+    <li class="hide-on-med-and-down">
+        <a href="/about" class="waves-effect waves-light">
+            
+            <i class="fa fa-user-circle-o"></i>
+            
+            <span>关于</span>
+        </a>
+    </li>
+    
+    <li class="hide-on-med-and-down">
+        <a href="/friends" class="waves-effect waves-light">
+            
+            <i class="fa fa-address-book"></i>
+            
+            <span>友情链接</span>
+        </a>
+    </li>
+    
+    <li>
+        <a id="toggleSearch" class="waves-effect waves-light">
+            <i id="searchIcon" class="mdi-action-search" title="搜索"></i>
+        </a>
+    </li>
+
+</ul>
+
+<div class="side-nav" id="mobile-nav">
+
+    <div class="mobile-head bg-color">
+        
+        <img src="/medias/mcc.png" class="logo-img circle responsive-img">
+        
+        <div class="logo-name">mcc</div>
+        <div class="logo-desc">
+            
+            zhang不大的先生
+            
+        </div>
+    </div>
+
+    
+
+    <ul class="menu-list mobile-menu-list">
+        
+        <li>
+            <a href="/" class="waves-effect waves-light">
+                
+                <i class="fa fa-fw fa-home"></i>
+                
+                首页
+            </a>
+        </li>
+        
+        <li>
+            <a href="/tags" class="waves-effect waves-light">
+                
+                <i class="fa fa-fw fa-tags"></i>
+                
+                标签
+            </a>
+        </li>
+        
+        <li>
+            <a href="/categories" class="waves-effect waves-light">
+                
+                <i class="fa fa-fw fa-bookmark"></i>
+                
+                分类
+            </a>
+        </li>
+        
+        <li>
+            <a href="/archives" class="waves-effect waves-light">
+                
+                <i class="fa fa-fw fa-archive"></i>
+                
+                归档
+            </a>
+        </li>
+        
+        <li>
+            <a href="/about" class="waves-effect waves-light">
+                
+                <i class="fa fa-fw fa-user-circle-o"></i>
+                
+                关于
+            </a>
+        </li>
+        
+        <li>
+            <a href="/friends" class="waves-effect waves-light">
+                
+                <i class="fa fa-fw fa-address-book"></i>
+                
+                友情链接
+            </a>
+        </li>
+        
+        
+    </ul>
+
+    <div class="social-link"><a href="https://github.com/mcc321" class="tooltipped" target="_blank" data-tooltip="访问我的GitHub" data-position="top" data-delay="50">
+    <i class="fa fa-github"></i>
+</a>
+<a href="mailto:2393811002@qq.com" class="tooltipped" target="_blank" data-tooltip="邮件联系我" data-position="top" data-delay="50">
+    <i class="fa fa-envelope-open"></i>
+</a>
+<a href="#!" class="tooltipped" data-tooltip="QQ联系我: 2393811002" data-position="top" data-delay="50">
+    <i class="fa fa-qq"></i>
+</a>
+<a href="#!" class="tooltipped" data-tooltip="微信联系我: zc2393811002" data-position="top" data-delay="50">
+    <i class="fa fa-wechat"></i>
+</a></div>
+</div>
+
+            </div>
+        </div>
+
+        
+    </nav>
+</header>
+
+
+<script src="/libs/cryptojs/crypto-js.min.js"></script>
+<script>
+    (function() {
+        let pwd = '';
+        if (pwd && pwd.length > 0) {
+            if (pwd !== CryptoJS.SHA256(prompt('请输入访问本文章的密码')).toString(CryptoJS.enc.Hex)) {
+                alert('密码错误，将返回主页！');
+                location.href = '/';
+            }
+        }
+    })();
+</script>
+
+
+
+
+<div class="bg-cover post-cover" style="background-image: url('https://github.com/mcc321/mcc/blob/master/img/33.jpg?raw=true')">
+    <div class="container">
+        <div class="row">
+            <div class="col s12 m12 l12">
+                <div class="brand">
+                    <div class="description center-align post-title">
+                        Ruby学习(一)
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<main class="post-container content">
+
+    
+    <link rel="stylesheet" href="/libs/tocbot/tocbot.css">
+<style>
+    #articleContent h1,
+    #articleContent h2,
+    #articleContent h3,
+    #articleContent h4,
+    #articleContent h5,
+    #articleContent h6 {
+        padding-top: 76px;
+        margin-top: -76px;
+    }
+
+    #articleContent h1 {
+        line-height: 3.5rem;
+    }
+
+    #articleContent h2 {
+        line-height: 3.2rem;
+    }
+
+    #articleContent h3 {
+        line-height: 2.8rem;
+    }
+
+    #articleContent h4 {
+        line-height: 2.5rem;
+    }
+
+    #articleContent h5 {
+        line-height: 2.2rem;
+    }
+
+    #articleContent h6 {
+        line-height: 1.9rem;
+    }
+
+    #articleContent :focus {
+        outline: none;
+    }
+
+    .toc-fixed {
+        position: fixed;
+        top: 64px;
+    }
+
+    .toc-widget {
+        padding-left: 20px;
+    }
+
+    .toc-widget .toc-title {
+        margin: 35px 0 15px 0;
+        padding-left: 17px;
+        font-size: 1.5rem;
+        font-weight: bold;
+        line-height: 1.5rem;
+    }
+
+    .toc-widget ol {
+        padding: 0;
+        list-style: none;
+    }
+
+    #toc-content ol {
+        padding-left: 10px;
+    }
+
+    #toc-content ol li {
+        padding-left: 10px;
+    }
+
+    #toc-content .toc-link:hover {
+        color: #42b983;
+        font-weight: 700;
+        text-decoration: underline;
+    }
+
+    #toc-content .toc-link::before {
+        background-color: transparent;
+        max-height: 25px;
+    }
+
+    #toc-content .is-active-link {
+        color: #42b983;
+    }
+
+    #toc-content .is-active-link::before {
+        background-color: #42b983;
+    }
+</style>
+<div class="row">
+    <div class="col s12 m12 l9">
+        <!-- 文章内容详情 -->
+<div id="artDetail">
+    <div class="card">
+        <div class="card-content article-info">
+            <div class="row tag-cate">
+                <div class="col s7">
+                    
+                    <div class="article-tag">
+                        
+                            <a href="/tags/ruby/" target="_blank">
+                                <span class="chip bg-color">ruby</span>
+                            </a>
+                        
+                    </div>
+                    
+                </div>
+                <div class="col s5 right-align">
+                    
+                </div>
+            </div>
+
+            <div class="post-info">
+                <div class="post-date info-break-policy">
+                    <i class="fa fa-calendar-minus-o fa-fw"></i>发布日期:&nbsp;&nbsp;
+                    2019-01-26
+                </div>
+
+                
+                    
+                    <div class="info-break-policy">
+                        <i class="fa fa-file-word-o fa-fw"></i>文章字数:&nbsp;&nbsp;
+                        3.8k
+                    </div>
+                    
+
+                    
+                    <div class="info-break-policy">
+                        <i class="fa fa-clock-o fa-fw"></i>阅读时长:&nbsp;&nbsp;
+                        20 分
+                    </div>
+                    
+                
+				
+				
+                    <div id="busuanzi_container_page_pv" class="info-break-policy">
+                        <i class="fa fa-eye fa-fw"></i>阅读次数:&nbsp;&nbsp;
+                        <span id="busuanzi_value_page_pv"></span>
+                    </div>
+				
+            </div>
+        </div>
+        <hr class="clearfix">
+        <div class="card-content article-card-content">
+            <div id="articleContent">
+                <hr>
+<p><img src="https://github.com/mcc321/mcc/blob/master/img/32.jpg?raw=true" alt="mcc"></p>
+<p>[TOC]</p>
+<h1 id="Ruby从入门到放弃"><a href="#Ruby从入门到放弃" class="headerlink" title="Ruby从入门到放弃"></a>Ruby从入门到放弃</h1><h2 id="ruby语法-关键字"><a href="#ruby语法-关键字" class="headerlink" title="ruby语法,关键字"></a>ruby语法,关键字</h2><pre class=" language-ruby"><code class="language-ruby"> <span class="token comment" spellcheck="true"># @Author: mcc </span>
+ <span class="token comment" spellcheck="true"># @Date: 2019-01-26 08:30:00 </span>
+ <span class="token comment" spellcheck="true"># @Last Modified by: mcc </span>
+ <span class="token comment" spellcheck="true"># @Last Modified time: 2019-01-26 08:30:00 </span>
+
+
+<span class="token keyword">BEGIN</span><span class="token punctuation">{</span>puts <span class="token string">"hello mcc!"</span><span class="token punctuation">}</span>
+<span class="token keyword">END</span><span class="token punctuation">{</span>puts <span class="token string">"goodbye!"</span><span class="token punctuation">}</span>
+
+<span class="token keyword">class</span> <span class="token class-name">Hello</span>
+    <span class="token keyword">def</span> howdy
+        greeting<span class="token operator">=</span><span class="token string">"hello,Matz!"</span>
+        puts greeting
+    <span class="token keyword">end</span>
+<span class="token keyword">end</span>
+
+<span class="token keyword">class</span> <span class="token class-name">Goodbye</span><span class="token operator">&lt;</span><span class="token constant">Hello</span>
+    <span class="token keyword">def</span> solong
+        farewell<span class="token operator">=</span><span class="token string">"Goodbye , Matz!"</span>
+        puts farewell
+    <span class="token keyword">end</span>
+<span class="token keyword">end</span>
+
+friendly<span class="token operator">=</span><span class="token constant">Goodbye</span><span class="token punctuation">.</span><span class="token keyword">new</span>
+<span class="token class-name">friendly<span class="token punctuation">.</span>howdy</span>
+friendly<span class="token punctuation">.</span>solong
+eval <span class="token string">"puts 'this is a test instruction'"</span>
+<span class="token comment" spellcheck="true"># this is a comment</span>
+x<span class="token operator">=</span><span class="token number">10</span>
+puts x<span class="token punctuation">.</span>kind_of<span class="token operator">?</span><span class="token builtin">Integer</span>
+puts x<span class="token punctuation">.</span><span class="token keyword">class</span>
+<span class="token class-name">puts</span> x<span class="token punctuation">.</span>to_f
+thoreau<span class="token operator">=</span>"<span class="token constant">If</span> a man doesn't keep pace with his 
+companions<span class="token punctuation">,</span>perhaps it is beacause he hears a different drumer"
+puts thoreau<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">]</span>
+puts thoreau<span class="token punctuation">[</span><span class="token number">12</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token number">21</span><span class="token punctuation">]</span>
+puts thoreau<span class="token punctuation">[</span><span class="token operator">-</span><span class="token number">6</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">]</span>
+thoreau<span class="token punctuation">.</span>each_byte <span class="token keyword">do</span> <span class="token operator">|</span>c<span class="token operator">|</span>
+    print c<span class="token punctuation">.</span>to_i<span class="token punctuation">,</span><span class="token string">"/"</span>
+<span class="token keyword">end</span>
+<span class="token comment" spellcheck="true">#全局变量</span>
+<span class="token variable">$name</span><span class="token operator">=</span><span class="token string">"mcc"</span> 
+<span class="token comment" spellcheck="true">#局部变量</span>
+name<span class="token operator">=</span><span class="token string">"mcc"</span>
+<span class="token comment" spellcheck="true">#常量</span>
+<span class="token constant">NAME</span><span class="token operator">=</span><span class="token string">"mcc"</span>
+<span class="token comment" spellcheck="true">#类实例变量</span>
+<span class="token variable">@name</span><span class="token operator">=</span><span class="token string">"mcc"</span>
+<span class="token comment" spellcheck="true">#类变量</span>
+<span class="token variable">@@name</span><span class="token operator">=</span><span class="token string">"mcc"</span>
+hamlet<span class="token operator">=</span><span class="token string">"The slings and arrows of outrageous forturn"</span>
+print hamlet<span class="token punctuation">.</span><span class="token function">scan</span><span class="token punctuation">(</span><span class="token regex">/\w+/</span><span class="token punctuation">)</span>
+puts
+
+value<span class="token operator">=</span><span class="token number">0</span>
+<span class="token keyword">if</span> value<span class="token punctuation">.</span>zero<span class="token operator">?</span><span class="token keyword">then</span>
+    puts <span class="token string">"value is zero,Did you guess that one?"</span>
+<span class="token keyword">end</span>
+
+practice <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token string">"Washington"</span><span class="token punctuation">,</span><span class="token string">"oregon"</span><span class="token punctuation">,</span><span class="token string">"California"</span><span class="token punctuation">]</span>
+puts practice<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span>
+practice2<span class="token operator">=</span><span class="token punctuation">{</span><span class="token string">"WA"</span><span class="token operator">=</span><span class="token operator">></span><span class="token string">"Washington"</span><span class="token punctuation">,</span><span class="token string">"OR"</span><span class="token operator">=</span><span class="token operator">></span><span class="token string">"oregon"</span><span class="token punctuation">,</span><span class="token string">"CA"</span><span class="token operator">=</span><span class="token operator">></span><span class="token string">"California"</span><span class="token punctuation">}</span>
+puts practice2<span class="token punctuation">[</span><span class="token string">"OR"</span><span class="token punctuation">]</span>
+
+
+<span class="token keyword">def</span> hello 
+    puts <span class="token string">"hello Matz"</span>
+<span class="token keyword">end</span>
+hello
+<span class="token comment" spellcheck="true">#undef hello</span>
+<span class="token keyword">def</span> hello 
+    puts <span class="token string">"hello mcc"</span>
+<span class="token keyword">end</span>
+hello
+
+<span class="token comment" spellcheck="true">#含参</span>
+<span class="token keyword">def</span> <span class="token function">repeat</span><span class="token punctuation">(</span>word<span class="token punctuation">,</span>time<span class="token punctuation">)</span>
+    puts word<span class="token operator">*</span>time
+<span class="token keyword">end</span>
+<span class="token function">repeat</span><span class="token punctuation">(</span><span class="token string">"hello"</span><span class="token punctuation">,</span><span class="token number">3</span><span class="token punctuation">)</span>
+
+<span class="token keyword">def</span> <span class="token constant">Matz</span>
+    <span class="token keyword">return</span> <span class="token string">"mcc"</span>
+<span class="token keyword">end</span>
+a<span class="token operator">=</span><span class="token function">Matz</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+puts a
+
+x<span class="token punctuation">,</span>y<span class="token operator">=</span><span class="token number">1.0</span><span class="token punctuation">,</span><span class="token number">1.0</span>
+<span class="token comment" spellcheck="true"># puts x.eql?(y)</span>
+<span class="token comment" spellcheck="true"># puts x.eql? y</span>
+x<span class="token operator">=</span><span class="token string">"this is a test string"</span>
+x<span class="token punctuation">.</span><span class="token function">delete</span><span class="token punctuation">(</span><span class="token string">"test"</span><span class="token punctuation">)</span>
+puts x
+x<span class="token punctuation">.</span>delete<span class="token operator">!</span><span class="token punctuation">(</span><span class="token string">'test'</span><span class="token punctuation">)</span>
+puts x
+
+<span class="token keyword">class</span> <span class="token class-name">Name</span>
+    <span class="token keyword">def</span> <span class="token function">family_name</span><span class="token punctuation">(</span>family<span class="token punctuation">)</span>
+        <span class="token variable">@Family_name</span><span class="token operator">=</span>family
+    <span class="token keyword">end</span>
+    <span class="token keyword">def</span> <span class="token function">given_name</span><span class="token punctuation">(</span>given<span class="token punctuation">)</span>
+        <span class="token variable">@given_name</span><span class="token operator">=</span>given
+    <span class="token keyword">end</span>
+<span class="token keyword">end</span>
+
+n<span class="token operator">=</span><span class="token constant">Name</span><span class="token punctuation">.</span><span class="token keyword">new</span>
+<span class="token class-name">puts</span> n<span class="token punctuation">.</span>family_name <span class="token string">"Matsumoto"</span>
+puts n<span class="token punctuation">.</span>given_name <span class="token string">"Yukihiro"</span>
+
+<span class="token comment" spellcheck="true">#参数的默认值</span>
+<span class="token keyword">def</span> <span class="token function">repeat2</span><span class="token punctuation">(</span>word<span class="token operator">=</span><span class="token string">"hello!"</span><span class="token punctuation">,</span>times<span class="token operator">=</span><span class="token number">3</span><span class="token punctuation">)</span>
+    puts word<span class="token operator">*</span>times
+<span class="token keyword">end</span>
+puts repeat2 <span class="token string">"mcc\n"</span><span class="token punctuation">,</span><span class="token number">4</span>
+
+
+<span class="token keyword">def</span> <span class="token function">num_args</span><span class="token punctuation">(</span><span class="token operator">*</span>args<span class="token punctuation">)</span>
+    length<span class="token operator">=</span>args<span class="token punctuation">.</span>size
+    label<span class="token operator">=</span>length<span class="token operator">==</span><span class="token number">1</span><span class="token operator">?</span><span class="token string">"argument"</span><span class="token punctuation">:</span><span class="token string">"arguments"</span>
+    num<span class="token operator">=</span>length<span class="token punctuation">.</span>to_s<span class="token operator">+</span><span class="token string">" "</span><span class="token operator">+</span>label<span class="token operator">+</span><span class="token string">" "</span><span class="token operator">+</span><span class="token string">"{"</span><span class="token operator">+</span>args<span class="token punctuation">.</span>inspect<span class="token operator">+</span><span class="token string">"}"</span>
+    num
+<span class="token keyword">end</span>
+puts num_args
+puts <span class="token function">num_args</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span>
+puts <span class="token function">num_args</span><span class="token punctuation">(</span><span class="token string">"mcc"</span><span class="token punctuation">,</span><span class="token number">1</span><span class="token punctuation">,</span><span class="token number">34</span><span class="token punctuation">)</span>
+
+
+<span class="token keyword">def</span> <span class="token function">two_plus</span><span class="token punctuation">(</span>one<span class="token punctuation">,</span>two<span class="token punctuation">,</span><span class="token operator">*</span>args<span class="token punctuation">)</span>
+    length<span class="token operator">=</span>args<span class="token punctuation">.</span>size
+    label<span class="token operator">=</span>length<span class="token operator">==</span><span class="token number">1</span><span class="token operator">?</span><span class="token string">"argument"</span><span class="token punctuation">:</span><span class="token string">"arguments"</span>
+    num<span class="token operator">=</span>length<span class="token punctuation">.</span>to_s <span class="token operator">+</span> <span class="token string">" "</span> <span class="token operator">+</span> label <span class="token operator">+</span> <span class="token string">" "</span> <span class="token operator">+</span> <span class="token string">"{"</span><span class="token operator">+</span>args<span class="token punctuation">.</span>inspect<span class="token operator">+</span><span class="token string">"}"</span>
+    num
+<span class="token keyword">end</span>
+puts two_plus <span class="token number">1</span><span class="token punctuation">,</span><span class="token number">2</span>
+puts two_plus <span class="token number">1</span><span class="token punctuation">,</span><span class="token number">2</span><span class="token punctuation">,</span><span class="token number">3</span><span class="token punctuation">,</span><span class="token number">4</span><span class="token punctuation">,</span><span class="token number">5</span>
+puts two_plus <span class="token number">12</span><span class="token punctuation">,</span><span class="token number">43</span><span class="token punctuation">,</span><span class="token number">12</span><span class="token punctuation">,</span><span class="token number">2</span><span class="token punctuation">,</span><span class="token string">"asdfa"</span>
+
+
+<span class="token keyword">def</span> greet
+    puts <span class="token string">"hi"</span>
+<span class="token keyword">end</span>
+<span class="token keyword">alias</span> hi greet
+hi
+puts greet<span class="token punctuation">.</span>object_id<span class="token punctuation">,</span>hi<span class="token punctuation">.</span>object_id
+practice<span class="token operator">=</span><span class="token punctuation">[</span><span class="token string">"a"</span><span class="token punctuation">,</span><span class="token string">"b"</span><span class="token punctuation">,</span><span class="token string">"c"</span><span class="token punctuation">,</span><span class="token string">"d"</span><span class="token punctuation">]</span>
+practice<span class="token punctuation">.</span><span class="token keyword">each</span> <span class="token keyword">do</span> <span class="token operator">|</span>element<span class="token operator">|</span>
+    puts element
+<span class="token keyword">end</span>
+
+practice<span class="token punctuation">.</span><span class="token keyword">each</span><span class="token punctuation">{</span><span class="token operator">|</span>e<span class="token operator">|</span> puts e<span class="token punctuation">}</span>
+
+
+<span class="token keyword">def</span> gimme
+    <span class="token keyword">if</span> block_given<span class="token operator">?</span>
+        <span class="token keyword">yield</span>
+    <span class="token keyword">else</span>
+        puts <span class="token string">"i'm a block_less"</span>
+    <span class="token keyword">end</span>
+<span class="token keyword">end</span>
+
+gimme<span class="token punctuation">{</span>puts <span class="token string">"this is block test"</span><span class="token punctuation">}</span>
+gimme
+
+count<span class="token operator">=</span><span class="token builtin">Proc</span><span class="token punctuation">.</span><span class="token keyword">new</span><span class="token punctuation">{</span><span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">,</span><span class="token number">2</span><span class="token punctuation">,</span><span class="token number">3</span><span class="token punctuation">,</span><span class="token number">4</span><span class="token punctuation">,</span><span class="token number">5</span><span class="token punctuation">]</span><span class="token punctuation">.</span><span class="token keyword">each</span> <span class="token keyword">do</span> <span class="token operator">|</span>i<span class="token operator">|</span> print i <span class="token keyword">end</span><span class="token punctuation">;</span>puts<span class="token punctuation">}</span>
+your_proc<span class="token operator">=</span>lambda<span class="token punctuation">{</span>puts <span class="token string">"Larch : 'your range'"</span><span class="token punctuation">}</span>
+my_proc<span class="token operator">=</span>proc<span class="token punctuation">{</span>puts <span class="token string">"Morticial: 'who was at the door Lurch'"</span><span class="token punctuation">}</span>
+puts count<span class="token punctuation">.</span><span class="token keyword">class</span><span class="token punctuation">,</span>your_proc<span class="token punctuation">.</span><span class="token keyword">class</span><span class="token punctuation">,</span>my_proc<span class="token punctuation">.</span><span class="token keyword">class</span>
+<span class="token class-name">count<span class="token punctuation">.</span>call</span>
+your_proc<span class="token punctuation">.</span>call
+my_proc<span class="token punctuation">.</span>call
+name<span class="token operator">=</span><span class="token string">"Matz"</span>
+puts name<span class="token punctuation">.</span>to_sym
+puts <span class="token symbol">:Matz</span><span class="token punctuation">.</span>id2name
+puts name<span class="token operator">==</span><span class="token symbol">:Matz</span><span class="token punctuation">.</span>id2name
+t<span class="token operator">=</span><span class="token number">0</span>
+<span class="token keyword">for</span> i <span class="token keyword">in</span> <span class="token builtin">Symbol</span><span class="token punctuation">.</span>all_symbols <span class="token keyword">do</span>
+    print <span class="token string">"%-20.20s \t"</span><span class="token operator">%</span>i
+    <span class="token keyword">if</span> t<span class="token operator">==</span><span class="token number">4</span>
+        t<span class="token operator">=</span><span class="token number">0</span>
+        puts
+    <span class="token keyword">else</span>
+        t<span class="token operator">+</span><span class="token operator">=</span><span class="token number">1</span>
+    <span class="token keyword">end</span>
+<span class="token keyword">end</span>
+
+</code></pre>
+<h4 id="命名规则"><a href="#命名规则" class="headerlink" title="命名规则"></a>命名规则</h4><ul>
+<li>类名必须首字母大写</li>
+<li>常见的命名<ul>
+<li>常量:首字母必须大写，一般全部大写</li>
+<li>局部变量小写</li>
+<li>全局变量加上<code>$</code>,比如说<code>$name=&quot;mcc&quot;</code></li>
+<li>类变量加@@</li>
+<li>类实例变量加@</li>
+</ul>
+</li>
+</ul>
+<h4 id="关键字"><a href="#关键字" class="headerlink" title="关键字"></a>关键字</h4><ul>
+<li>BEGIN，END定义其实和结束时执行的<strong><em>语句块</em></strong></li>
+</ul>
+<pre class=" language-ruby"><code class="language-ruby"><span class="token keyword">BEGIN</span><span class="token punctuation">{</span>puts <span class="token string">"hello ruby"</span><span class="token punctuation">}</span>
+<span class="token keyword">END</span><span class="token punctuation">{</span>puts <span class="token string">"goodbye ruby"</span><span class="token punctuation">}</span>
+</code></pre>
+<ul>
+<li><p>end,每个函数，if判断语句，class后都必须有end</p>
+</li>
+<li><p>eval ,执行语句块，比如说<code>eval {puts &quot;hello&quot;}</code></p>
+</li>
+<li><p>new，类的实例化<code>a=classname.new</code></p>
+</li>
+<li><p>类型装换</p>
+<pre class=" language-ruby"><code class="language-ruby">to_i    to_c    to_r    to_f
+x<span class="token operator">=</span><span class="token number">10</span>
+x<span class="token punctuation">.</span>to_f        <span class="token comment" spellcheck="true">#to float</span>
+x<span class="token punctuation">.</span>to_c        <span class="token comment" spellcheck="true">#to char</span>
+x<span class="token punctuation">.</span>to_r        <span class="token comment" spellcheck="true">#to_rational(有理数)</span>
+x<span class="token punctuation">.</span>to_i        <span class="token comment" spellcheck="true">#to_integer</span>
+x<span class="token punctuation">.</span>to_sym    <span class="token comment" spellcheck="true">#to_symbol</span>
+a<span class="token operator">=</span><span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token number">12</span><span class="token punctuation">]</span>
+a<span class="token punctuation">.</span>to_a        <span class="token comment" spellcheck="true">#to_array</span>
+</code></pre>
+</li>
+<li><p>ARGV指的是终端中执行<code>ruby test.rb 参数</code>中的参数ARGV[0]指第一个参数</p>
+</li>
+<li><p>循环 </p>
+<blockquote>
+<p>这里需要先说明的是ruby中数值创建</p>
+<p><code>[1..3]</code>代表的是[1,2,3]</p>
+<p><code>[1...3]</code>代表的是[1,2]</p>
+</blockquote>
+<h5 id="1-for循环"><a href="#1-for循环" class="headerlink" title="1.for循环"></a>1.for循环</h5><pre class=" language-ruby"><code class="language-ruby"><span class="token keyword">for</span> i <span class="token keyword">in</span> array_name    <span class="token comment" spellcheck="true">#看到许多教程上说要在array_name后面加上do，但我是了一下，不加可以</span>
+    proc
+<span class="token keyword">end</span>    
+</code></pre>
+<h5 id="2-while循环"><a href="#2-while循环" class="headerlink" title="2.while循环"></a>2.while循环</h5><pre class=" language-ruby"><code class="language-ruby"><span class="token keyword">while</span> conditional
+    code
+<span class="token keyword">end</span>
+</code></pre>
+<h5 id="3-until循环"><a href="#3-until循环" class="headerlink" title="3.until循环"></a>3.until循环</h5><pre class=" language-ruby"><code class="language-ruby"><span class="token keyword">until</span> conditional
+   code
+<span class="token keyword">end</span>
+</code></pre>
+</li>
+<li><p>print ,puts,sprintf区别</p>
+<p><code>`</code>ruby<br>print “hello “,”world”    print “hello “,”world”<br>输出：<br>hello world=&gt; nil</p>
+</li>
+</ul>
+<p>  print “hello “,”world”<br>  输出：<br>  hello world=&gt; nil</p>
+<p>  puts “hello “+”world”<br>  输出：<br>  hello world<br>  =&gt; nil</p>
+<p>  puts “hello “,”world”<br>  输出：<br>  hello<br>  world<br>  =&gt; nil</p>
+<p>  a=sprintf(“hello %-12.5s %-12.5s”%[“China”,”mcc”])<br>  其实感觉这句话很鸡肋赋值的话直接a=”hello %-12.5s %-12.5s”%[“China”,”mcc”]不就完了，也许是还没领会到这个方法的真谛吧</p>
+<pre><code>
+* 符号`#{}`
+
+  ```ruby
+  算不上关键字但觉得有必要讲一下
+
+  mcc=&quot;zhang不大的先生&quot;
+
+  puts “hello #{mcc}”
+
+</code></pre><ul>
+<li><p>yield</p>
+<pre class=" language-ruby"><code class="language-ruby"><span class="token keyword">def</span> gimme
+    <span class="token keyword">if</span> block_given<span class="token operator">?</span>
+        <span class="token keyword">yield</span>
+    <span class="token keyword">else</span>
+        puts <span class="token string">"i'm a block_less"</span>
+    <span class="token keyword">end</span>
+<span class="token keyword">end</span>
+
+gimme<span class="token punctuation">{</span>puts <span class="token string">"this is block test"</span><span class="token punctuation">}</span>
+gimme
+
+输出：
+this is block test
+i'm a block_less
+
+<span class="token keyword">yield</span>简单来说就是执行语句块
+</code></pre>
+</li>
+<li><p>each</p>
+<p><code>`</code>ruby<br>[1..5].each do |e| </p>
+<pre><code>puts e
+</code></pre><p>end<br>输出：<br>1..5</p>
+</li>
+</ul>
+<p>  [1..5].each {|2| puts e}<br>  输出：<br>  1..5</p>
+<pre><code>
+
+
+* alias
+
+  ```ruby
+  def m
+      puts &quot;m&quot;
+  end
+  alias mm m
+</code></pre><ul>
+<li><p>操作符</p>
+<pre class=" language-ruby"><code class="language-ruby"><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">-</span>没有<span class="token operator">++</span>也没有<span class="token operator">--</span>操作符<span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">-</span>
+a
+label<span class="token operator">=</span>a<span class="token punctuation">.</span>size<span class="token operator">==</span><span class="token number">1</span><span class="token operator">?</span><span class="token string">"argument"</span><span class="token punctuation">:</span><span class="token string">"arguments"</span>  
+</code></pre>
+</li>
+</ul>
+<h4 id="条件语句"><a href="#条件语句" class="headerlink" title="条件语句"></a>条件语句</h4><ul>
+<li>if elsif else end，这里和python有点不同，elsif不是elif</li>
+</ul>
+<pre class=" language-ruby"><code class="language-ruby"> <span class="token comment" spellcheck="true"># @Author: mcc </span>
+ <span class="token comment" spellcheck="true"># @Date: 2019-01-26 14:29:07 </span>
+ <span class="token comment" spellcheck="true"># @Last Modified by: mcc </span>
+ <span class="token comment" spellcheck="true"># @Last Modified time: 2019-01-26 14:29:07 </span>
+
+print <span class="token string">"请输入用户名:"</span>
+username<span class="token operator">=</span>gets<span class="token punctuation">.</span>strip
+print <span class="token string">"请输入用户名:"</span>
+passwd<span class="token operator">=</span>gets<span class="token punctuation">.</span>strip
+
+<span class="token keyword">if</span> username<span class="token operator">==</span><span class="token string">"root"</span> <span class="token keyword">and</span> passwd<span class="token operator">==</span><span class="token string">"root"</span>
+    puts <span class="token string">"hello admin"</span>    
+<span class="token keyword">elsif</span> username<span class="token operator">==</span><span class="token string">"mcc"</span> <span class="token keyword">and</span> passwd<span class="token operator">==</span><span class="token string">"mcc"</span>
+    puts <span class="token string">"hello mcc"</span> 
+<span class="token keyword">else</span>
+    puts <span class="token string">"annoyance"</span>  
+<span class="token keyword">end</span>
+<span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span>
+输出：
+请输入用户名<span class="token symbol">:mcc</span>
+请输入用户名<span class="token symbol">:mcc</span>
+hello mcc
+
+请输入用户名<span class="token symbol">:root</span>
+请输入用户名<span class="token symbol">:root</span>
+hello admin
+
+请输入用户名<span class="token punctuation">:</span><span class="token string">"=="</span>" <span class="token keyword">or</span> <span class="token number">1</span><span class="token operator">==</span><span class="token number">1</span><span class="token comment" spellcheck="true">#</span>
+请输入用户名<span class="token punctuation">:</span><span class="token string">"=="</span>" <span class="token keyword">or</span> <span class="token number">1</span><span class="token operator">==</span><span class="token number">1</span><span class="token comment" spellcheck="true">#</span>
+annoyance
+</code></pre>
+<ul>
+<li><p>case语句</p>
+<p><code>`</code>ruby<br>lang=:fr<br>dog=case lang<br>when :en</p>
+<pre><code>&quot;dog&quot;
+</code></pre><p>when :es </p>
+<pre><code>&quot;perro&quot;
+</code></pre><p>when :fr </p>
+<pre><code>&quot;chien&quot;
+</code></pre><p>when :de</p>
+<pre><code>&quot;hund&quot;
+</code></pre><p>else</p>
+<pre><code>&quot;dog&quot;
+</code></pre><p>end<br>print dog</p>
+</li>
+</ul>
+<p>  scale=gets<br>  case scale<br>  when 0<br>      puts “lower”<br>  when [1..4]<br>      puts “medium low”<br>  when [5..9]<br>      puts “medium high”<br>  else<br>      puts “high”<br>  end<br>  [m..n]表示的是一个范围并非数组</p>
+<pre><code>
+* begin end循环补充
+
+  ```ruby
+  temp=98.3
+  begin
+      puts &quot;Your temperary is &quot;+temp.to_s+&quot;Fahrenheit&quot;
+      puts &quot;I think you are okay&quot;
+      temp+=1.0
+  end while temp&lt;98.6
+  puts &quot;your temperary is &quot;+temp.to_s+&quot;Fahrenheit&quot;
+</code></pre><ul>
+<li><p>break中断</p>
+<pre class=" language-ruby"><code class="language-ruby">breeds<span class="token operator">=</span><span class="token punctuation">[</span><span class="token string">"Quar"</span><span class="token punctuation">,</span><span class="token string">"Arabian"</span><span class="token punctuation">,</span><span class="token string">"djfia"</span><span class="token punctuation">,</span><span class="token string">"adsfas"</span><span class="token punctuation">]</span>
+temp<span class="token operator">=</span><span class="token punctuation">[</span><span class="token punctuation">]</span>
+i<span class="token operator">=</span><span class="token number">0</span>
+<span class="token keyword">while</span> i<span class="token operator">&lt;</span>breeds<span class="token punctuation">.</span>size
+    temp<span class="token operator">&lt;</span><span class="token operator">&lt;</span>breeds<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">.</span>capitalize
+    <span class="token keyword">break</span> <span class="token keyword">if</span> temp<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token operator">==</span><span class="token string">"Arabian"</span>
+    i<span class="token operator">+</span><span class="token operator">=</span><span class="token number">1</span>
+<span class="token keyword">end</span>
+puts temp
+<span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">-</span>
+输出：
+<span class="token constant">Quar</span>
+<span class="token constant">Arabian</span>
+</code></pre>
+</li>
+<li><p>unless与until和if与while的用法相反，这里不详细说明了</p>
+</li>
+<li><p>loop相当于while 1</p>
+</li>
+<li><p>times方法</p>
+<pre class=" language-ruby"><code class="language-ruby">比较<span class="token keyword">for</span>循环和times方法
+<span class="token keyword">for</span> i <span class="token keyword">in</span> <span class="token number">1</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token number">10</span>
+    print i<span class="token punctuation">,</span><span class="token string">"  "</span>
+<span class="token keyword">end</span>
+
+<span class="token number">10</span><span class="token punctuation">.</span>times<span class="token punctuation">{</span><span class="token operator">|</span>i<span class="token operator">|</span> print i<span class="token punctuation">,</span><span class="token string">"  "</span><span class="token punctuation">}</span>
+
+<span class="token number">10</span><span class="token punctuation">.</span>times <span class="token keyword">do</span> <span class="token operator">|</span>i<span class="token operator">|</span>
+    puts i
+<span class="token keyword">end</span>
+
+结果：
+<span class="token number">1</span>  <span class="token number">2</span>  <span class="token number">3</span>  <span class="token number">4</span>  <span class="token number">5</span>  <span class="token number">6</span>  <span class="token number">7</span>  <span class="token number">8</span>  <span class="token number">9</span>  <span class="token number">10</span>  <span class="token operator">=</span><span class="token operator">></span> <span class="token number">1</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token number">10</span>
+<span class="token number">0</span>  <span class="token number">1</span>  <span class="token number">2</span>  <span class="token number">3</span>  <span class="token number">4</span>  <span class="token number">5</span>  <span class="token number">6</span>  <span class="token number">7</span>  <span class="token number">8</span>  <span class="token number">9</span>  <span class="token operator">=</span><span class="token operator">></span> <span class="token number">10</span>
+</code></pre>
+</li>
+<li><p>upto和downto方法</p>
+<p><code>`</code>ruby<br>2.upto(12){|i| print i,”\t”}<br>12.downto(1){|i| print i,”\t”}</p>
+</li>
+</ul>
+<p>  2.upto(12) do |i|<br>      puts i<br>  end</p>
+<p>  12.downto(2) do |i|<br>      puts i<br>  end</p>
+<p>  结果：<br>  2       3       4       5       6       7       8       9       10      11      12      =&gt; 2<br>  12      11      10      9       8       7       6       5       4       3       2       1       =&gt; 12</p>
+<pre><code>
+* step变步长循环
+
+  ```ruby
+  1.step(9,2){|i| print i,&quot;\t&quot;}
+
+
+  1.step(9,2) do |i|
+      puts i
+  end
+
+  结果：
+  1       3       5       7       9       =&gt; 1
+</code></pre><h4 id="字符串"><a href="#字符串" class="headerlink" title="字符串"></a>字符串</h4><ul>
+<li><p>建立字符串</p>
+<pre class=" language-ruby"><code class="language-ruby">title<span class="token operator">=</span><span class="token builtin">String</span><span class="token punctuation">.</span><span class="token keyword">new</span>
+<span class="token class-name">title<span class="token punctuation">.</span>empty</span>
+title<span class="token punctuation">.</span>size
+</code></pre>
+</li>
+<li><p>嵌入文档</p>
+<pre class=" language-ruby"><code class="language-ruby">sonnet<span class="token operator">=</span><span class="token operator">&lt;</span><span class="token operator">&lt;</span>this
+aosdfjiajeoijodaofpaoef
+adfasdfv
+adsfa
+sdf
+a
+sdfg
+fsegrstrhse
+fg
+fad
+gfafreagaera
+gregvraehtrnseraerfd
+this
+
+puts sonnet
+这里需要解释一下，this是分割符，其间的所有字符赋值给sonnet
+</code></pre>
+</li>
+<li><p>连接字符</p>
+<pre class=" language-ruby"><code class="language-ruby"><span class="token operator">&lt;</span><span class="token operator">&lt;</span>和<span class="token operator">+</span>可以连接字符
+<span class="token string">"hello"</span><span class="token operator">+</span><span class="token string">" world"</span>
+<span class="token string">"hello"</span><span class="token operator">&lt;</span><span class="token operator">&lt;</span><span class="token string">" world"</span>
+<span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">-</span>
+输出：
+<span class="token operator">=</span><span class="token operator">></span> <span class="token string">"hello world"</span>
+</code></pre>
+</li>
+<li><p>访问字符</p>
+<pre class=" language-ruby"><code class="language-ruby">a<span class="token operator">=</span><span class="token string">"A horse ! a horse!my kingdom for a horse"</span>
+b<span class="token operator">=</span><span class="token string">"Act V ,Scan V"</span>
+c<span class="token operator">=</span><span class="token string">"King Richard III"</span>
+puts c<span class="token punctuation">[</span><span class="token string">"King"</span><span class="token punctuation">]</span>
+puts a<span class="token punctuation">[</span><span class="token number">4</span><span class="token punctuation">]</span>
+puts a<span class="token punctuation">[</span><span class="token number">4</span><span class="token punctuation">]</span><span class="token punctuation">.</span>chr
+puts a<span class="token punctuation">[</span><span class="token number">18</span><span class="token punctuation">,</span><span class="token number">23</span><span class="token punctuation">]</span>            <span class="token comment" spellcheck="true">#从18开始向后截取23个字符</span>
+puts a<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token number">4</span><span class="token punctuation">]</span>
+puts a<span class="token punctuation">.</span><span class="token function">index</span><span class="token punctuation">(</span><span class="token string">'a'</span><span class="token punctuation">)</span>        
+<span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">-</span>
+结果：
+<span class="token constant">King</span>
+r
+r
+my kingdom <span class="token keyword">for</span> a horse
+<span class="token constant">A</span> hor
+<span class="token number">10</span>
+
+这里可以看出根据索引数字返回的直接是字符不是<span class="token constant">ASKII</span>编码，看到书上的是<span class="token constant">ASKII</span>编码
+还有就是index函返回的是首次出现的偏移位置（首个字母偏移是<span class="token number">0</span>）
+</code></pre>
+</li>
+<li><p>字符串比较</p>
+<pre class=" language-ruby"><code class="language-ruby"><span class="token operator">==</span>
+<span class="token punctuation">.</span>equal<span class="token operator">?</span>
+其实我觉得ruby中很多实现都有有多种方法，和go语言的方法有很大差别，不过个人来说更喜欢go的风格
+</code></pre>
+</li>
+<li><p>字符串操作</p>
+<pre class=" language-ruby"><code class="language-ruby">a<span class="token operator">=</span><span class="token string">"hello "</span>
+puts a<span class="token operator">*</span><span class="token number">3</span>
+b<span class="token operator">=</span><span class="token string">"helo"</span>
+puts b<span class="token punctuation">.</span><span class="token function">insert</span><span class="token punctuation">(</span><span class="token number">3</span><span class="token punctuation">,</span><span class="token string">'l'</span><span class="token punctuation">)</span>
+puts b<span class="token punctuation">.</span>insert <span class="token number">3</span><span class="token punctuation">,</span><span class="token string">'l'</span>
+<span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">-</span>
+结果：
+hello hello hello
+hello
+helllo
+从结果中可以看出（）可不加，看了特别多函数都是这样，传递给函数的参数可不加（），仅需通过，分隔即可
+</code></pre>
+</li>
+<li><p>改变字符串</p>
+<pre class=" language-ruby"><code class="language-ruby">line<span class="token operator">=</span><span class="token string">"A Porsche! a Porsche! my kingdom for a Porsche"</span>
+cite<span class="token operator">=</span><span class="token string">"Act v,Scene V"</span>
+speaker<span class="token operator">=</span><span class="token string">"King Richard, 2007"</span>
+speaker<span class="token punctuation">[</span><span class="token string">", 2007"</span><span class="token punctuation">]</span><span class="token operator">=</span><span class="token string">"III"</span>
+puts speaker
+cite<span class="token punctuation">[</span><span class="token number">13</span><span class="token punctuation">]</span><span class="token operator">=</span><span class="token string">"IV"</span>
+p cite
+line<span class="token punctuation">[</span><span class="token number">39</span><span class="token punctuation">,</span><span class="token number">18</span><span class="token punctuation">]</span><span class="token operator">=</span><span class="token string">"Porsche 911 Turbo(涡轮)"</span>
+p line
+speaker<span class="token operator">=</span><span class="token string">"King Richard, 2007"</span>
+speaker<span class="token punctuation">[</span><span class="token number">13</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token number">15</span><span class="token punctuation">]</span><span class="token operator">=</span><span class="token string">"the Third "</span>
+p speaker
+<span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">-</span>
+结果：
+<span class="token constant">King</span> <span class="token constant">RichardIII</span>
+<span class="token string">"Act v,Scene VIV"</span>
+<span class="token string">"A Porsche! a Porsche! my kingdom for a Porsche 911 Turbo(\u6DA1\u8F6E)"</span>
+<span class="token string">"King Richard,the Third 07"</span>
+
+这里p输出是不进行转码，按原样打印字符串
+</code></pre>
+</li>
+<li><p>delete</p>
+<pre class=" language-ruby"><code class="language-ruby"><span class="token string">"kawejofsadjfnaksdfhoiae"</span><span class="token punctuation">.</span>delete <span class="token string">"a"</span>
+<span class="token operator">=</span><span class="token operator">></span> <span class="token string">"kwejofsdjfnksdfhoie"</span>
+</code></pre>
+</li>
+<li><p>chop和chomp</p>
+<pre class=" language-ruby"><code class="language-ruby">a<span class="token operator">=</span><span class="token operator">&lt;</span><span class="token operator">&lt;</span>li
+askdfaodsf
+asdflajfdoafd<span class="token operator">/</span>afd
+afdlajfoa<span class="token operator">/</span>n
+afdlkafok\n\n\n
+li
+b<span class="token punctuation">,</span>c<span class="token punctuation">,</span>d<span class="token operator">=</span>a<span class="token punctuation">,</span>a<span class="token punctuation">,</span>a
+
+p c<span class="token punctuation">.</span>chomp
+p b<span class="token punctuation">.</span>chomp<span class="token operator">!</span>
+p a<span class="token punctuation">.</span>chop
+p d<span class="token punctuation">.</span>chop<span class="token operator">!</span>
+<span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span>
+结果：
+<span class="token string">"askdfaodsf\nasdflajfdoafd/afd\nafdlajfoa/n\nafdlkafok\n\n\n"</span>
+<span class="token string">"askdfaodsf\nasdflajfdoafd/afd\nafdlajfoa/n\nafdlkafok\n\n\n"</span>
+<span class="token string">"askdfaodsf\nasdflajfdoafd/afd\nafdlajfoa/n\nafdlkafok\n\n"</span>
+<span class="token string">"askdfaodsf\nasdflajfdoafd/afd\nafdlajfoa/n\nafdlkafok\n\n"</span>
+
+补充：
+<span class="token function">irb</span><span class="token punctuation">(</span>main<span class="token punctuation">)</span><span class="token punctuation">:</span><span class="token number">001</span><span class="token punctuation">:</span><span class="token number">0</span><span class="token operator">></span> <span class="token string">"afkdj\n\r"</span><span class="token punctuation">.</span>chomp
+<span class="token operator">=</span><span class="token operator">></span> <span class="token string">"afkdj\n"</span>
+<span class="token function">irb</span><span class="token punctuation">(</span>main<span class="token punctuation">)</span><span class="token punctuation">:</span><span class="token number">002</span><span class="token punctuation">:</span><span class="token number">0</span><span class="token operator">></span> <span class="token string">"afkdj\n\r"</span><span class="token punctuation">.</span>chomp<span class="token operator">!</span>
+<span class="token operator">=</span><span class="token operator">></span> <span class="token string">"afkdj\n"</span>
+<span class="token function">irb</span><span class="token punctuation">(</span>main<span class="token punctuation">)</span><span class="token punctuation">:</span><span class="token number">003</span><span class="token punctuation">:</span><span class="token number">0</span><span class="token operator">></span> <span class="token string">"afkdj\n\r"</span><span class="token punctuation">.</span>chop
+<span class="token operator">=</span><span class="token operator">></span> <span class="token string">"afkdj\n"</span>
+<span class="token function">irb</span><span class="token punctuation">(</span>main<span class="token punctuation">)</span><span class="token punctuation">:</span><span class="token number">004</span><span class="token punctuation">:</span><span class="token number">0</span><span class="token operator">></span> <span class="token string">"afkdj\n"</span><span class="token punctuation">.</span>chop
+<span class="token operator">=</span><span class="token operator">></span> <span class="token string">"afkdj"</span>
+<span class="token function">irb</span><span class="token punctuation">(</span>main<span class="token punctuation">)</span><span class="token punctuation">:</span><span class="token number">005</span><span class="token punctuation">:</span><span class="token number">0</span><span class="token operator">></span> <span class="token string">"afkdj\n"</span><span class="token punctuation">.</span>chomp
+<span class="token operator">=</span><span class="token operator">></span> <span class="token string">"afkdj"</span>
+<span class="token function">irb</span><span class="token punctuation">(</span>main<span class="token punctuation">)</span><span class="token punctuation">:</span><span class="token number">006</span><span class="token punctuation">:</span><span class="token number">0</span><span class="token operator">></span> <span class="token string">"afkdj\n\n\n"</span><span class="token punctuation">.</span>chomp
+<span class="token operator">=</span><span class="token operator">></span> <span class="token string">"afkdj\n\n"</span>
+<span class="token function">irb</span><span class="token punctuation">(</span>main<span class="token punctuation">)</span><span class="token punctuation">:</span><span class="token number">007</span><span class="token punctuation">:</span><span class="token number">0</span><span class="token operator">></span> <span class="token string">"afkdj\r\n"</span><span class="token punctuation">.</span>chomp
+<span class="token operator">=</span><span class="token operator">></span> <span class="token string">"afkdj"</span>
+<span class="token function">irb</span><span class="token punctuation">(</span>main<span class="token punctuation">)</span><span class="token punctuation">:</span><span class="token number">008</span><span class="token punctuation">:</span><span class="token number">0</span><span class="token operator">></span> <span class="token string">"afkdj\n\r"</span><span class="token punctuation">.</span>chomp
+<span class="token operator">=</span><span class="token operator">></span> <span class="token string">"afkdj\n"</span>
+<span class="token function">irb</span><span class="token punctuation">(</span>main<span class="token punctuation">)</span><span class="token punctuation">:</span><span class="token number">009</span><span class="token punctuation">:</span><span class="token number">0</span><span class="token operator">></span> <span class="token string">"afkdj\r\r\r"</span><span class="token punctuation">.</span>chomp
+<span class="token operator">=</span><span class="token operator">></span> <span class="token string">"afkdj\r\r"</span>
+<span class="token function">irb</span><span class="token punctuation">(</span>main<span class="token punctuation">)</span><span class="token punctuation">:</span><span class="token number">010</span><span class="token punctuation">:</span><span class="token number">0</span><span class="token operator">></span> <span class="token string">"afkdj\r\n"</span><span class="token punctuation">.</span>chop
+<span class="token operator">=</span><span class="token operator">></span> <span class="token string">"afkdj"</span>
+<span class="token function">irb</span><span class="token punctuation">(</span>main<span class="token punctuation">)</span><span class="token punctuation">:</span><span class="token number">011</span><span class="token punctuation">:</span><span class="token number">0</span><span class="token operator">></span> <span class="token string">"afkdj\n\r"</span><span class="token punctuation">.</span>chop
+<span class="token operator">=</span><span class="token operator">></span> <span class="token string">"afkdj\n"</span>
+
+可以看出chomp，chomp！，chop，chop<span class="token operator">!</span>效果是一样的
+如果字符末尾是\r\n则会去除\r\n后者只会去除一个字符
+</code></pre>
+</li>
+<li><p>字符替换</p>
+<pre class=" language-ruby"><code class="language-ruby">str<span class="token operator">=</span><span class="token string">"alll of these is free"</span>
+str1<span class="token operator">=</span>str<span class="token punctuation">.</span>gsub <span class="token string">"alll"</span><span class="token punctuation">,</span><span class="token string">"all"</span>
+puts str
+puts str1
+<span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">-</span>
+结果：
+alll of these is free
+all of these is free
+可以看出gsub是拷贝传递
+</code></pre>
+</li>
+<li><p>反转字符串</p>
+<pre class=" language-ruby"><code class="language-ruby">puts <span class="token string">"gnirts eht kcarc evah ruoY"</span><span class="token punctuation">.</span>reverse
+<span class="token operator">=</span><span class="token operator">></span> <span class="token string">"Your have crack the string"</span>
+</code></pre>
+</li>
+<li><p>字符才拆分</p>
+<pre class=" language-ruby"><code class="language-ruby">a<span class="token operator">=</span><span class="token string">"01234567"</span><span class="token punctuation">.</span>split
+<span class="token operator">=</span><span class="token operator">></span> <span class="token punctuation">[</span><span class="token string">"01234567"</span><span class="token punctuation">]</span>
+</code></pre>
+</li>
+<li><p>遍历字符串</p>
+<pre class=" language-ruby"><code class="language-ruby"><span class="token string">"etc\nnginx\nconf.d"</span><span class="token punctuation">.</span>each_line <span class="token punctuation">{</span><span class="token operator">|</span>dir<span class="token operator">|</span> puts dir<span class="token punctuation">.</span>capitalize<span class="token punctuation">}</span>
+<span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">-</span>
+结果：
+<span class="token constant">Etc</span>
+<span class="token constant">Nginx</span>
+<span class="token constant">Conf</span><span class="token punctuation">.</span>d
+</code></pre>
+</li>
+<li><p>大小写转化</p>
+<pre class=" language-ruby"><code class="language-ruby">puts <span class="token string">"HOW ARE YOU"</span><span class="token punctuation">.</span>downcase
+puts <span class="token string">"how are you"</span><span class="token punctuation">.</span>upcase
+
+结果：
+how are you
+<span class="token constant">HOW</span> <span class="token constant">ARE</span> <span class="token constant">YOU</span>
+</code></pre>
+</li>
+<li><p>去除字符串两边空白</p>
+<pre class=" language-ruby"><code class="language-ruby">puts <span class="token string">"   hello        "</span><span class="token punctuation">.</span>strip
+hello
+<span class="token operator">=</span><span class="token operator">></span> <span class="token keyword">nil</span>
+</code></pre>
+</li>
+<li><p>next函数</p>
+</li>
+</ul>
+<pre class=" language-ruby"><code class="language-ruby"><span class="token function">irb</span><span class="token punctuation">(</span>main<span class="token punctuation">)</span><span class="token punctuation">:</span><span class="token number">001</span><span class="token punctuation">:</span><span class="token number">0</span><span class="token operator">></span> <span class="token string">"ab"</span><span class="token punctuation">.</span><span class="token keyword">next</span>
+<span class="token operator">=</span><span class="token operator">></span> <span class="token string">"ac"</span>
+<span class="token function">irb</span><span class="token punctuation">(</span>main<span class="token punctuation">)</span><span class="token punctuation">:</span><span class="token number">002</span><span class="token punctuation">:</span><span class="token number">0</span><span class="token operator">></span> <span class="token string">"110"</span><span class="token punctuation">.</span><span class="token keyword">next</span>
+<span class="token operator">=</span><span class="token operator">></span> <span class="token string">"111"</span>
+</code></pre>
+<ul>
+<li><p>class判断数据类型</p>
+<pre class=" language-ruby"><code class="language-ruby"><span class="token function">irb</span><span class="token punctuation">(</span>main<span class="token punctuation">)</span><span class="token punctuation">:</span><span class="token number">003</span><span class="token punctuation">:</span><span class="token number">0</span><span class="token operator">></span> a<span class="token operator">=</span><span class="token number">10</span>
+<span class="token operator">=</span><span class="token operator">></span> <span class="token number">10</span>
+<span class="token function">irb</span><span class="token punctuation">(</span>main<span class="token punctuation">)</span><span class="token punctuation">:</span><span class="token number">004</span><span class="token punctuation">:</span><span class="token number">0</span><span class="token operator">></span> b<span class="token operator">=</span><span class="token string">"10"</span>
+<span class="token operator">=</span><span class="token operator">></span> <span class="token string">"10"</span>
+<span class="token function">irb</span><span class="token punctuation">(</span>main<span class="token punctuation">)</span><span class="token punctuation">:</span><span class="token number">005</span><span class="token punctuation">:</span><span class="token number">0</span><span class="token operator">></span> a<span class="token punctuation">.</span><span class="token keyword">class</span>
+<span class="token operator">=</span><span class="token operator">></span> <span class="token builtin">Integer</span>
+<span class="token function">irb</span><span class="token punctuation">(</span>main<span class="token punctuation">)</span><span class="token punctuation">:</span><span class="token number">006</span><span class="token punctuation">:</span><span class="token number">0</span><span class="token operator">></span> b<span class="token punctuation">.</span><span class="token keyword">class</span>
+<span class="token operator">=</span><span class="token operator">></span> <span class="token builtin">String</span>
+</code></pre>
+</li>
+</ul>
+<h4 id="数学计算"><a href="#数学计算" class="headerlink" title="数学计算"></a>数学计算</h4><ul>
+<li><p>范围,Range</p>
+<pre class=" language-ruby"><code class="language-ruby"><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token number">25</span><span class="token punctuation">)</span><span class="token operator">===</span><span class="token number">14</span>        <span class="token comment" spellcheck="true">#true</span>
+digits<span class="token operator">=</span><span class="token builtin">Range</span><span class="token punctuation">.</span><span class="token keyword">new</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">,</span><span class="token number">9</span><span class="token punctuation">)</span>
+digits<span class="token punctuation">.</span>to_a
+</code></pre>
+</li>
+<li><p>查询数字</p>
+<p><code>`</code>ruby<br>op=0<br>if !op.zero?</p>
+<pre><code>puts 12/op
+</code></pre><p>else</p>
+<pre><code>puts &quot;zero division&quot;
+</code></pre><p>if op.nonzero?</p>
+<pre><code>puts 12/op
+</code></pre><p>else</p>
+<pre><code>puts &quot;zero division&quot;
+</code></pre></li>
+</ul>
+<p>  irb(main):040:0&gt; (-1.0/0.0).infinite?<br>  =&gt; -1<br>  irb(main):041:0&gt; (1.0/0.0).infinite?<br>  =&gt; 1<br>  irb(main):042:0&gt; (1.0/0.0).finite?<br>  =&gt; false<br>  irb(main):043:0&gt; (-1.0/0.0).finite?<br>  =&gt; false<br>  irb(main):044:0&gt; 0.0.finite?<br>  =&gt; true    </p>
+<p>  infinite（无穷）<br>  注意调用finite和infinite方法必须是浮点数<br>  nan方法也是一样的</p>
+<pre><code>
+* 利用语句块逐一读取
+
+  ```ruby
+  100.downto(1){|i| print i,&quot; &quot;;sleep 1}
+  10.times{|i| print i,&quot; &quot;;sleep 1}
+  10.times do |i|
+      print i,&quot; &quot;
+      sleep 1
+  end
+  1.upto(100){|i| print i,&quot; &quot;;sleep 1}
+</code></pre><ul>
+<li><p>其他数学计算</p>
+<pre class=" language-ruby"><code class="language-ruby">puts <span class="token operator">-</span><span class="token number">40</span><span class="token punctuation">.</span>abs
+puts <span class="token number">5.32</span><span class="token punctuation">.</span>ceil
+puts <span class="token number">5.32</span><span class="token punctuation">.</span>floor
+puts <span class="token number">5.4</span><span class="token punctuation">.</span><span class="token function">round</span><span class="token punctuation">(</span>四舍五入<span class="token punctuation">)</span>
+<span class="token number">1</span><span class="token punctuation">.</span><span class="token keyword">next</span>
+<span class="token number">97</span><span class="token punctuation">.</span>chr
+
+结果：
+<span class="token number">40</span>
+<span class="token number">6</span>
+<span class="token number">5</span>
+<span class="token number">5</span>
+<span class="token number">2</span>
+a
+</code></pre>
+</li>
+<li><p>数学函数</p>
+<pre class=" language-ruby"><code class="language-ruby">puts <span class="token constant">Math</span><span class="token punctuation">.</span>constants
+puts <span class="token constant">Math</span><span class="token punctuation">:</span><span class="token symbol">:E</span>
+puts <span class="token constant">Math</span><span class="token punctuation">:</span><span class="token symbol">:PI</span>
+puts <span class="token constant">Math</span><span class="token punctuation">.</span><span class="token function">exp</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span>
+puts <span class="token constant">Math</span><span class="token punctuation">.</span><span class="token function">sqrt</span><span class="token punctuation">(</span><span class="token number">2</span><span class="token punctuation">)</span>
+puts <span class="token constant">Math</span><span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token constant">Math</span><span class="token punctuation">:</span><span class="token symbol">:E</span><span class="token punctuation">)</span>
+
+结果：
+<span class="token function">irb</span><span class="token punctuation">(</span>main<span class="token punctuation">)</span><span class="token punctuation">:</span><span class="token number">001</span><span class="token punctuation">:</span><span class="token number">0</span><span class="token operator">></span> puts <span class="token constant">Math</span><span class="token punctuation">.</span>constants
+<span class="token constant">DomainError</span>
+<span class="token constant">PI</span>
+<span class="token constant">E</span>
+<span class="token operator">=</span><span class="token operator">></span> <span class="token keyword">nil</span>
+<span class="token function">irb</span><span class="token punctuation">(</span>main<span class="token punctuation">)</span><span class="token punctuation">:</span><span class="token number">002</span><span class="token punctuation">:</span><span class="token number">0</span><span class="token operator">></span> puts <span class="token constant">Math</span><span class="token punctuation">:</span><span class="token symbol">:E</span>
+<span class="token number">2.718281828459045</span>
+<span class="token operator">=</span><span class="token operator">></span> <span class="token keyword">nil</span>
+<span class="token function">irb</span><span class="token punctuation">(</span>main<span class="token punctuation">)</span><span class="token punctuation">:</span><span class="token number">003</span><span class="token punctuation">:</span><span class="token number">0</span><span class="token operator">></span> puts <span class="token constant">Math</span><span class="token punctuation">:</span><span class="token symbol">:PI</span>
+<span class="token number">3.141592653589793</span>
+<span class="token operator">=</span><span class="token operator">></span> <span class="token keyword">nil</span>
+<span class="token function">irb</span><span class="token punctuation">(</span>main<span class="token punctuation">)</span><span class="token punctuation">:</span><span class="token number">004</span><span class="token punctuation">:</span><span class="token number">0</span><span class="token operator">></span> puts <span class="token constant">Math</span><span class="token punctuation">.</span><span class="token function">exp</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span>
+<span class="token number">2.718281828459045</span>
+<span class="token operator">=</span><span class="token operator">></span> <span class="token keyword">nil</span>
+<span class="token function">irb</span><span class="token punctuation">(</span>main<span class="token punctuation">)</span><span class="token punctuation">:</span><span class="token number">005</span><span class="token punctuation">:</span><span class="token number">0</span><span class="token operator">></span> puts <span class="token constant">Math</span><span class="token punctuation">.</span><span class="token function">sqrt</span><span class="token punctuation">(</span><span class="token number">2</span><span class="token punctuation">)</span>
+<span class="token number">1.4142135623730951</span>
+<span class="token operator">=</span><span class="token operator">></span> <span class="token keyword">nil</span>
+<span class="token function">irb</span><span class="token punctuation">(</span>main<span class="token punctuation">)</span><span class="token punctuation">:</span><span class="token number">006</span><span class="token punctuation">:</span><span class="token number">0</span><span class="token operator">></span> puts <span class="token constant">Math</span><span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token constant">Math</span><span class="token punctuation">:</span><span class="token symbol">:E</span><span class="token punctuation">)</span>
+<span class="token number">1.0</span>
+<span class="token operator">=</span><span class="token operator">></span> <span class="token keyword">nil</span>
+</code></pre>
+</li>
+<li><p>有理数</p>
+<p><code>`</code>ruby<br>补充：<br>&lt;=&gt;    联合比较运算符。如果第一个操作数等于第二个操作数则返回 0，如果第一个操作数大于第二个操作数则返回 1，如果第一个操作数小于第二个操作数则返回 -1。<br>require “rational”<br>require “mathn”<br>rat=Rational(25/100)<br>rat += Rational(1/4)<br>p rat*=3<br>p rat.to_s<br>p rat.to_f<br>p rat</p>
+</li>
+</ul>
+<p>  结果：<br>  (3/2)<br>  “3/2”<br>  1.5<br>  (3/2)</p>
+<pre><code>
+* 质数
+
+  ```ruby
+  require &quot;rational&quot;
+  require &quot;mathn&quot;
+  Prime.each do |i|
+      puts i
+      if i&gt;100
+          break
+      end
+  end
+  for i in 1.step(13,2)
+      puts i
+  end
+  -----------------------------------------------------------------------------
+  Prime.new方法已经弃用，应用Prime.each    
+</code></pre><h4 id="数组"><a href="#数组" class="headerlink" title="数组"></a>数组</h4><ul>
+<li><p>数组常用</p>
+<pre class=" language-ruby"><code class="language-ruby"><span class="token function">irb</span><span class="token punctuation">(</span>main<span class="token punctuation">)</span><span class="token punctuation">:</span><span class="token number">001</span><span class="token punctuation">:</span><span class="token number">0</span><span class="token operator">></span> months<span class="token operator">=</span><span class="token builtin">Array</span><span class="token punctuation">.</span><span class="token keyword">new</span>
+<span class="token operator">=</span><span class="token operator">></span> <span class="token punctuation">[</span><span class="token punctuation">]</span>
+<span class="token function">irb</span><span class="token punctuation">(</span>main<span class="token punctuation">)</span><span class="token punctuation">:</span><span class="token number">002</span><span class="token punctuation">:</span><span class="token number">0</span><span class="token operator">></span> months<span class="token punctuation">.</span>empty<span class="token operator">?</span>
+<span class="token operator">=</span><span class="token operator">></span> <span class="token keyword">true</span>
+<span class="token function">irb</span><span class="token punctuation">(</span>main<span class="token punctuation">)</span><span class="token punctuation">:</span><span class="token number">003</span><span class="token punctuation">:</span><span class="token number">0</span><span class="token operator">></span> months<span class="token operator">=</span><span class="token builtin">Array</span><span class="token punctuation">.</span><span class="token keyword">new</span><span class="token punctuation">(</span><span class="token number">12</span><span class="token punctuation">)</span>
+<span class="token operator">=</span><span class="token operator">></span> <span class="token punctuation">[</span><span class="token keyword">nil</span><span class="token punctuation">,</span> <span class="token keyword">nil</span><span class="token punctuation">,</span> <span class="token keyword">nil</span><span class="token punctuation">,</span> <span class="token keyword">nil</span><span class="token punctuation">,</span> <span class="token keyword">nil</span><span class="token punctuation">,</span> <span class="token keyword">nil</span><span class="token punctuation">,</span> <span class="token keyword">nil</span><span class="token punctuation">,</span> <span class="token keyword">nil</span><span class="token punctuation">,</span> <span class="token keyword">nil</span><span class="token punctuation">,</span> <span class="token keyword">nil</span><span class="token punctuation">,</span> <span class="token keyword">nil</span><span class="token punctuation">,</span> <span class="token keyword">nil</span><span class="token punctuation">]</span>
+<span class="token function">irb</span><span class="token punctuation">(</span>main<span class="token punctuation">)</span><span class="token punctuation">:</span><span class="token number">004</span><span class="token punctuation">:</span><span class="token number">0</span><span class="token operator">></span> months<span class="token punctuation">.</span>size
+<span class="token operator">=</span><span class="token operator">></span> <span class="token number">12</span>
+<span class="token function">irb</span><span class="token punctuation">(</span>main<span class="token punctuation">)</span><span class="token punctuation">:</span><span class="token number">005</span><span class="token punctuation">:</span><span class="token number">0</span><span class="token operator">></span> months<span class="token punctuation">.</span>length
+<span class="token operator">=</span><span class="token operator">></span> <span class="token number">12</span>
+<span class="token function">irb</span><span class="token punctuation">(</span>main<span class="token punctuation">)</span><span class="token punctuation">:</span><span class="token number">006</span><span class="token punctuation">:</span><span class="token number">0</span><span class="token operator">></span> months<span class="token punctuation">.</span>inspect
+<span class="token operator">=</span><span class="token operator">></span> <span class="token string">"[nil, nil, nil, nil, nil, nil, nil, nil, nil, nil, nil, nil]"</span>
+<span class="token function">irb</span><span class="token punctuation">(</span>main<span class="token punctuation">)</span><span class="token punctuation">:</span><span class="token number">007</span><span class="token punctuation">:</span><span class="token number">0</span><span class="token operator">></span> months<span class="token operator">=</span><span class="token builtin">Array</span><span class="token punctuation">.</span><span class="token keyword">new</span><span class="token punctuation">(</span><span class="token number">12</span><span class="token punctuation">,</span><span class="token string">"month"</span><span class="token punctuation">)</span>
+<span class="token operator">=</span><span class="token operator">></span> <span class="token punctuation">[</span><span class="token string">"month"</span><span class="token punctuation">,</span> <span class="token string">"month"</span><span class="token punctuation">,</span> <span class="token string">"month"</span><span class="token punctuation">,</span> <span class="token string">"month"</span><span class="token punctuation">,</span> <span class="token string">"month"</span><span class="token punctuation">,</span> <span class="token string">"month"</span><span class="token punctuation">,</span> <span class="token string">"month"</span><span class="token punctuation">,</span> <span class="token string">"month"</span><span class="token punctuation">,</span> <span class="token string">"month"</span><span class="token punctuation">,</span> <span class="token string">"month"</span><span class="token punctuation">,</span> <span class="token string">"month"</span><span class="token punctuation">,</span> <span class="token string">"month"</span><span class="token punctuation">]</span>
+<span class="token function">irb</span><span class="token punctuation">(</span>main<span class="token punctuation">)</span><span class="token punctuation">:</span><span class="token number">009</span><span class="token punctuation">:</span><span class="token number">0</span><span class="token operator">></span> months<span class="token punctuation">.</span>clear
+<span class="token operator">=</span><span class="token operator">></span> <span class="token punctuation">[</span><span class="token punctuation">]</span>
+<span class="token function">irb</span><span class="token punctuation">(</span>main<span class="token punctuation">)</span><span class="token punctuation">:</span><span class="token number">011</span><span class="token punctuation">:</span><span class="token number">0</span><span class="token operator">></span> months<span class="token punctuation">.</span>empty<span class="token operator">?</span>
+<span class="token operator">=</span><span class="token operator">></span> <span class="token keyword">true</span>
+<span class="token function">irb</span><span class="token punctuation">(</span>main<span class="token punctuation">)</span><span class="token punctuation">:</span><span class="token number">012</span><span class="token punctuation">:</span><span class="token number">0</span><span class="token operator">></span> month<span class="token operator">=</span><span class="token punctuation">[</span><span class="token string">"mcc"</span><span class="token punctuation">,</span><span class="token string">"mcc"</span><span class="token punctuation">,</span><span class="token number">12</span><span class="token punctuation">]</span>
+<span class="token operator">=</span><span class="token operator">></span> <span class="token punctuation">[</span><span class="token string">"mcc"</span><span class="token punctuation">,</span> <span class="token string">"mcc"</span><span class="token punctuation">,</span> <span class="token number">12</span><span class="token punctuation">]</span>
+<span class="token function">irb</span><span class="token punctuation">(</span>main<span class="token punctuation">)</span><span class="token punctuation">:</span><span class="token number">014</span><span class="token punctuation">:</span><span class="token number">0</span><span class="token operator">></span> months<span class="token operator">=</span><span class="token string">%w[mcc lsdfj sdaf 12 fda]</span>
+<span class="token operator">=</span><span class="token operator">></span> <span class="token punctuation">[</span><span class="token string">"mcc"</span><span class="token punctuation">,</span> <span class="token string">"lsdfj"</span><span class="token punctuation">,</span> <span class="token string">"sdaf"</span><span class="token punctuation">,</span> <span class="token string">"12"</span><span class="token punctuation">,</span> <span class="token string">"fda"</span><span class="token punctuation">]</span>
+<span class="token function">irb</span><span class="token punctuation">(</span>main<span class="token punctuation">)</span><span class="token punctuation">:</span><span class="token number">015</span><span class="token punctuation">:</span><span class="token number">0</span><span class="token operator">></span> months<span class="token punctuation">[</span><span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">]</span>
+<span class="token operator">=</span><span class="token operator">></span> <span class="token string">"fda"</span>
+<span class="token function">irb</span><span class="token punctuation">(</span>main<span class="token punctuation">)</span><span class="token punctuation">:</span><span class="token number">016</span><span class="token punctuation">:</span><span class="token number">0</span><span class="token operator">></span> months<span class="token punctuation">.</span>include<span class="token operator">?</span> <span class="token string">"12"</span>
+<span class="token operator">=</span><span class="token operator">></span> <span class="token keyword">true</span>
+<span class="token function">irb</span><span class="token punctuation">(</span>main<span class="token punctuation">)</span><span class="token punctuation">:</span><span class="token number">017</span><span class="token punctuation">:</span><span class="token number">0</span><span class="token operator">></span> years<span class="token operator">=</span><span class="token string">%w[2017 2018 2019 2012]</span>
+<span class="token operator">=</span><span class="token operator">></span> <span class="token punctuation">[</span><span class="token string">"2017"</span><span class="token punctuation">,</span> <span class="token string">"2018"</span><span class="token punctuation">,</span> <span class="token string">"2019"</span><span class="token punctuation">,</span> <span class="token string">"2012"</span><span class="token punctuation">]</span>
+<span class="token function">irb</span><span class="token punctuation">(</span>main<span class="token punctuation">)</span><span class="token punctuation">:</span><span class="token number">018</span><span class="token punctuation">:</span><span class="token number">0</span><span class="token operator">></span> all<span class="token operator">=</span>months<span class="token operator">+</span>years
+<span class="token operator">=</span><span class="token operator">></span> <span class="token punctuation">[</span><span class="token string">"mcc"</span><span class="token punctuation">,</span> <span class="token string">"lsdfj"</span><span class="token punctuation">,</span> <span class="token string">"sdaf"</span><span class="token punctuation">,</span> <span class="token string">"12"</span><span class="token punctuation">,</span> <span class="token string">"fda"</span><span class="token punctuation">,</span> <span class="token string">"2017"</span><span class="token punctuation">,</span> <span class="token string">"2018"</span><span class="token punctuation">,</span> <span class="token string">"2019"</span><span class="token punctuation">,</span> <span class="token string">"2012"</span><span class="token punctuation">]</span>
+<span class="token function">irb</span><span class="token punctuation">(</span>main<span class="token punctuation">)</span><span class="token punctuation">:</span><span class="token number">019</span><span class="token punctuation">:</span><span class="token number">0</span><span class="token operator">></span> days<span class="token operator">=</span><span class="token string">%w[11 21 32 34]</span>
+<span class="token operator">=</span><span class="token operator">></span> <span class="token punctuation">[</span><span class="token string">"11"</span><span class="token punctuation">,</span> <span class="token string">"21"</span><span class="token punctuation">,</span> <span class="token string">"32"</span><span class="token punctuation">,</span> <span class="token string">"34"</span><span class="token punctuation">]</span>
+<span class="token function">irb</span><span class="token punctuation">(</span>main<span class="token punctuation">)</span><span class="token punctuation">:</span><span class="token number">020</span><span class="token punctuation">:</span><span class="token number">0</span><span class="token operator">></span> all<span class="token operator">&lt;</span><span class="token operator">&lt;</span>days
+<span class="token operator">=</span><span class="token operator">></span> <span class="token punctuation">[</span><span class="token string">"mcc"</span><span class="token punctuation">,</span> <span class="token string">"lsdfj"</span><span class="token punctuation">,</span> <span class="token string">"sdaf"</span><span class="token punctuation">,</span> <span class="token string">"12"</span><span class="token punctuation">,</span> <span class="token string">"fda"</span><span class="token punctuation">,</span> <span class="token string">"2017"</span><span class="token punctuation">,</span> <span class="token string">"2018"</span><span class="token punctuation">,</span> <span class="token string">"2019"</span><span class="token punctuation">,</span> <span class="token string">"2012"</span><span class="token punctuation">,</span> <span class="token punctuation">[</span><span class="token string">"11"</span><span class="token punctuation">,</span> <span class="token string">"21"</span><span class="token punctuation">,</span> <span class="token string">"32"</span><span class="token punctuation">,</span> <span class="token string">"34"</span><span class="token punctuation">]</span><span class="token punctuation">]</span>
+
+digits<span class="token operator">=</span><span class="token function">Array</span><span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token number">9</span><span class="token punctuation">)</span>
+</code></pre>
+</li>
+<li><p>集合操作</p>
+<pre class=" language-ruby"><code class="language-ruby"><span class="token function">irb</span><span class="token punctuation">(</span>main<span class="token punctuation">)</span><span class="token punctuation">:</span><span class="token number">021</span><span class="token punctuation">:</span><span class="token number">0</span><span class="token operator">></span> m<span class="token operator">=</span><span class="token string">%w[shop make_pi read sleep]</span>
+<span class="token operator">=</span><span class="token operator">></span> <span class="token punctuation">[</span><span class="token string">"shop"</span><span class="token punctuation">,</span> <span class="token string">"make_pi"</span><span class="token punctuation">,</span> <span class="token string">"read"</span><span class="token punctuation">,</span> <span class="token string">"sleep"</span><span class="token punctuation">]</span>
+<span class="token function">irb</span><span class="token punctuation">(</span>main<span class="token punctuation">)</span><span class="token punctuation">:</span><span class="token number">022</span><span class="token punctuation">:</span><span class="token number">0</span><span class="token operator">></span> n<span class="token operator">=</span><span class="token string">%w[shop make_pi read play]</span>
+<span class="token operator">=</span><span class="token operator">></span> <span class="token punctuation">[</span><span class="token string">"shop"</span><span class="token punctuation">,</span> <span class="token string">"make_pi"</span><span class="token punctuation">,</span> <span class="token string">"read"</span><span class="token punctuation">,</span> <span class="token string">"play"</span><span class="token punctuation">]</span>
+<span class="token function">irb</span><span class="token punctuation">(</span>main<span class="token punctuation">)</span><span class="token punctuation">:</span><span class="token number">023</span><span class="token punctuation">:</span><span class="token number">0</span><span class="token operator">></span> puts m<span class="token operator">-</span>n
+sleep
+<span class="token operator">=</span><span class="token operator">></span> <span class="token keyword">nil</span>
+<span class="token function">irb</span><span class="token punctuation">(</span>main<span class="token punctuation">)</span><span class="token punctuation">:</span><span class="token number">024</span><span class="token punctuation">:</span><span class="token number">0</span><span class="token operator">></span> puts m<span class="token operator">&amp;</span>n
+shop
+make_pi
+read
+<span class="token operator">=</span><span class="token operator">></span> <span class="token keyword">nil</span>
+<span class="token function">irb</span><span class="token punctuation">(</span>main<span class="token punctuation">)</span><span class="token punctuation">:</span><span class="token number">025</span><span class="token punctuation">:</span><span class="token number">0</span><span class="token operator">></span> puts m<span class="token operator">|</span>n
+shop
+make_pi
+read
+sleep
+play
+<span class="token operator">=</span><span class="token operator">></span> <span class="token keyword">nil</span>
+</code></pre>
+</li>
+<li><p>delete</p>
+<pre class=" language-ruby"><code class="language-ruby"><span class="token function">irb</span><span class="token punctuation">(</span>main<span class="token punctuation">)</span><span class="token punctuation">:</span><span class="token number">026</span><span class="token punctuation">:</span><span class="token number">0</span><span class="token operator">></span> m<span class="token operator">=</span><span class="token string">%w[shop make_pi read sleep]</span>
+<span class="token operator">=</span><span class="token operator">></span> <span class="token punctuation">[</span><span class="token string">"shop"</span><span class="token punctuation">,</span> <span class="token string">"make_pi"</span><span class="token punctuation">,</span> <span class="token string">"read"</span><span class="token punctuation">,</span> <span class="token string">"sleep"</span><span class="token punctuation">]</span>
+<span class="token function">irb</span><span class="token punctuation">(</span>main<span class="token punctuation">)</span><span class="token punctuation">:</span><span class="token number">028</span><span class="token punctuation">:</span><span class="token number">0</span><span class="token operator">></span> m<span class="token punctuation">.</span>delete <span class="token string">"shop"</span>
+<span class="token operator">=</span><span class="token operator">></span> <span class="token string">"shop"</span>
+<span class="token function">irb</span><span class="token punctuation">(</span>main<span class="token punctuation">)</span><span class="token punctuation">:</span><span class="token number">029</span><span class="token punctuation">:</span><span class="token number">0</span><span class="token operator">></span> m
+<span class="token operator">=</span><span class="token operator">></span> <span class="token punctuation">[</span><span class="token string">"make_pi"</span><span class="token punctuation">,</span> <span class="token string">"read"</span><span class="token punctuation">,</span> <span class="token string">"sleep"</span><span class="token punctuation">]</span>
+<span class="token function">irb</span><span class="token punctuation">(</span>main<span class="token punctuation">)</span><span class="token punctuation">:</span><span class="token number">030</span><span class="token punctuation">:</span><span class="token number">0</span><span class="token operator">></span> m<span class="token punctuation">.</span>delete <span class="token number">2</span>
+<span class="token operator">=</span><span class="token operator">></span> <span class="token keyword">nil</span>
+<span class="token function">irb</span><span class="token punctuation">(</span>main<span class="token punctuation">)</span><span class="token punctuation">:</span><span class="token number">031</span><span class="token punctuation">:</span><span class="token number">0</span><span class="token operator">></span> m
+<span class="token operator">=</span><span class="token operator">></span> <span class="token punctuation">[</span><span class="token string">"make_pi"</span><span class="token punctuation">,</span> <span class="token string">"read"</span><span class="token punctuation">,</span> <span class="token string">"sleep"</span><span class="token punctuation">]</span>
+<span class="token function">irb</span><span class="token punctuation">(</span>main<span class="token punctuation">)</span><span class="token punctuation">:</span><span class="token number">032</span><span class="token punctuation">:</span><span class="token number">0</span><span class="token operator">></span> m<span class="token punctuation">.</span>delete_at <span class="token number">2</span>
+<span class="token operator">=</span><span class="token operator">></span> <span class="token string">"sleep"</span>
+</code></pre>
+</li>
+<li><p>排序</p>
+<pre class=" language-ruby"><code class="language-ruby">x<span class="token operator">=</span><span class="token string">%w[1 3 7 3 45 234 452 123 2]</span>
+<span class="token keyword">for</span> i <span class="token keyword">in</span> <span class="token builtin">Range</span><span class="token punctuation">.</span><span class="token keyword">new</span><span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">,</span>x<span class="token punctuation">.</span>size<span class="token punctuation">)</span>
+    x<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token operator">=</span>x<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">.</span>to_i
+<span class="token keyword">end</span>
+puts x<span class="token punctuation">.</span>sort
+puts x<span class="token punctuation">.</span>reverse
+
+结果：
+<span class="token number">0</span>
+<span class="token number">1</span>
+<span class="token number">2</span>
+<span class="token number">3</span>
+<span class="token number">3</span>
+<span class="token number">7</span>
+<span class="token number">45</span>
+<span class="token number">123</span>
+<span class="token number">234</span>
+<span class="token number">452</span>
+
+<span class="token number">0</span>
+<span class="token number">2</span>
+<span class="token number">123</span>
+<span class="token number">452</span>
+<span class="token number">234</span>
+<span class="token number">45</span>
+<span class="token number">3</span>
+<span class="token number">7</span>
+<span class="token number">3</span>
+<span class="token number">1</span>
+
+这里同样可以看出ruby是拷贝传递并非值传递，这一点与go语言是相同的而与python，java不同
+</code></pre>
+</li>
+<li><p>多维数组</p>
+<p><code>`</code>ruby<br>irb(main):001:0&gt; d=%w[[1 2 3][1 23 3][12 33 5]]<br>=&gt; [“[1”, “2”, “3][1”, “23”, “3][12”, “33”, “5]”]<br>这里需要注意不能这样定义二维数组，从上面可以看出返回的是一维数组</p>
+</li>
+</ul>
+<p>  #二维数组转一维数组<br>  irb(main):006:0&gt; e=[[12 ,32, 43],[1213, 123 ,2],[21 ,32, 3]]<br>  =&gt; [[12, 32, 43], [1213, 123, 2], [21, 32, 3]]<br>  irb(main):007:0&gt; e.flatten<br>  =&gt; [12, 32, 43, 1213, 123, 2, 21, 32, 3]</p>
+<pre><code>
+#### 哈希
+
+简单来说就是map
+
+* 建立哈希
+
+  ```ruby
+  irb(main):008:0&gt; months=Hash.new
+  =&gt; {}
+  irb(main):009:0&gt; months.empty?
+  =&gt; true
+  irb(main):010:0&gt; months.length
+  =&gt; 0
+  irb(main):011:0&gt; months.size
+  =&gt; 0
+
+
+  months=Hash.new(&quot;month&quot;)
+  months=Hash.new &quot;month&quot;
+
+
+  irb(main):012:0&gt; zip={1=&gt;&quot;tom&quot;,2=&gt;&quot;mcc&quot;,3=&gt;&quot;src&quot;}
+  =&gt; {1=&gt;&quot;tom&quot;, 2=&gt;&quot;mcc&quot;, 3=&gt;&quot;src&quot;}
+  irb(main):014:0&gt; zip[1]
+  =&gt; &quot;tom&quot;
+  irb(main):015:0&gt; zip.keys
+  =&gt; [1, 2, 3]
+  irb(main):016:0&gt; zip.values
+  =&gt; [&quot;tom&quot;, &quot;mcc&quot;, &quot;src&quot;]
+
+  zip={1=&gt;&quot;tom&quot;,2=&gt;&quot;mcc&quot;,3=&gt;&quot;src&quot;}
+  for k,v in zip
+      puts k.to_s+&quot; &quot;+v
+  end
+  输出：
+  1 tom
+  2 mcc
+  3 src
+
+  delaware={1=&gt;&quot;Kent&quot;,2=&gt;&quot;New Castle&quot;,3=&gt;&quot;Sussex&quot;}
+  rhold_island={1=&gt;&quot;Bristol&quot;,2=&gt;&quot;Kent&quot;,3=&gt;&quot;Newport&quot;,4=&gt;&quot;Province&quot;,5=&gt;&quot;Washington&quot;}
+  rhold_island.merge delaware
+
+  结果：
+  {1=&gt;&quot;Kent&quot;, 2=&gt;&quot;New Castle&quot;, 3=&gt;&quot;Sussex&quot;, 4=&gt;&quot;Province&quot;, 5=&gt;&quot;Washington&quot;}
+  和git合并差不多，保留合并的对象，删除旧的对象
+
+
+  delaware={1=&gt;&quot;Kent&quot;,2=&gt;&quot;New Castle&quot;,3=&gt;&quot;Sussex&quot;}
+  rhold_island={1=&gt;&quot;Bristol&quot;,2=&gt;&quot;Kent&quot;,3=&gt;&quot;Newport&quot;,4=&gt;&quot;Province&quot;,5=&gt;&quot;Washington&quot;}
+  s=rhold_island
+  p rhold_island
+  p rhold_island.to_a
+  p rhold_island.to_s
+  p rhold_island.sort                    #注意此处没有reverse方法
+  p rhold_island.delete(5)
+  p rhold_island.delete_if{|key,value| key&lt;3}
+  p rhold_island.delete_if{|key,value|value==&quot;Province&quot;}
+  p rhold_island.replace({3=&gt;&quot;mcc&quot;})
+  p s.clear
+
+  结果：
+  {1=&gt;&quot;Bristol&quot;, 2=&gt;&quot;Kent&quot;, 3=&gt;&quot;Newport&quot;, 4=&gt;&quot;Province&quot;, 5=&gt;&quot;Washington&quot;}
+  [[1, &quot;Bristol&quot;], [2, &quot;Kent&quot;], [3, &quot;Newport&quot;], [4, &quot;Province&quot;], [5, &quot;Washington&quot;]]
+  &quot;{1=&gt;\&quot;Bristol\&quot;, 2=&gt;\&quot;Kent\&quot;, 3=&gt;\&quot;Newport\&quot;, 4=&gt;\&quot;Province\&quot;, 5=&gt;\&quot;Washington\&quot;}&quot;
+  [[1, &quot;Bristol&quot;], [2, &quot;Kent&quot;], [3, &quot;Newport&quot;], [4, &quot;Province&quot;], [5, &quot;Washington&quot;]]
+  &quot;Washington&quot;
+  {3=&gt;&quot;Newport&quot;, 4=&gt;&quot;Province&quot;}
+  {3=&gt;&quot;Newport&quot;}
+  {3=&gt;&quot;mcc&quot;}
+  {}
+</code></pre>
+            </div>
+            <hr>
+
+            
+
+            <link rel="stylesheet" type="text/css" href="/libs/share/css/share.min.css">
+
+<div id="article-share">
+    
+    <div class="social-share" data-disabled="qzone" data-wechat-qrcode-helper="<p>微信里点“发现”->“扫一扫”二维码便可查看分享。</p>"></div>
+    
+</div>
+
+<script src="/libs/share/js/social-share.min.js"></script>
+
+            <div class="reprint">
+                <p>
+                    <span class="reprint-tip">
+                        <i class="fa fa-exclamation-circle"></i>&nbsp;&nbsp;转载请注明:
+                    </span>
+                    <a href="http://unity321.github.io" class="b-link-green">mcc</a>
+                    <i class="fa fa-angle-right fa-lg fa-fw text-color"></i>
+                    <a href="/2019/01/26/ruby-xue-xi-yi/" class="b-link-green">Ruby学习(一)</a>
+                </p>
+            </div>
+        </div>
+    </div>
+
+    
+        <link rel="stylesheet" href="/libs/gitalk/gitalk.css">
+<link rel="stylesheet" href="/css/my-gitalk.css">
+
+<div class="card gitalk-card" data-aos="fade-up">
+    <div id="gitalk-container" class="card-content"></div>
+</div>
+
+<script src="/libs/gitalk/gitalk.min.js"></script>
+<script>
+    let gitalk = new Gitalk({
+        clientID: 'e74943c64b5b24f738bf',
+        clientSecret: 'abe76a8cecb518f81b1b90f3aaa4d0c0fffdd5ee',
+        repo: 'unity321.github.io',
+        owner: 'unity321',
+        admin: ["unity321"],
+        id: '2019-01-26T09-11-14',
+        distractionFreeMode: false  // Facebook-like distraction free mode
+    });
+
+    gitalk.render('gitalk-container');
+</script>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+<article id="prenext-posts" class="prev-next articles">
+    <div class="row article-row">
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge left-badge text-color">
+                <i class="fa fa-chevron-left"></i>&nbsp;上一篇</div>
+            <div class="card">
+                <a href="/2019/01/29/python-suan-fa/">
+                    <div class="card-image">
+                        
+                        <img src="https://github.com/mcc321/mcc/blob/master/img/34.jpg?raw=true" class="responsive-img" alt="python算法">
+                        
+                        <span class="card-title">python算法</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary">
+python算法
+一直想学一下算法，但一直拖着，今天好好的学一下吧
+
+1.python assert断言assert 判断语句,"提示"
+这句话相当于
+if not 判断语句：
+    print("提示")
+    return
+
+</div>
+                    <div class="publish-info">
+                        <span class="publish-date">
+                            <i class="fa fa-clock-o fa-fw icon-date"></i>2019-01-29
+                        </span>
+                        <span class="publish-author">
+                            
+                            <i class="fa fa-user fa-fw"></i>
+                            mcc
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/python算法/" target="_blank">
+                        <span class="chip bg-color">python算法</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge right-badge text-color">
+                下一篇&nbsp;<i class="fa fa-chevron-right"></i>
+            </div>
+            <div class="card">
+                <a href="/2019/01/24/go-yu-yan-xue-xi-er/">
+                    <div class="card-image">
+                        
+                        <img src="https://github.com/mcc321/mcc/blob/master/img/28.jpg?raw=true" class="responsive-img" alt="go语言学习(二)">
+                        
+                        <span class="card-title">go语言学习(二)</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary">
+[TOC]
+go语言练习题1.练习：映射实现 WordCount。它应当返回一个映射，其中包含字符串 s 中每个“单词”的个数。函数 wc.Test 会对此函数执行一系列测试用例，并输出成功还是失败。
+package main
+
+impo</div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="fa fa-clock-o fa-fw icon-date"></i>2019-01-24
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fa fa-user fa-fw"></i>
+                            mcc
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/go/" target="_blank">
+                        <span class="chip bg-color">go</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+    </div>
+</article>
+</div>
+
+
+    </div>
+    <div class="col l3 hide-on-med-and-down">
+        <div class="toc-widget">
+            <div class="toc-title"><i class="fa fa-list-alt"></i>&nbsp;&nbsp;目录</div>
+            <div id="toc-content"></div>
+        </div>
+    </div>
+</div>
+
+<script src="/libs/tocbot/tocbot.min.js"></script>
+<script>
+    $(function () {
+        tocbot.init({
+            tocSelector: '#toc-content',
+            contentSelector: '#articleContent',
+            headingSelector: 'h1, h2, h3, h4, h5'
+        });
+
+        // modify the toc link href to support Chinese.
+        let i = 0;
+        let tocHeading = 'toc-heading-';
+        $('#toc-content a').each(function () {
+            $(this).attr('href', '#' + tocHeading + (++i));
+        });
+
+        // modify the heading title id to support Chinese.
+        i = 0;
+        $('#articleContent').children('h1, h2, h3, h4, h5').each(function () {
+            $(this).attr('id', tocHeading + (++i));
+        });
+
+        // Set scroll toc fixed.
+        let tocHeight = parseInt($(window).height() * 0.4 - 64);
+        let $tocWidget = $('.toc-widget');
+        $(window).scroll(function () {
+            let scroll = $(window).scrollTop();
+            /* add post toc fixed. */
+            if (scroll > tocHeight) {
+                $tocWidget.addClass('toc-fixed');
+            } else {
+                $tocWidget.removeClass('toc-fixed');
+            }
+        });
+    });
+</script>
+    
+
+</main>
+
+
+<footer class="page-footer bg-color">
+    <div class="container row center-align">
+        <div class="col s12 m8 l8 copy-right">
+            本站由&copy;<a href="https://blinkfox.github.io/" target="_blank">Blinkfox</a>基于
+            <a href="https://hexo.io/" target="_blank">Hexo</a> 的
+            <a href="https://github.com/blinkfox/hexo-theme-matery" target="_blank">hexo-theme-matery</a>主题搭建.
+
+            
+                &nbsp;<i class="fa fa-area-chart"></i>&nbsp;站点总字数:&nbsp;
+                <span class="white-color">19.8k</span>
+            
+
+            
+			
+                <br>
+                
+                <span id="busuanzi_container_site_pv">
+                    <i class="fa fa-heart-o"></i>
+                    本站总访问量 <span id="busuanzi_value_site_pv" class="white-color"></span>
+                </span>
+                
+                
+                <span id="busuanzi_container_site_uv">
+                    <i class="fa fa-users"></i>
+                    次,&nbsp;访客数 <span id="busuanzi_value_site_uv" class="white-color"></span> 人.
+                </span>
+                
+            
+        </div>
+        <div class="col s12 m4 l4 social-link social-statis"><a href="https://github.com/mcc321" class="tooltipped" target="_blank" data-tooltip="访问我的GitHub" data-position="top" data-delay="50">
+    <i class="fa fa-github"></i>
+</a>
+<a href="mailto:2393811002@qq.com" class="tooltipped" target="_blank" data-tooltip="邮件联系我" data-position="top" data-delay="50">
+    <i class="fa fa-envelope-open"></i>
+</a>
+<a href="#!" class="tooltipped" data-tooltip="QQ联系我: 2393811002" data-position="top" data-delay="50">
+    <i class="fa fa-qq"></i>
+</a>
+<a href="#!" class="tooltipped" data-tooltip="微信联系我: zc2393811002" data-position="top" data-delay="50">
+    <i class="fa fa-wechat"></i>
+</a></div>
+    </div>
+</footer>
+
+<div class="progress-bar"></div>
+
+
+<!-- 搜索遮罩框 -->
+<div id="searchModal" class="modal">
+    <div class="modal-content">
+        <div class="search-header">
+            <span class="title"><i class="fa fa-search"></i>&nbsp;&nbsp;搜索</span>
+            <input type="search" id="searchInput" name="s" placeholder="请输入搜索的关键字" class="search-input" autofocus>
+        </div>
+        <div id="searchResult"></div>
+    </div>
+</div>
+
+<script src="/js/search.js"></script>
+<script type="text/javascript">
+    searchFunc("/" + "search.xml", 'searchInput', 'searchResult');
+</script>
+<!-- 回到顶部按钮 -->
+<div id="backTop" class="top-scroll">
+    <a class="btn-floating btn-large waves-effect waves-light" href="#!">
+        <i class="fa fa-angle-up"></i>
+    </a>
+</div>
+
+
+<script src="/libs/materialize/js/materialize.min.js"></script>
+<script src="/libs/masonry/masonry.pkgd.min.js"></script>
+<script src="/libs/aos/aos.js"></script>
+<script src="/libs/scrollprogress/scrollProgress.min.js"></script>
+<script src="/libs/lightGallery/js/lightgallery-all.min.js"></script>
+<script src="/js/matery.js"></script>
+
+<!-- Global site tag (gtag.js) - Google Analytics -->
+
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-131240581-2"></script>
+<script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() {
+        dataLayer.push(arguments);
+    }
+
+    gtag('js', new Date());
+    gtag('config', 'UA-131240581-2');
+</script>
+
+
+
+
+    <script async src="/libs/others/busuanzi.pure.mini.js"></script>
+
+
+</body>
+</html>
