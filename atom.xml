@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://unity321.github.io/"/>
-  <updated>2019-03-21T14:26:44.038Z</updated>
+  <updated>2019-04-01T09:45:17.677Z</updated>
   <id>http://unity321.github.io/</id>
   
   <author>
@@ -15,6 +15,31 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>SQL注入学习笔记</title>
+    <link href="http://unity321.github.io/2019/04/01/sql-zhu-ru-xue-xi-bi-ji/"/>
+    <id>http://unity321.github.io/2019/04/01/sql-zhu-ru-xue-xi-bi-ji/</id>
+    <published>2019-04-01T09:16:01.000Z</published>
+    <updated>2019-04-01T09:45:17.677Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;p&gt;&lt;img src=&quot;https://cdn.pixabay.com/photo/2016/09/12/11/22/road-1663543_1280.jpg&quot; alt=&quot;mcc&quot;&gt;&lt;/p&gt;
+&lt;h1 id=&quot;SQL注入学习笔记&quot;&gt;&lt;a href=&quot;#SQL注入学习笔记&quot;
+        
+      
+    
+    </summary>
+    
+    
+      <category term="sql注入" scheme="http://unity321.github.io/tags/sql%E6%B3%A8%E5%85%A5/"/>
+    
+  </entry>
   
   <entry>
     <title>AXX项目总结</title>
@@ -320,7 +345,7 @@
     <link href="http://unity321.github.io/2019/01/06/dian-di/"/>
     <id>http://unity321.github.io/2019/01/06/dian-di/</id>
     <published>2019-01-06T15:52:54.000Z</published>
-    <updated>2019-02-24T10:25:49.361Z</updated>
+    <updated>2019-04-07T02:59:28.940Z</updated>
     
     <summary type="html">
     
@@ -499,33 +524,6 @@
       <category term="LaTex" scheme="http://unity321.github.io/tags/LaTex/"/>
     
       <category term="Markdown" scheme="http://unity321.github.io/tags/Markdown/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>关于平面刚体自由度的计算</title>
-    <link href="http://unity321.github.io/2018/12/22/guan-yu-ping-mian-gang-ti-zi-you-du-de-ji-suan/"/>
-    <id>http://unity321.github.io/2018/12/22/guan-yu-ping-mian-gang-ti-zi-you-du-de-ji-suan/</id>
-    <published>2018-12-22T10:18:55.000Z</published>
-    <updated>2019-01-07T15:33:08.790Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        
-        
-          &lt;p&gt;&lt;img src=&quot;https://github.com/mcc321/mcc/blob/master/img/7.jpg?raw=true&quot; alt=&quot;zhang不大的先生&quot;&gt;&lt;/p&gt;
-&lt;h1 id=&quot;刚体自由度判断问题&quot;&gt;&lt;a href=&quot;#刚体自由度判断问题&quot;
-        
-      
-    
-    </summary>
-    
-    
-      <category term="理论力学" scheme="http://unity321.github.io/tags/%E7%90%86%E8%AE%BA%E5%8A%9B%E5%AD%A6/"/>
-    
-      <category term="自由度" scheme="http://unity321.github.io/tags/%E8%87%AA%E7%94%B1%E5%BA%A6/"/>
     
   </entry>
   
