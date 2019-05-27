@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://unity321.github.io/"/>
-  <updated>2019-05-26T23:57:46.945Z</updated>
+  <updated>2019-04-07T13:45:52.569Z</updated>
   <id>http://unity321.github.io/</id>
   
   <author>
@@ -15,28 +15,6 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
-  
-  <entry>
-    <title></title>
-    <link href="http://unity321.github.io/2019/05/27/lao-mei-gao-kao-jia-you/"/>
-    <id>http://unity321.github.io/2019/05/27/lao-mei-gao-kao-jia-you/</id>
-    <published>2019-05-26T23:54:59.157Z</published>
-    <updated>2019-05-26T23:57:46.945Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        
-        
-          &lt;h3 id=&quot;老妹，高考加油&quot;&gt;&lt;a href=&quot;#老妹，高考加油&quot; class=&quot;headerlink&quot;
-        
-      
-    
-    </summary>
-    
-    
-  </entry>
   
   <entry>
     <title>socket-python脚本</title>
@@ -261,6 +239,31 @@
     
     
       <category term="docker" scheme="http://unity321.github.io/tags/docker/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>命名规范mcc</title>
+    <link href="http://unity321.github.io/2019/01/22/lao-mei-gao-kao-jia-you/"/>
+    <id>http://unity321.github.io/2019/01/22/lao-mei-gao-kao-jia-you/</id>
+    <published>2019-01-22T11:06:12.000Z</published>
+    <updated>2019-05-27T04:45:33.143Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;p&gt;&lt;img src=&quot;https://github.com/mcc321/mcc/blob/master/img/47.jpg?raw=true&quot; alt=&quot;mcc&quot;&gt;&lt;/p&gt;
+&lt;h3 id=&quot;老妹，高考加油&quot;&gt;&lt;a href=&quot;#老妹，高考加油&quot;
+        
+      
+    
+    </summary>
+    
+    
+      <category term="命名规范总结" scheme="http://unity321.github.io/tags/%E5%91%BD%E5%90%8D%E8%A7%84%E8%8C%83%E6%80%BB%E7%BB%93/"/>
     
   </entry>
   
